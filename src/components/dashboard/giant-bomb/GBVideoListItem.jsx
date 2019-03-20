@@ -12,7 +12,7 @@ export default function GBVideoListItem({
     <a
       target="_blank"
       rel="noopener noreferrer"
-      className="link dim"
+      className="link dim db pointer"
       href={videoUrl}
     >
       <img
@@ -20,11 +20,11 @@ export default function GBVideoListItem({
         src={imageUrl}
         alt={`Thumbnail for${{ name }}`}
       />
-      <div className="ph4 pv2">
-        <h3 className="db sans-serif f3 fw6 black">
+      <div className="ph3 pv2">
+        <h3 className="db sans-serif f3 fw6 black mt3 mb2">
           {name}
         </h3>
-        <span className="db mt2 dark-gray sans-serif f4">
+        <span className="db mb2 dark-gray sans-serif f4">
           {moment(publishedAt).fromNow()}
         </span>
       </div>
