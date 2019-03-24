@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+/* global gapi */
+/* global document */
 
+import React, { Component } from 'react';
 import {
   GMAIL_API_KEY, GMAIL_CLIENT_ID, GMAIL_DISCOVERY_DOCS, GMAIL_SCOPES,
 }
   from '../../../resources/config/keys';
+
+import GmailMessage from './GmailMessage';
 
 export default class Gmail extends Component {
   constructor(props) {
@@ -72,13 +76,15 @@ export default class Gmail extends Component {
       q: 'is:unread',
       userId: 'me',
     }).then((response) => {
+      if (!response.result.messages) {
+        return;
+      }
       response.result.messages.forEach((message) => {
         gapi.client.gmail.users.messages.get({
           userId: 'me',
           id: message.id,
-        }).then((response) => {
-          const messageResult = response.result;
-          console.log(messageResult);
+        }).then((messageResponse) => {
+          const messageResult = messageResponse.result;
           this.setState(prevState => ({
             unreadMessages: [...prevState.unreadMessages, messageResult],
           }));
@@ -92,6 +98,14 @@ export default class Gmail extends Component {
     const {
       error, gapiLoaded, gapiClientLoaded, isSignedIn, unreadMessages,
     } = this.state;
+
+    if (error) {
+      return (
+        <p className="dark-red sans-serif f4">
+          {error.details}
+        </p>
+      );
+    }
 
     if (!gapiLoaded) {
       return (
@@ -109,26 +123,19 @@ export default class Gmail extends Component {
       );
     }
 
-    if (error) {
-      return (
-        <p className="dark-red sans-serif f4">
-          {error.message}
-        </p>
-      );
-    }
-
     return (
       <div>
+        <h2 className="sans-serif f3"> Unread emails </h2>
         <div>
           {
           unreadMessages.map(message => (
             <div key={message.id}>
-              {message.payload.headers.filter(header => header.name === 'Subject')[0].value}
+              <GmailMessage message={message} />
             </div>
           ))}
         </div>
         {
-          isSignedIn
+          false
           && <button type="button" onClick={this.handleSignOutClick}> Sign out </button>
         }
         {

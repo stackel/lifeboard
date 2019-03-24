@@ -6,6 +6,6 @@ import Gmail from './Gmail';
 storiesOf('Components/Gmail', module)
   .add('Gmail', () => (
     <div className="mw6 pa4">
-      <Gmail gapi={window.gapi} />
+      <Gmail />
     </div>
   ));
