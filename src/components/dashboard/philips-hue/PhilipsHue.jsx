@@ -42,6 +42,9 @@ export default class PhilipsHue extends Component {
 
   render() {
     const { lights } = this.state;
+    if (!lights || !lights.length) {
+      return null;
+    }
     return (
       <div>
         <h2 className="sans-serif f3"> Lights</h2>

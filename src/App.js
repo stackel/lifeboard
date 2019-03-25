@@ -5,6 +5,7 @@ import GBLatestVideos from './components/dashboard/giant-bomb/GBLatestVideos';
 import Gmail from './components/dashboard/gmail/Gmail';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
 import Chromecast from './components/dashboard/chromecast/Chromecast';
+import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         </div>
         <div className="w-25 fl ph4">
           <Chromecast />
+        </div>
+        <div className="w-25 fl ph4">
+          <UpcomingMusic />
         </div>
       </div>
 
