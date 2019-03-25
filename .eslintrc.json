@@ -3,7 +3,10 @@
   "parser": "babel-eslint",
   "globals": {
     "gapi": true,
-    "document": true
+    "document": true,
+    "window": true,
+    "cast": true,
+    "chrome": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, {
