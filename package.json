@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "axios-jsonp": "^1.0.2",
     "moment": "^2.24.0",
+    "nuka-carousel": "^4.5.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-axios": "^2.0.3",

@@ -16,15 +16,15 @@ export default function GBVideoListItem({
       href={videoUrl}
     >
       <img
-        className="w-100 db"
+        className="w-100 db br2"
         src={imageUrl}
         alt={`Thumbnail for${{ name }}`}
       />
-      <div className="ph3 pv2">
-        <h3 className="db sans-serif f3 fw6 black mt3 mb2">
+      <div className="pr2 pv2">
+        <h3 className="db sans-serif f5 fw6 black mt3 mb2">
           {name}
         </h3>
-        <span className="db mb2 dark-gray sans-serif f4">
+        <span className="db mb2 dark-gray sans-serif f6">
           {moment(publishedAt).fromNow()}
         </span>
       </div>

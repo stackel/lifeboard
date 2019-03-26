@@ -36,10 +36,10 @@ export default class Chromecast extends Component {
     }
     return (
       <div>
-        <h2 className="sans-serif f3"> Playing in your home</h2>
+        <h2 className="sans-serif f4 mb2"> Playing:</h2>
         {
           devices.map(device => (
-            <div key={device.id}>
+            <div className="" key={device.id}>
               <ChromecastDevice device={device} />
             </div>
           ))

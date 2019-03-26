@@ -2,6 +2,7 @@
 /* global document */
 
 import React, { Component } from 'react';
+import Carousel from 'nuka-carousel';
 import {
   GMAIL_API_KEY, GMAIL_CLIENT_ID, GMAIL_DISCOVERY_DOCS, GMAIL_SCOPES,
 }
@@ -125,23 +126,28 @@ export default class Gmail extends Component {
 
     return (
       <div>
-        <h2 className="sans-serif f3"> Unread emails </h2>
-        <div>
+        <h2 className="sans-serif f4 mb1"> Unread emails </h2>
+        <Carousel
+          dragging
+          slidesToShow={3}
+          swiping
+          renderBottomCenterControls={() => null}
+        >
           {
           unreadMessages.map(message => (
-            <div key={message.id}>
+            <div className="dib pr3" key={message.id}>
               <GmailMessage message={message} />
             </div>
           ))}
-        </div>
-        {
+          {
           false
           && <button type="button" onClick={this.handleSignOutClick}> Sign out </button>
         }
-        {
+          {
           !isSignedIn
           && <button type="button" onClick={this.handleSignInClick}> Sign in </button>
         }
+        </Carousel>
       </div>
     );
   }

@@ -7,21 +7,21 @@ export default function GmailMessage({ message }) {
     <a
       target="_blank"
       rel="noopener noreferrer"
-      className="link dim db pointer"
+      className="link dim w5 dib pointer"
       href="https://mail.google.com/mail/ca/u/0/?shva=1#inbox/"
     >
-      <h3 className="sans-serif f4 black">
+      <h3 className="sans-serif f5 black v-bot truncate">
         {message.payload.headers.filter(
           payload => payload.name === 'Subject',
         )[0].value}
       </h3>
-      <span className="db sans-serif f5 dark-gray">
+      <span className="db sans-serif f5 dark-gray truncate">
         {'From: '}
         {message.payload.headers.filter(
           payload => payload.name === 'From',
         )[0].value}
       </span>
-      <span className="db mt2 b sans-serif f5 dark-gray">
+      <span className="db mt2 b sans-serif f6 dark-gray">
         {moment(parseInt(message.internalDate, 10)).fromNow()}
       </span>
     </a>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Get } from 'react-axios';
 import jsonpAdapter from 'axios-jsonp';
 import axios from 'axios';
+import Carousel from 'nuka-carousel';
 
 import { GB_API_URL } from '../../../resources/config/api';
 import { GB_API_KEY } from '../../../resources/config/keys';
@@ -40,11 +41,17 @@ export default function GBLatestVideos({ limit }) {
         if (response !== null) {
           return (
             <div>
-              <h2 className="sans-serif f3"> Latest Giant Bomb Videos</h2>
-              {
+              <h2 className="sans-serif f4 mb2"> Latest Giant Bomb Videos</h2>
+              <Carousel
+                dragging
+                slidesToShow={5}
+                swiping
+                renderBottomCenterControls={() => null}
+              >
+                {
                 response.data.results.map(
                   video => (
-                    <div key={video.id} className="mb4">
+                    <div key={video.id} className="pr3">
                       <GBVideoListItem
                         name={video.name}
                         publishedAt={video.publish_date}
@@ -55,6 +62,7 @@ export default function GBLatestVideos({ limit }) {
                   ),
                 )
               }
+              </Carousel>
             </div>
           );
         }

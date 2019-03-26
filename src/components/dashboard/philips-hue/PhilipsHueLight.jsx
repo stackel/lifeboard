@@ -5,16 +5,16 @@ export default function PhilipsHueLight({ light, onClick }) {
   const { on } = light.state;
   const circleColor = on ? 'yellow' : 'light-gray';
   return (
-    <div className="cf">
+    <div className="w5">
       <div className="fl w-70">
-        <h3 className="sans-serif f4 mb1 mt0">
+        <h3 className="sans-serif f5 mb1 mt0 truncate">
           {light.name}
         </h3>
         <span className="sans-serif dark-gray f5">
           {light.productname}
         </span>
       </div>
-      <div className="fl w-30 v-mid mt2">
+      <div className="fl w-30 v-mid">
         <div>
           <button
             type="button"

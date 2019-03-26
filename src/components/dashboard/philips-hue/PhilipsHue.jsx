@@ -47,12 +47,12 @@ export default class PhilipsHue extends Component {
     }
     return (
       <div>
-        <h2 className="sans-serif f3"> Lights</h2>
+        <h2 className="sans-serif f4 mb3"> Lights</h2>
         {
         lights.map(light => (
           <div
             key={light.id}
-            className="mb4"
+            className="dib pb3"
           >
             <PhilipsHueLight
               light={light}

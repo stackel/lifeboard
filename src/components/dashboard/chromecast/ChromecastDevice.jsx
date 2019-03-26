@@ -6,10 +6,12 @@ export default function ChromecastDevice({ device }) {
     return null;
   }
   return (
-    <div>
-      <img src={device.status.image} alt="album art" />
-      <span className="sans-serif f4 db b mb1 mt2">{device.status.title}</span>
-      <span className="sans-serif f5 db">{device.status.subtitle}</span>
+    <div className="dib">
+      <img className="v-mid w5" src={device.status.image} alt="album art" />
+      <div className="dib pl4">
+        <span className="sans-serif f4 b mb1 mt2 db">{device.status.title}</span>
+        <span className="sans-serif f5 dark-gray fw4">{device.status.subtitle}</span>
+      </div>
     </div>
   );
 }
