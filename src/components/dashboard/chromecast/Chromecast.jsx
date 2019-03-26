@@ -14,6 +14,10 @@ export default class Chromecast extends Component {
   }
 
   componentDidMount() {
+    this.fetchDevices();
+  }
+
+  fetchDevices = () => {
     axios.get(`${CAST_WEB_API_URL}/device`).then((response) => {
       this.setState({ devices: response.data });
     }, (error) => {
@@ -21,6 +25,20 @@ export default class Chromecast extends Component {
     });
   }
 
+  onPlayClick = (id) => {
+    axios.get(`${CAST_WEB_API_URL}/device/${id}/play`).then(() => {
+      this.fetchDevices();
+    }, (error) => {
+      this.setState(error);
+    });
+  }
+
+  onPauseClick = (id) => {
+    axios.get(`${CAST_WEB_API_URL}/device/${id}/pause`).then(() => {
+    }, (error) => {
+      this.setState(error);
+    });
+  }
 
   render() {
     const { devices, error } = this.state;
@@ -40,7 +58,11 @@ export default class Chromecast extends Component {
         {
           devices.map(device => (
             <div className="" key={device.id}>
-              <ChromecastDevice device={device} />
+              <ChromecastDevice
+                onPlayClicked={this.onPlayClick}
+                onPauseClicked={this.onPauseClick}
+                device={device}
+              />
             </div>
           ))
         }

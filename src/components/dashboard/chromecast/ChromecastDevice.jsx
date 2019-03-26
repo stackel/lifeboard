@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function ChromecastDevice({ device }) {
+export default function ChromecastDevice({
+  device,
+  onPlayClicked, onPauseClicked,
+}) {
   if (!device.status.status) {
     return null;
   }
@@ -11,6 +14,15 @@ export default function ChromecastDevice({ device }) {
       <div className="dib pl4">
         <span className="sans-serif f4 b mb1 mt2 db">{device.status.title}</span>
         <span className="sans-serif f5 dark-gray fw4">{device.status.subtitle}</span>
+        {
+          device.status.status === 'PLAYING'
+          && <button type="button" onClick={() => onPauseClicked(device.id)}> Pause </button>
+        }
+        {
+          device.status.status === 'PAUSED'
+          && <button type="button" onClick={() => onPlayClicked(device.id)}> Play </button>
+        }
+
       </div>
     </div>
   );
@@ -27,4 +39,6 @@ ChromecastDevice.propTypes = {
       status: PropTypes.string,
     }),
   }).isRequired,
+  onPlayClicked: PropTypes.func.isRequired,
+  onPauseClicked: PropTypes.func.isRequired,
 };
