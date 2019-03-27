@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function ChromecastDevice({
   device,
-  onPlayClicked, onPauseClicked,
+  onPlayClicked, onPauseClicked, onMuteClicked, onUnmuteClicked,
 }) {
   if (!device.status.status) {
     return null;
@@ -15,13 +15,15 @@ export default function ChromecastDevice({
         <span className="sans-serif f4 b mb1 mt2 db">{device.status.title}</span>
         <span className="sans-serif f5 dark-gray fw4">{device.status.subtitle}</span>
         {
-          device.status.status === 'PLAYING'
+         true
           && <button type="button" onClick={() => onPauseClicked(device.id)}> Pause </button>
         }
         {
-          device.status.status === 'PAUSED'
+          true
           && <button type="button" onClick={() => onPlayClicked(device.id)}> Play </button>
         }
+        <button type="button" onClick={() => onMuteClicked(device.id)}> Mute </button>
+        <button type="button" onClick={() => onUnmuteClicked(device.id)}> Unmute </button>
 
       </div>
     </div>
@@ -41,4 +43,6 @@ ChromecastDevice.propTypes = {
   }).isRequired,
   onPlayClicked: PropTypes.func.isRequired,
   onPauseClicked: PropTypes.func.isRequired,
+  onMuteClicked: PropTypes.func.isRequired,
+  onUnmuteClicked: PropTypes.func.isRequired,
 };

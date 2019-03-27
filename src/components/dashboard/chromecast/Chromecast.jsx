@@ -40,6 +40,20 @@ export default class Chromecast extends Component {
     });
   }
 
+  onMuteClick = (id) => {
+    axios.get(`${CAST_WEB_API_URL}/device/${id}/muted/true`).then(() => {
+    }, (error) => {
+      this.setState(error);
+    });
+  }
+
+  onUnmuteClick = (id) => {
+    axios.get(`${CAST_WEB_API_URL}/device/${id}/muted/false`).then(() => {
+    }, (error) => {
+      this.setState(error);
+    });
+  }
+
   render() {
     const { devices, error } = this.state;
     if (error) {
@@ -61,6 +75,8 @@ export default class Chromecast extends Component {
               <ChromecastDevice
                 onPlayClicked={this.onPlayClick}
                 onPauseClicked={this.onPauseClick}
+                onMuteClicked={this.onMuteClick}
+                onUnmuteClicked={this.onUnmuteClick}
                 device={device}
               />
             </div>
