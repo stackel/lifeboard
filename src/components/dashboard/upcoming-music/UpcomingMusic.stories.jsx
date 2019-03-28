@@ -5,7 +5,7 @@ import UpcomingMusic from './UpcomingMusic';
 
 storiesOf('Components/Upcoming Music', module)
   .add('UpcomingMusic', () => (
-    <div className="mw6 pa4">
+    <div className=" pa4">
       <UpcomingMusic />
     </div>
   ));

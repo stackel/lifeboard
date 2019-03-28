@@ -123,6 +123,9 @@ export default class Gmail extends Component {
         </p>
       );
     }
+    if (!unreadMessages || !unreadMessages.length) {
+      return null;
+    }
 
     return (
       <div>
