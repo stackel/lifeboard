@@ -16,7 +16,7 @@ export default class Chromecast extends Component {
   componentDidMount() {
     setInterval(() => {
       this.fetchDevices();
-    }, 3000);
+    }, 1000);
     this.fetchDevices();
   }
 

@@ -5,7 +5,7 @@ import GameReleases from './GameReleases';
 
 storiesOf('Components/Game Releases', module)
   .add('Game Releases', () => (
-    <div className="mw6 pa4">
+    <div className="pa4">
       <GameReleases />
     </div>
   ));

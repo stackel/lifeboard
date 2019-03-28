@@ -87,9 +87,9 @@ export default class Recipes extends Component {
             rel="noopener noreferrer"
             className="link pointer "
           >
-            <div className="w5 dib" key={recipe.recipe.uri}>
-              <img src={recipe.recipe.image} alt="recipe" className="h5 w5" />
-              <h3 className="sans-serif f5 black ph3 ">{recipe.recipe.label}</h3>
+            <div className=" dib" key={recipe.recipe.uri}>
+              <img src={recipe.recipe.image} alt="recipe" className="" />
+              <h3 className="sans-serif f5 black pr3 ">{recipe.recipe.label}</h3>
             </div>
           </a>
         ))}
