@@ -10,14 +10,25 @@ export default class Chromecast extends Component {
     this.state = {
       devices: [],
       error: null,
+      intervalId: null,
     };
   }
 
   componentDidMount() {
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       this.fetchDevices();
     }, 1000);
+    this.setState({
+      intervalId,
+    });
     this.fetchDevices();
+  }
+
+  componentWillUnmount() {
+    const { intervalId } = this.state;
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
   }
 
   fetchDevices = () => {
@@ -57,6 +68,18 @@ export default class Chromecast extends Component {
     });
   }
 
+  isPlaying = () => {
+    const { devices } = this.state;
+    let playing = false;
+    devices.forEach((device) => {
+      if (device.status.status) {
+        playing = true;
+      }
+    });
+    return playing;
+  }
+
+
   render() {
     const { devices, error } = this.state;
     if (error) {
@@ -66,9 +89,11 @@ export default class Chromecast extends Component {
         </pre>
       );
     }
-    if (!devices.length) {
+
+    if (!devices.length || !this.isPlaying()) {
       return null;
     }
+
     return (
       <div>
         <h2 className="sans-serif f4 mb2"> Playing:</h2>
