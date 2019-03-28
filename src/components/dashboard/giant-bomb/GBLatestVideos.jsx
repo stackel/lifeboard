@@ -78,5 +78,5 @@ GBLatestVideos.propTypes = {
 };
 
 GBLatestVideos.defaultProps = {
-  limit: 5,
+  limit: 10,
 };

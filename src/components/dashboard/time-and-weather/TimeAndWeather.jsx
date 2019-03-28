@@ -34,7 +34,7 @@ export default class TimeAndWeather extends Component {
           url={`${CORS_ANYWHERE_URL}${OPEN_WEATHER_MAP_API_URL}weather`}
           params={{
             appid: OPEN_WEATHER_MAP_API_KEY,
-            q: 'Stockholm,se',
+            q: 'Nacka,se',
             units: 'metric',
           }}
         >
