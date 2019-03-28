@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { CAST_WEB_API_URL } from '../../../resources/config/api';
+import { API_URL, FETCH_INTERVAL } from '../../../resources/config/chromecast';
 import ChromecastDevice from './ChromecastDevice';
 
 export default class Chromecast extends Component {
@@ -17,7 +17,7 @@ export default class Chromecast extends Component {
   componentDidMount() {
     const intervalId = setInterval(() => {
       this.fetchDevices();
-    }, 1000);
+    }, FETCH_INTERVAL);
     this.setState({
       intervalId,
     });
@@ -32,7 +32,7 @@ export default class Chromecast extends Component {
   }
 
   fetchDevices = () => {
-    axios.get(`${CAST_WEB_API_URL}/device`).then((response) => {
+    axios.get(`${API_URL}/device`).then((response) => {
       this.setState({ devices: response.data });
     }, (error) => {
       this.setState(error);
@@ -40,7 +40,7 @@ export default class Chromecast extends Component {
   }
 
   onPlayClick = (id) => {
-    axios.get(`${CAST_WEB_API_URL}/device/${id}/play`).then(() => {
+    axios.get(`${API_URL}/device/${id}/play`).then(() => {
       this.fetchDevices();
     }, (error) => {
       this.setState(error);
@@ -48,21 +48,21 @@ export default class Chromecast extends Component {
   }
 
   onPauseClick = (id) => {
-    axios.get(`${CAST_WEB_API_URL}/device/${id}/pause`).then(() => {
+    axios.get(`${API_URL}/device/${id}/pause`).then(() => {
     }, (error) => {
       this.setState(error);
     });
   }
 
   onMuteClick = (id) => {
-    axios.get(`${CAST_WEB_API_URL}/device/${id}/muted/true`).then(() => {
+    axios.get(`${API_URL}/device/${id}/muted/true`).then(() => {
     }, (error) => {
       this.setState(error);
     });
   }
 
   onUnmuteClick = (id) => {
-    axios.get(`${CAST_WEB_API_URL}/device/${id}/muted/false`).then(() => {
+    axios.get(`${API_URL}/device/${id}/muted/false`).then(() => {
     }, (error) => {
       this.setState(error);
     });
