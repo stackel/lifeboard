@@ -83,11 +83,7 @@ export default class Chromecast extends Component {
   render() {
     const { devices, error } = this.state;
     if (error) {
-      return (
-        <pre>
-          {JSON.stringify(error, null, 4)}
-        </pre>
-      );
+      return null;
     }
 
     if (!devices.length || !this.isPlaying()) {

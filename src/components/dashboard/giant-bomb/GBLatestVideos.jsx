@@ -5,8 +5,7 @@ import jsonpAdapter from 'axios-jsonp';
 import axios from 'axios';
 import Carousel from 'nuka-carousel';
 
-import { GB_API_URL } from '../../../resources/config/api';
-import { GB_API_KEY } from '../../../resources/config/keys';
+import { API_URL, API_KEY } from '../../../resources/config/giant-bomb';
 import GBVideoListItem from './GBVideoListItem';
 
 export default function GBLatestVideos({ limit }) {
@@ -18,12 +17,12 @@ export default function GBLatestVideos({ limit }) {
   return (
     <Get
       instance={axiosInstance}
-      url={`${GB_API_URL}videos`}
+      url={`${API_URL}videos`}
       adapter={jsonpAdapter}
       params={{
         limit,
         field_list: 'name,id,image,publish_date,site_detail_url',
-        api_key: GB_API_KEY,
+        api_key: API_KEY,
         format: 'jsonp',
       }}
     >
