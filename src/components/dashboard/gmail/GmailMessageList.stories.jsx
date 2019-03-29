@@ -1,15 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import GmailMessage from './GmailMessage';
+import GmailMessageList from './GmailMessageList';
 
 import { gmailMessages } from '../../../resources/data/mocked/gmail';
 
-const gmailMessage = gmailMessages[0];
-
 storiesOf('Components/Gmail', module)
-  .add('Gmail Message', () => (
-    <div className="mw6 pa4">
-      <GmailMessage message={gmailMessage} />
+  .add('Gmail Message List', () => (
+    <div className="pa4">
+      <GmailMessageList messages={gmailMessages} />
     </div>
   ));

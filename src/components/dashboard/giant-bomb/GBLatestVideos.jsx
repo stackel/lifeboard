@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { Get } from 'react-axios';
 import jsonpAdapter from 'axios-jsonp';
 import axios from 'axios';
-import Carousel from 'nuka-carousel';
 
 import { API_URL, API_KEY } from '../../../resources/config/giant-bomb';
-import GBVideoListItem from './GBVideoListItem';
+import GBLatestVideosList from './GBLatestVideosList';
 
 export default function GBLatestVideos({ limit }) {
   const axiosInstance = axios.create({
@@ -28,44 +27,17 @@ export default function GBLatestVideos({ limit }) {
     >
       {(error, response, isLoading) => {
         if (error) {
-          return (
-            <div>
-              {error.message}
-            </div>
-          );
+          return null;
         }
         if (isLoading) {
-          return (<div>Loading...</div>);
+          return (<div className="w-100 bg-near-white h4" />);
         }
         if (response !== null) {
           return (
-            <div>
-              <h2 className="sans-serif f4 mb2"> Latest Giant Bomb Videos</h2>
-              <Carousel
-                dragging
-                slidesToShow={5}
-                swiping
-                renderBottomCenterControls={() => null}
-              >
-                {
-                response.data.results.map(
-                  video => (
-                    <div key={video.id} className="pr3">
-                      <GBVideoListItem
-                        name={video.name}
-                        publishedAt={video.publish_date}
-                        imageUrl={video.image.medium_url}
-                        videoUrl={video.site_detail_url}
-                      />
-                    </div>
-                  ),
-                )
-              }
-              </Carousel>
-            </div>
+            <GBLatestVideosList videos={response.data.results} />
           );
         }
-        return (<div>Loading...</div>);
+        return null;
       }}
     </Get>
   );
@@ -73,7 +45,6 @@ export default function GBLatestVideos({ limit }) {
 
 GBLatestVideos.propTypes = {
   limit: PropTypes.number,
-
 };
 
 GBLatestVideos.defaultProps = {

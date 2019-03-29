@@ -1,14 +1,13 @@
 /* global gapi */
 /* global document */
-
 import React, { Component } from 'react';
-import Carousel from 'nuka-carousel';
-import {
-  GMAIL_API_KEY, GMAIL_CLIENT_ID, GMAIL_DISCOVERY_DOCS, GMAIL_SCOPES,
-}
-  from '../../../resources/config/keys';
 
-import GmailMessage from './GmailMessage';
+import {
+  API_KEY, CLIENT_ID, DISCOVERY_DOCS, SCOPES,
+}
+  from '../../../resources/config/gmail';
+
+import GmailMessageList from './GmailMessageList';
 
 export default class Gmail extends Component {
   constructor(props) {
@@ -19,6 +18,7 @@ export default class Gmail extends Component {
       gapiClientLoaded: false,
       isSignedIn: false,
       unreadMessages: [],
+      intervalId: null,
     };
   }
 
@@ -36,12 +36,19 @@ export default class Gmail extends Component {
     document.body.appendChild(script);
   }
 
+  componentWillUnmount() {
+    const { intervalId } = this.state;
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+  }
+
   initClient = () => {
     gapi.client.init({
-      apiKey: GMAIL_API_KEY,
-      clientId: GMAIL_CLIENT_ID,
-      discoveryDocs: GMAIL_DISCOVERY_DOCS,
-      scope: GMAIL_SCOPES,
+      apiKey: API_KEY,
+      clientId: CLIENT_ID,
+      discoveryDocs: DISCOVERY_DOCS,
+      scope: SCOPES,
     }).then(() => {
       gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
       this.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
@@ -57,6 +64,12 @@ export default class Gmail extends Component {
 
   updateSigninStatus = (isSignedIn) => {
     if (isSignedIn) {
+      /* const intervalId = setInterval(() => {
+        this.getUnreadMessages();
+      }, 1000);
+      this.setState({
+        intervalId,
+      }); */
       this.getUnreadMessages();
     }
     this.setState({
@@ -101,56 +114,33 @@ export default class Gmail extends Component {
     } = this.state;
 
     if (error) {
-      return (
-        <p className="dark-red sans-serif f4">
-          {error.details}
-        </p>
-      );
+      return null;
     }
 
-    if (!gapiLoaded) {
-      return (
-        <p className="dark-red sans-serif f4">
-          Google API not loaded
-        </p>
-      );
+    if (!gapiLoaded || !gapiClientLoaded) {
+      return (<div className="w-100 bg-near-white h4" />);
     }
 
-    if (!gapiClientLoaded) {
-      return (
-        <p className="dark-red sans-serif f4">
-          Google API client not initiated
-        </p>
-      );
-    }
-    if (!unreadMessages || !unreadMessages.length) {
+    if ((!unreadMessages || !unreadMessages.length) && isSignedIn) {
       return null;
     }
 
     return (
       <div>
         <h2 className="sans-serif f4 mb1"> Unread emails </h2>
-        <Carousel
-          dragging
-          slidesToShow={3}
-          swiping
-          renderBottomCenterControls={() => null}
-        >
-          {
-          unreadMessages.map(message => (
-            <div className="dib pr3" key={message.id}>
-              <GmailMessage message={message} />
-            </div>
-          ))}
-          {
-          false
-          && <button type="button" onClick={this.handleSignOutClick}> Sign out </button>
-        }
-          {
+        <GmailMessageList messages={unreadMessages} />
+        {
           !isSignedIn
-          && <button type="button" onClick={this.handleSignInClick}> Sign in </button>
+          && (
+          <button
+            className="mv3 sans-serif f5 bg-black white ph3 pv2 pointer dim"
+            type="button"
+            onClick={this.handleSignInClick}
+          >
+            {'Sign in to get emails'}
+          </button>
+          )
         }
-        </Carousel>
       </div>
     );
   }
