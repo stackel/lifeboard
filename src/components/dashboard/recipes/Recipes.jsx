@@ -26,6 +26,7 @@ export default class Recipes extends Component {
     this.setState({ loading: true });
     axios.get(`https://api.edamam.com/search?q=${ingredients}&app_id=c4df6f2d&app_key=b334a4010e95d8da2b2e8f9c0146ccc6&excluded=garlic,onion`)
       .then((response) => {
+        console.log(JSON.stringify(response.data.hits));
         this.setState({
           recipes: response.data.hits,
           loading: false,
@@ -73,6 +74,7 @@ export default class Recipes extends Component {
             onClick={() => this.onIngredientClicked(ingredientPairing)}
             className="link dim pointer dib shadow-2 br2 ph3 pv2 mr2"
           >
+
             {ingredientPairing}
           </button>
         ))
