@@ -1,8 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 export const philipsHueLightList = [{
-  id: 1,
   state: {
-    on: false,
+    on: true,
     bri: 254,
     hue: 8418,
     sat: 140,
@@ -14,10 +13,7 @@ export const philipsHueLightList = [{
     mode: 'homeautomation',
     reachable: true,
   },
-  swupdate: {
-    state: 'readytoinstall',
-    lastinstall: '2017-12-19T19:59:31',
-  },
+  swupdate: { state: 'noupdates', lastinstall: '2019-03-25T13:53:58' },
   type: 'Extended color light',
   name: 'Bedroom desk lamp',
   modelid: 'LCT010',
@@ -32,18 +28,125 @@ export const philipsHueLightList = [{
       colorgamut: [[0.6915, 0.3083], [0.17, 0.7], [0.1532, 0.0475]],
       ct: { min: 153, max: 500 },
     },
-    streaming: {
-      renderer: true,
-      proxy: true,
-    },
+    streaming: { renderer: true, proxy: true },
   },
   config: {
-    archetype: 'sultanbulb',
-    function: 'mixed',
-    direction: 'omnidirectional',
+    archetype: 'sultanbulb', function: 'mixed', direction: 'omnidirectional', startup: { mode: 'safety', configured: true },
   },
   uniqueid: '00:17:88:01:02:3c:ef:91-0b',
-  swversion: '1.29.0_r21169',
-  swconfigid: '6A139B19',
+  swversion: '1.46.13_r26312',
+  swconfigid: '0CE67A8F',
   productid: 'Philips-LCT010-1-A19ECLv4',
+  id: '1',
+}, {
+  state: {
+    on: true, bri: 254, hue: 8418, sat: 140, effect: 'none', xy: [0.4573, 0.41], ct: 366, alert: 'none', colormode: 'ct', mode: 'homeautomation', reachable: true,
+  },
+  swupdate: { state: 'noupdates', lastinstall: '2019-01-30T10:58:30' },
+  type: 'Extended color light',
+  name: 'Kitchen lamp',
+  modelid: 'LCT010',
+  manufacturername: 'Philips',
+  productname: 'Hue color lamp',
+  capabilities: {
+    certified: true,
+    control: {
+      mindimlevel: 1000, maxlumen: 806, colorgamuttype: 'C', colorgamut: [[0.6915, 0.3083], [0.17, 0.7], [0.1532, 0.0475]], ct: { min: 153, max: 500 },
+    },
+    streaming: { renderer: true, proxy: true },
+  },
+  config: {
+    archetype: 'sultanbulb', function: 'mixed', direction: 'omnidirectional', startup: { mode: 'safety', configured: true },
+  },
+  uniqueid: '00:17:88:01:02:3c:f7:fe-0b',
+  swversion: '1.46.13_r26312',
+  swconfigid: '0CE67A8F',
+  productid: 'Philips-LCT010-1-A19ECLv4',
+  id: '2',
+}, {
+  state: {
+    on: true, bri: 254, hue: 8418, sat: 140, effect: 'none', xy: [0.4573, 0.41], ct: 366, alert: 'none', colormode: 'ct', mode: 'homeautomation', reachable: true,
+  },
+  swupdate: { state: 'noupdates', lastinstall: '2017-12-19T19:59:25' },
+  type: 'Extended color light',
+  name: 'Hallway light',
+  modelid: 'LCT010',
+  manufacturername: 'Philips',
+  productname: 'Hue color lamp',
+  capabilities: {
+    certified: true,
+    control: {
+      mindimlevel: 1000, maxlumen: 806, colorgamuttype: 'C', colorgamut: [[0.6915, 0.3083], [0.17, 0.7], [0.1532, 0.0475]], ct: { min: 153, max: 500 },
+    },
+    streaming: { renderer: true, proxy: true },
+  },
+  config: {
+    archetype: 'sultanbulb', function: 'mixed', direction: 'omnidirectional', startup: { mode: 'safety', configured: true },
+  },
+  uniqueid: '00:17:88:01:02:3c:f9:5f-0b',
+  swversion: '1.46.13_r26312',
+  swconfigid: '0CE67A8F',
+  productid: 'Philips-LCT010-1-A19ECLv4',
+  id: '3',
+}, {
+  state: {
+    on: true, bri: 254, hue: 8418, sat: 140, effect: 'none', xy: [0.4573, 0.41], ct: 366, alert: 'select', colormode: 'ct', mode: 'homeautomation', reachable: true,
+  },
+  swupdate: { state: 'noupdates', lastinstall: '2017-12-19T19:57:50' },
+  type: 'Extended color light',
+  name: 'Den lightstrip',
+  modelid: 'LST002',
+  manufacturername: 'Philips',
+  productname: 'Hue lightstrip plus',
+  capabilities: {
+    certified: true,
+    control: {
+      mindimlevel: 25, maxlumen: 1600, colorgamuttype: 'C', colorgamut: [[0.6915, 0.3083], [0.17, 0.7], [0.1532, 0.0475]], ct: { min: 153, max: 500 },
+    },
+    streaming: { renderer: true, proxy: true },
+  },
+  config: {
+    archetype: 'huelightstrip', function: 'mixed', direction: 'omnidirectional', startup: { mode: 'safety', configured: true },
+  },
+  uniqueid: '00:17:88:01:02:ac:84:e0-0b',
+  swversion: '5.127.1.26420',
+  id: '4',
+}, {
+  state: {
+    on: true, bri: 254, alert: 'none', mode: 'homeautomation', reachable: true,
+  },
+  swupdate: { state: 'noupdates', lastinstall: '2019-01-30T10:58:35' },
+  type: 'Dimmable light',
+  name: 'Balcony light 2',
+  modelid: 'LWW001',
+  manufacturername: 'Philips',
+  productname: 'Hue outdoor wall',
+  capabilities: { certified: true, control: { mindimlevel: 2000, maxlumen: 840 }, streaming: { renderer: false, proxy: false } },
+  config: {
+    archetype: 'walllantern', function: 'functional', direction: 'omnidirectional', startup: { mode: 'safety', configured: true },
+  },
+  uniqueid: '00:17:88:01:03:44:9d:47-0b',
+  swversion: '1.46.13_r26312',
+  swconfigid: '322BB2EC',
+  productid: 'Philips-LWB010-1-A19DLv4',
+  id: '5',
+}, {
+  state: {
+    on: true, bri: 254, alert: 'none', mode: 'homeautomation', reachable: true,
+  },
+  swupdate: { state: 'noupdates', lastinstall: '2019-01-05T14:08:28' },
+  type: 'Dimmable light',
+  name: 'Balcony light 1',
+  modelid: 'LWW001',
+  manufacturername: 'Philips',
+  productname: 'Hue outdoor wall',
+  capabilities: { certified: true, control: { mindimlevel: 2000, maxlumen: 840 }, streaming: { renderer: false, proxy: false } },
+  config: {
+    archetype: 'walllantern', function: 'functional', direction: 'omnidirectional', startup: { mode: 'safety', configured: true },
+  },
+  uniqueid: '00:17:88:01:03:46:2e:1d-0b',
+  swversion: '1.46.13_r26312',
+  swconfigid: '322BB2EC',
+  productid: 'Philips-LWB010-1-A19DLv4',
+  id: '6',
 }];

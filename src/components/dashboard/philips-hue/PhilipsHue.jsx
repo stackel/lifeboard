@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { PHILIPS_HUE_API_URL } from '../../../resources/config/api';
+import { API_URL, FETCH_INTERVAL } from '../../../resources/config/philips-hue';
 import PhilipsHueLightList from './PhilipsHueLightList';
 
 export default class PhilipsHue extends Component {
@@ -9,15 +9,27 @@ export default class PhilipsHue extends Component {
     super(props);
     this.state = {
       lights: [],
+      intervalId: null,
     };
   }
 
   componentDidMount() {
+    const intervalId = setInterval(() => {
+      this.fetchLights();
+    }, FETCH_INTERVAL);
+    this.setState({
+      intervalId,
+    });
     this.fetchLights();
   }
 
+  componentWillUnmount() {
+    const { intervalId } = this.state;
+    clearInterval(intervalId);
+  }
+
   fetchLights = () => {
-    axios.get(`${PHILIPS_HUE_API_URL}lights`).then((response) => {
+    axios.get(`${API_URL}lights`).then((response) => {
       if (response !== null) {
         const { data } = response;
         const lights = [];
@@ -27,14 +39,13 @@ export default class PhilipsHue extends Component {
             ...data[key], id: key,
           }),
         );
-
         this.setState({ lights });
       }
     });
   }
 
   onLightClicked = (id, prevState) => {
-    axios.put(`${PHILIPS_HUE_API_URL}lights/${id}/state`,
+    axios.put(`${API_URL}lights/${id}/state`,
       { on: !prevState }).then(() => {
       this.fetchLights();
     });

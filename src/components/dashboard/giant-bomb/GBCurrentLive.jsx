@@ -30,6 +30,9 @@ export default function CurrentLive() {
         }
         if (response !== null) {
           const { video } = response.data;
+          if (!video) {
+            return null;
+          }
           return (
             <div>
               <h2 className="sans-serif f4 mb2">
