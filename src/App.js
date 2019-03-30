@@ -1,6 +1,7 @@
 import React from 'react';
 
 import GBLatestVideos from './components/dashboard/giant-bomb/GBLatestVideos';
+import GBCurrentLive from './components/dashboard/giant-bomb/GBCurrentLive';
 import Gmail from './components/dashboard/gmail/Gmail';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
 import Chromecast from './components/dashboard/chromecast/Chromecast';
@@ -19,6 +20,9 @@ function App() {
       </div>
       <div className="mt4">
         <Chromecast />
+      </div>
+      <div className="mt4">
+        <GBCurrentLive />
       </div>
       <div className="mt4">
         <Gmail />
