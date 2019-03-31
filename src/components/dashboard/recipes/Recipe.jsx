@@ -9,11 +9,9 @@ export default function Recipe({ recipe }) {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="">
-        <img className="w-100 br3 h5 of-c" src={recipe.image} alt={recipe.label} />
-        <span className="db sans-serif f4 black">{recipe.label}</span>
-        <span className="db sans-serif f5 dark-gray mt2">{recipe.source}</span>
-      </div>
+      <img className="w-100 br3 of-c" src={recipe.image} alt={recipe.label} />
+      <span className="db sans-serif f4 black">{recipe.label}</span>
+      <span className="db sans-serif f5 dark-gray mv2">{recipe.source}</span>
     </a>
   );
 }

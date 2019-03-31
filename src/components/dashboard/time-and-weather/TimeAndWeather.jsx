@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Get } from 'react-axios';
 
@@ -47,7 +46,7 @@ export default class TimeAndWeather extends Component {
               );
             }
             if (isLoading) {
-              return (<div>Loading...</div>);
+              return (<div className="bg-near-white w5 h1 center" />);
             }
             if (response !== null) {
               const weatherData = response.data;
@@ -60,13 +59,10 @@ export default class TimeAndWeather extends Component {
                 </div>
               );
             }
-            return (<div>Loading...</div>);
+            return (<div className="bg-near-white w5 h1 center" />);
           }}
         </Get>
       </div>
     );
   }
 }
-
-TimeAndWeather.propTypes = {
-};

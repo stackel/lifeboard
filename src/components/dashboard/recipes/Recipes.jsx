@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Carousel from 'nuka-carousel';
 
-import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
+import RecipeList from './RecipeList';
 
 export default class Recipes extends Component {
   constructor(props) {
@@ -26,9 +25,8 @@ export default class Recipes extends Component {
     this.setState({ loading: true });
     axios.get(`https://api.edamam.com/search?q=${ingredients}&app_id=c4df6f2d&app_key=b334a4010e95d8da2b2e8f9c0146ccc6&excluded=garlic,onion`)
       .then((response) => {
-        console.log(JSON.stringify(response.data.hits));
         this.setState({
-          recipes: response.data.hits,
+          recipes: response.data.hits.map(recipe => recipe.recipe),
           loading: false,
         });
       }, (error) => {
@@ -52,7 +50,7 @@ export default class Recipes extends Component {
       recipes, errorMessage, loading, allIngredients,
     } = this.state;
     if (loading) {
-      return <p>loading..</p>;
+      return (<div className="w-100 bg-near-white h4" />);
     }
 
     if (errorMessage) {
@@ -66,35 +64,22 @@ export default class Recipes extends Component {
 
     return (
       <div className="w-100">
+        <h2 className="sans-serif f4 mb2"> Recipes</h2>
         <div className="mb4">
           {
         allIngredients.map(ingredientPairing => (
           <button
+            key={ingredientPairing}
             type="button"
             onClick={() => this.onIngredientClicked(ingredientPairing)}
             className="link dim pointer dib shadow-2 br2 ph3 pv2 mr2"
           >
-
             {ingredientPairing}
           </button>
         ))
       }
         </div>
-
-        {recipes.map(recipe => (
-          <a
-            key={recipe.recipe.uri}
-            href={recipe.recipe.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link pointer "
-          >
-            <div className=" dib" key={recipe.recipe.uri}>
-              <img src={recipe.recipe.image} alt="recipe" className="" />
-              <h3 className="sans-serif f5 black pr3 ">{recipe.recipe.label}</h3>
-            </div>
-          </a>
-        ))}
+        <RecipeList recipes={recipes} />
       </div>
     );
   }

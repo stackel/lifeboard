@@ -8,6 +8,7 @@ import Chromecast from './components/dashboard/chromecast/Chromecast';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
 import TimeAndWeather from './components/dashboard/time-and-weather/TimeAndWeather';
+import Recipes from './components/dashboard/recipes/Recipes';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
       </div>
       <div className="mt4">
         <Gmail />
+      </div>
+      <div className="mt4">
+        <Recipes />
       </div>
       <div className="mt4">
         <GameReleases />
