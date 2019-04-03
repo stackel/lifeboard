@@ -26,7 +26,7 @@ export default function CurrentLive() {
           return null;
         }
         if (isLoading) {
-          return (<div className="w5 bg-near-white h4" />);
+          return (<div className="w5 bg-near-white h4 mt4" />);
         }
         if (response !== null) {
           const { video } = response.data;

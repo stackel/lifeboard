@@ -33,8 +33,6 @@ export default class Weather extends Component {
   }
 
   fetchWeather = () => {
-    /* eslint-disable no-console */
-    console.log('Updating weather');
     axios.get(`${API_URL}weather`, {
       params: {
         appid: API_KEY,

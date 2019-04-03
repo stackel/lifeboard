@@ -5,17 +5,9 @@ export default function PhilipsHueLight({ light, onClick }) {
   const { on } = light.state;
   const circleColor = on ? 'yellow' : 'light-gray';
   return (
-    <div className="w5">
-      <div className="fl w-70">
-        <h3 className="sans-serif f5 mb1 mt0 truncate">
-          {light.name}
-        </h3>
-        <span className="sans-serif dark-gray f5">
-          {light.productname}
-        </span>
-      </div>
-      <div className="fl w-30 v-mid">
-        <div>
+    <div className="w-100">
+      <div>
+        <div className="tc">
           <button
             type="button"
             onClick={() => onClick(light.id, on)}
@@ -23,6 +15,11 @@ export default function PhilipsHueLight({ light, onClick }) {
               `bg-${circleColor} b--${circleColor} h2 w2 br-100 pointer link grow dim`
             }
           />
+        </div>
+        <div className="tc">
+          <span className="sans-serif f5 fw5 mb1 mt0 truncate">
+            {light.name}
+          </span>
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ export default class Chromecast extends Component {
 
   fetchDevices = () => {
     axios.get(`${API_URL}/device`).then((response) => {
-      this.setState({ devices: response.data });
+      this.setState({ devices: response.data, error: null });
     }, (error) => {
       this.setState(error);
     });
@@ -82,12 +82,17 @@ export default class Chromecast extends Component {
 
   render() {
     const { devices, error } = this.state;
-    if (error) {
-      return null;
-    }
-
-    if (!devices.length || !this.isPlaying()) {
-      return null;
+    if (error || !devices.length || !this.isPlaying()) {
+      return (
+        <div>
+          <h2 className="sans-serif f4 mb2"> Chromecast not playing</h2>
+          <div className="h4 w4 dib ph3 bg-light-gray br3 fl" />
+          <div className="dib fl pt4 mt2 ph2">
+            <div className="h1 w5 db mb2 ph3 bg-light-gray br3" />
+            <div className="h1 w4 db ph3 bg-light-gray br3" />
+          </div>
+        </div>
+      );
     }
 
     return (

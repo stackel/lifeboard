@@ -58,7 +58,6 @@ export default class PhilipsHue extends Component {
     }
     return (
       <div>
-        <h2 className="sans-serif f4 mb3"> Lights</h2>
         <PhilipsHueLightList
           lights={lights}
           onLightClicked={this.onLightClicked}
