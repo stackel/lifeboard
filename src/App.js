@@ -1,5 +1,6 @@
 import React from 'react';
 import GBLatestVideos from './components/dashboard/giant-bomb/GBLatestVideos';
+import GBCurrentLive from './components/dashboard/giant-bomb/GBCurrentLive';
 import Gmail from './components/dashboard/gmail/Gmail';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
@@ -8,8 +9,8 @@ import Recipes from './components/dashboard/recipes/Recipes';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
-import GBCurrentLive from './components/dashboard/giant-bomb/GBCurrentLive';
 import Chromecast from './components/dashboard/chromecast/Chromecast';
+import DeparturesWithFetch from './components/dashboard/departures/DeparturesWithFetch';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
       </div>
       <div className="cf mt4">
         <div className="fl w-50">
-          <GBCurrentLive />
+          <DeparturesWithFetch />
         </div>
         <div className="fl w-50">
           <Chromecast />

@@ -12,4 +12,4 @@ export const STOPS = [
   },
 
 ];
-export const MAX_JOURNEYS = 5;
+export const MAX_JOURNEYS = 6;

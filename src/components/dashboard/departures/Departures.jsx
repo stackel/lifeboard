@@ -9,7 +9,7 @@ export default function Departures({ departures, stop }) {
   }
 
   return (
-    <div>
+    <div className="h5">
       <h2 className="sans-serif f4 mb3">
         {`Avgångar ${stop.label}`}
       </h2>
@@ -18,7 +18,7 @@ export default function Departures({ departures, stop }) {
       departures.map(departure => (
         <div
           key={departure.rtTime + departure.transportNumber}
-          className="mb3"
+          className="mb3 w-50 fl"
         >
           <Departure
             departure={departure}
