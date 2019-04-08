@@ -11,6 +11,7 @@ import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
 import Chromecast from './components/dashboard/chromecast/Chromecast';
 import DeparturesWithFetch from './components/dashboard/departures/DeparturesWithFetch';
+import NewsWithFetch from './components/dashboard/news/NewsWithFetch';
 
 function App() {
   return (
@@ -30,6 +31,33 @@ function App() {
         </div>
         <div className="fl w-50">
           <Chromecast />
+        </div>
+      </div>
+      <div className="cf ">
+        <div className="fl w-third">
+          <div className="pr2">
+            <NewsWithFetch
+              label="Nyheter Sverige"
+              filter={{ type: 'country', value: 'se' }}
+            />
+          </div>
+        </div>
+        <div className="fl w-third">
+          <div className="ph1 ">
+            <NewsWithFetch
+              label="Nyheter USA"
+              filter={{ type: 'country', value: 'us' }}
+            />
+          </div>
+        </div>
+        <div className="fl w-third">
+          <div className="pl2">
+
+            <NewsWithFetch
+              label="Nyheter Tech"
+              filter={{ type: 'sources', value: 'ign' }}
+            />
+          </div>
         </div>
       </div>
       {

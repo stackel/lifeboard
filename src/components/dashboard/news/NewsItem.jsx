@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 export default function NewsItem({
+  showImage,
   newsItem:
   {
     title, url, urlToImage, publishedAt,
@@ -11,9 +12,16 @@ export default function NewsItem({
   return (
     <a className="link dim" href={url}>
       <div>
-        <img src={urlToImage} alt="news item" />
-        <span className="db sans-serif f4 mt3 black">{title}</span>
-        <span className="db dark-gray mt3 f5 sans-serif">{moment(publishedAt).fromNow()}</span>
+        {
+          showImage
+          && <img className="h4 w-100 of-c" src={urlToImage} alt="news item" />
+        }
+        <span className="db sans-serif f4 mt3 black">
+          {title}
+        </span>
+        <span className="db dark-gray mt3 f5 sans-serif">
+          {moment(publishedAt).fromNow()}
+        </span>
       </div>
     </a>
   );
@@ -26,4 +34,9 @@ NewsItem.propTypes = {
     urlToImage: PropTypes.string,
     publishedAt: PropTypes.string,
   }).isRequired,
+  showImage: PropTypes.bool,
+};
+
+NewsItem.defaultProps = {
+  showImage: true,
 };
