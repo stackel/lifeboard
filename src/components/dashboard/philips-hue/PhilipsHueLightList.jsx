@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 import PhilipsHueLight from './PhilipsHueLight';
 
-export default function PhilipsHueLightList({ lights, onLightClicked }) {
+export default function PhilipsHueLightList({
+  lights, onLightClicked,
+  onAllLightsClicked,
+}) {
+  const allLightsOn = lights.filter(light => light.state.on).length === lights.length;
+  const allLightsButtonClasses = allLightsOn ? 'bg-yellow b--yellow'
+    : 'bg-light-gray b--light-gray';
   return (
     <div>
       <div className="cf">
@@ -26,7 +32,8 @@ export default function PhilipsHueLightList({ lights, onLightClicked }) {
         <div className="w-20 fl tc pt3">
           <button
             type="button"
-            className="bg-light-gray b--light-gray h3 w3 v-mid br-100 pointer link grow dim"
+            onClick={() => onAllLightsClicked(allLightsOn)}
+            className={`${allLightsButtonClasses} h3 w3 v-mid br-100 pointer link grow dim`}
           />
           <div>
             <span className="sans-serif f4 truncate">
@@ -43,6 +50,7 @@ export default function PhilipsHueLightList({ lights, onLightClicked }) {
 PhilipsHueLightList.propTypes = {
   lights: PropTypes.arrayOf(PhilipsHueLight.propTypes.light),
   onLightClicked: PropTypes.func.isRequired,
+  onAllLightsClicked: PropTypes.func.isRequired,
 };
 
 PhilipsHueLightList.defaultProps = {

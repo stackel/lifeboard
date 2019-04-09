@@ -33,7 +33,11 @@ export default class Chromecast extends Component {
 
   fetchDevices = () => {
     axios.get(`${API_URL}/device`).then((response) => {
-      this.setState({ devices: response.data, error: null });
+      this.setState({
+        devices:
+        response.data.filter(device => device.name === 'All Speakers'),
+        error: null,
+      });
     }, (error) => {
       this.setState(error);
     });

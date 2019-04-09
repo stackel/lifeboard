@@ -52,10 +52,9 @@ function App() {
         </div>
         <div className="fl w-third">
           <div className="pl2">
-
             <NewsWithFetch
               label="Nyheter Tech"
-              filter={{ type: 'sources', value: 'ign' }}
+              filter={{ type: 'sources', value: 'the-verge' }}
             />
           </div>
         </div>

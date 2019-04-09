@@ -86,5 +86,5 @@ NewsWithFetch.defaultProps = {
     type: 'country',
     value: 'se',
   },
-  limit: 5,
+  limit: 3,
 };

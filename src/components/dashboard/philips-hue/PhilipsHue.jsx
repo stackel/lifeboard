@@ -51,6 +51,15 @@ export default class PhilipsHue extends Component {
     });
   }
 
+  onAllLightsClicked = (prevState) => {
+    const { lights } = this.state;
+    lights.forEach((light) => {
+      axios.put(`${API_URL}lights/${light.id}/state`,
+        { on: !prevState }).then(() => {
+      });
+    });
+  }
+
   render() {
     const { lights } = this.state;
     if (!lights || !lights.length) {
@@ -61,6 +70,7 @@ export default class PhilipsHue extends Component {
         <PhilipsHueLightList
           lights={lights}
           onLightClicked={this.onLightClicked}
+          onAllLightsClicked={this.onAllLightsClicked}
         />
       </div>
     );

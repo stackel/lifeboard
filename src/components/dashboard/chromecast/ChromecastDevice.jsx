@@ -24,7 +24,7 @@ export default function ChromecastDevice({
         />
         )
       }
-      <div className="dib v-mid pl4">
+      <div className="dib v-mid pl3">
         <span className="sans-serif f4 b mb1 mt2 db">
           {device.status.title}
         </span>
