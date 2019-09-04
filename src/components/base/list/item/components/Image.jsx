@@ -12,7 +12,7 @@ export default function Image({
   }
   return (
     <img
-      className="h5 contain of-c"
+      className="h5 contain of-c w-100"
       src={url}
       alt={alt}
     />

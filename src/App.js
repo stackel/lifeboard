@@ -35,10 +35,10 @@ function App() {
             />
           </div>
         </div>
-        <div className="fl w-third">
+        <div className="fl w-third pr2 pl2">
           <UpcomingMusic />
         </div>
-        <div className="fl w-third">
+        <div className="fl w-third pl2">
           <Recipes />
         </div>
 
@@ -46,6 +46,12 @@ function App() {
       <div className="cf">
         <div className="fl w-third">
           <DeparturesWithFetch />
+        </div>
+        <div className="fl w-third">
+          <Gmail />
+        </div>
+        <div className="fl w-third">
+          <Gmail />
         </div>
       </div>
     </div>
