@@ -25,72 +25,29 @@ function App() {
           <PhilipsHue />
         </div>
       </div>
-      <div className="cf mt4">
-        <div className="fl w-50">
-          <DeparturesWithFetch />
-        </div>
-        <div className="fl w-50">
-          <Chromecast />
-        </div>
-      </div>
+
       <div className="cf ">
         <div className="fl w-third">
           <div className="pr2">
             <NewsWithFetch
-              label="Nyheter Sverige"
-              filter={{ type: 'country', value: 'se' }}
+              label="News"
+              filter={{ type: 'sources', value: 'google-news' }}
             />
           </div>
         </div>
         <div className="fl w-third">
-          <div className="ph1 ">
-            <NewsWithFetch
-              label="Nyheter USA"
-              filter={{ type: 'country', value: 'us' }}
-            />
-          </div>
+          <UpcomingMusic />
         </div>
         <div className="fl w-third">
-          <div className="pl2">
-            <NewsWithFetch
-              label="Nyheter Tech"
-              filter={{ type: 'sources', value: 'the-verge' }}
-            />
-          </div>
+          <Recipes />
+        </div>
+
+      </div>
+      <div className="cf">
+        <div className="fl w-third">
+          <DeparturesWithFetch />
         </div>
       </div>
-      {
-      false
-     && (
-     <div>
-       <div className="mt4" />
-       <div className="mt4">
-         <PhilipsHue />
-       </div>
-       <div className="mt4">
-         <Chromecast />
-       </div>
-       <div className="mt4">
-         <GBCurrentLive />
-       </div>
-       <div className="mt4">
-         <Gmail />
-       </div>
-       <div className="mt4">
-         <Recipes />
-       </div>
-       <div className="mt4">
-         <GameReleases />
-       </div>
-       <div className="mt4">
-         <GBLatestVideos />
-       </div>
-       <div className="mt4">
-         <UpcomingMusic />
-       </div>
-     </div>
-     )
-    }
     </div>
   );
 }

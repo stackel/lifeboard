@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Get } from 'react-axios';
-import Carousel from 'nuka-carousel';
 import jsonpAdapter from 'axios-jsonp';
 import axios from 'axios';
 
+import List from '../../base/list/List';
+
 import { API_KEY, API_URL } from '../../../resources/config/giant-bomb';
-import GameRelease from './GameRelease';
 
 export default function GameReleases({ forceLoading }) {
   const axiosInstance = axios.create({
@@ -31,7 +31,12 @@ export default function GameReleases({ forceLoading }) {
         }
 
         if (isLoading || forceLoading) {
-          return (<div className="w-100 bg-near-white h4" />);
+          return (
+            <List
+              loading
+              label="Game releases"
+            />
+          );
         }
 
         if (response !== null) {
@@ -42,26 +47,17 @@ export default function GameReleases({ forceLoading }) {
 
           return (
             <div>
-              <h2 className="sans-serif f4 mb2"> Game releases in april</h2>
-              <Carousel
-                dragging
-                slidesToShow={5}
-                swiping
-                heightMode="max"
-                renderBottomCenterControls={() => null}
-                renderCenterLeftControls={() => (
-                  null
-                )}
-                renderCenterRightControls={() => (
-                  null
-                )}
-              >
-                {
-                games.map(game => (
-                  <GameRelease key={game.id} game={game} />
-                ))
+              {
+                <List
+                  label="Game releases"
+                  items={games.map(game => ({
+                    title: game.name,
+                    subtitle: game.description,
+                    imageUrl: game.image.medium_url,
+                    url: game.api_detail_url,
+                  }))}
+                />
               }
-              </Carousel>
             </div>
           );
         }

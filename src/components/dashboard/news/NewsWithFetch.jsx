@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import { FETCH_INTERVAL, API_URL, API_KEY } from '../../../resources/config/news';
-import NewsItems from './NewsItems';
+import List from '../../base/list/List';
 
 export default class NewsWithFetch extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class NewsWithFetch extends Component {
   }
 
   fetchNews = () => {
-    const { filter, limit } = this.props;
+    const { filter } = this.props;
     axios.get(API_URL, {
       params: {
         [filter.type]: filter.value,
@@ -39,7 +39,7 @@ export default class NewsWithFetch extends Component {
       },
     }).then((response) => {
       this.setState({
-        newsItems: response.data.articles.slice(0, limit),
+        newsItems: response.data.articles,
         loading: false,
       });
     }, () => {
@@ -53,18 +53,28 @@ export default class NewsWithFetch extends Component {
     const { label } = this.props;
 
     if (loading) {
-      return <span> loading</span>;
+      return (
+        <List
+          label={label}
+          loading={loading}
+        />
+      );
     }
     if (!newsItems || !newsItems.length) {
       return null;
     }
     return (
       <div>
-        <h2 className="sans-serif f4 mb3">
-          {label}
-        </h2>
         {
-          <NewsItems newsItems={newsItems} />
+          <List
+            label={label}
+            items={newsItems.map(newsItem => ({
+              imageUrl: newsItem.urlToImage,
+              title: newsItem.title,
+              subtitle: newsItem.content,
+              url: newsItem.url,
+            }))}
+          />
         }
       </div>
     );
@@ -77,7 +87,6 @@ NewsWithFetch.propTypes = {
     value: PropTypes.string,
   }),
   label: PropTypes.string,
-  limit: PropTypes.number,
 };
 
 NewsWithFetch.defaultProps = {
@@ -86,5 +95,4 @@ NewsWithFetch.defaultProps = {
     type: 'country',
     value: 'se',
   },
-  limit: 3,
 };

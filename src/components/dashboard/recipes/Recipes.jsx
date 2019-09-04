@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import RecipeList from './RecipeList';
+import List from '../../base/list/List';
 
 export default class Recipes extends Component {
   constructor(props) {
@@ -10,9 +10,9 @@ export default class Recipes extends Component {
       recipes: [],
       errorMessage: null,
       loading: false,
-      allIngredients: ['pasta, walnuts', 'beet,potatoes', 'noodles,peanut',
-        'halloumi,spinach', 'banana, mango'],
-      ingredients: 'pasta, walnuts',
+      /* allIngredients: ['pasta, walnuts', 'beet,potatoes', 'noodles,peanut',
+        'halloumi,spinach', 'banana, mango'], */
+      ingredients: 'pasta',
     };
   }
 
@@ -47,39 +47,31 @@ export default class Recipes extends Component {
 
   render() {
     const {
-      recipes, errorMessage, loading, allIngredients,
+      recipes, errorMessage, loading,
     } = this.state;
     if (loading) {
-      return (<div className="w-100 bg-near-white h4" />);
+      return (<List loading label="Recipes" />);
     }
 
     if (errorMessage) {
-      return <p>{errorMessage}</p>;
+      return null;
     }
 
     if (!recipes || !recipes.length) {
       return null;
     }
 
-
     return (
       <div className="w-100">
-        <h2 className="sans-serif f4 mb2"> Recipes</h2>
-        <div className="mb4">
-          {
-        allIngredients.map(ingredientPairing => (
-          <button
-            key={ingredientPairing}
-            type="button"
-            onClick={() => this.onIngredientClicked(ingredientPairing)}
-            className="link dim pointer dib shadow-2 br2 ph3 pv2 mr2"
-          >
-            {ingredientPairing}
-          </button>
-        ))
-      }
-        </div>
-        <RecipeList recipes={recipes} />
+        <List
+          label="Recipes"
+          items={recipes.map(recipe => ({
+            title: recipe.label,
+            subtitle: recipe.source,
+            imageUrl: recipe.image,
+            url: recipe.url,
+          }))}
+        />
       </div>
     );
   }
