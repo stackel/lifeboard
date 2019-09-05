@@ -5,7 +5,7 @@ import jsonpAdapter from 'axios-jsonp';
 import axios from 'axios';
 
 import { API_URL, API_KEY } from '../../../resources/config/giant-bomb';
-import GBLatestVideosList from './GBLatestVideosList';
+import List from '../../base/list/List';
 
 export default function GBLatestVideos({ limit }) {
   const axiosInstance = axios.create({
@@ -30,11 +30,25 @@ export default function GBLatestVideos({ limit }) {
           return null;
         }
         if (isLoading) {
-          return (<div className="w-100 bg-near-white h4" />);
+          return (<List loading label="Latest GB Videos" />);
         }
         if (response !== null) {
+          const videos = response.data.results;
           return (
-            <GBLatestVideosList videos={response.data.results} />
+            <List
+              label="Latest GB Videos"
+              items={videos.map(
+                ({
+                  /* eslint-disable camelcase */
+                  name, publish_date, image, site_detail_url,
+                }) => ({
+                  title: name,
+                  subtitle: publish_date,
+                  url: site_detail_url,
+                  imageUrl: image.medium_url,
+                }),
+              )}
+            />
           );
         }
         return null;

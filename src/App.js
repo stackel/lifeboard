@@ -9,7 +9,6 @@ import Recipes from './components/dashboard/recipes/Recipes';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
-import Chromecast from './components/dashboard/chromecast/Chromecast';
 import DeparturesWithFetch from './components/dashboard/departures/DeparturesWithFetch';
 import NewsWithFetch from './components/dashboard/news/NewsWithFetch';
 
@@ -29,30 +28,37 @@ function App() {
       <div className="cf ">
         <div className="fl w-third">
           <div className="pr2">
-            <NewsWithFetch
-              label="News"
-              filter={{ type: 'sources', value: 'google-news' }}
-            />
+            <GameReleases />
           </div>
         </div>
         <div className="fl w-third pr2 pl2">
           <UpcomingMusic />
         </div>
         <div className="fl w-third pl2">
-          <Recipes />
+          <GBLatestVideos />
         </div>
 
       </div>
       <div className="cf">
-        <div className="fl w-third">
+        <div className="fl w-third pr2">
+          <NewsWithFetch
+            label="News"
+            filter={{ type: 'sources', value: 'reuters' }}
+          />
+        </div>
+        <div className="fl w-third pr2 pl2">
+          <GBCurrentLive />
+        </div>
+        <div className="fl w-third pl2">
+          <Gmail />
+        </div>
+      </div>
+      <div className="cf">
+        <div className="fl w-third pr2">
           <DeparturesWithFetch />
         </div>
-        <div className="fl w-third">
-          <Gmail />
-        </div>
-        <div className="fl w-third">
-          <Gmail />
-        </div>
+        <div className="fl w-third pr2 pl2" />
+        <div className="fl w-third pl2" />
       </div>
     </div>
   );

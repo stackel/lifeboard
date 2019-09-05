@@ -5,7 +5,7 @@ import GBCurrentLive from './GBCurrentLive';
 
 storiesOf('Components/Giant Bomb', module)
   .add('GB Current Live', () => (
-    <div className="pa4">
+    <div className="pa4 mw6">
       <GBCurrentLive />
     </div>
   ));

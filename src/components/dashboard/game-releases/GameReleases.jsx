@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Get } from 'react-axios';
 import jsonpAdapter from 'axios-jsonp';
 import axios from 'axios';
+import moment from 'moment';
 
 import List from '../../base/list/List';
 
@@ -21,7 +22,7 @@ export default function GameReleases({ forceLoading }) {
       params={{
         api_key: API_KEY,
         format: 'jsonp',
-        filter: 'expected_release_year:2019,expected_release_month:4',
+        filter: `expected_release_year:${moment().year()},expected_release_month:${moment().month() + 1}`,
         sort: 'expected_release_month:asc',
       }}
     >
@@ -42,7 +43,8 @@ export default function GameReleases({ forceLoading }) {
         if (response !== null) {
           const games = response.data.results
             .filter(game => game.expected_release_month !== null
-              && game.expected_release_day !== null)
+              && game.expected_release_day !== null
+              && game.expected_release_day > moment().day() + 1)
             .sort((a, b) => a.expected_release_day - b.expected_release_day);
 
           return (
@@ -52,9 +54,15 @@ export default function GameReleases({ forceLoading }) {
                   label="Game releases"
                   items={games.map(game => ({
                     title: game.name,
-                    subtitle: game.description,
                     imageUrl: game.image.medium_url,
                     url: game.api_detail_url,
+                    subtitle: moment(
+                      [
+                        game.expected_release_year,
+                        game.expected_release_month - 1,
+                        game.expected_release_day,
+                      ],
+                    ).fromNow(),
                   }))}
                 />
               }

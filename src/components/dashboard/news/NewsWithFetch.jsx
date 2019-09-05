@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import moment from 'moment';
 
 import { FETCH_INTERVAL, API_URL, API_KEY } from '../../../resources/config/news';
 import List from '../../base/list/List';
@@ -71,7 +72,7 @@ export default class NewsWithFetch extends Component {
             items={newsItems.map(newsItem => ({
               imageUrl: newsItem.urlToImage,
               title: newsItem.title,
-              subtitle: newsItem.content,
+              subtitle: moment(newsItem.publishedAt).fromNow(),
               url: newsItem.url,
             }))}
           />

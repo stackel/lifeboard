@@ -7,10 +7,10 @@ export default function Departure({ departure }) {
   }
   return (
     <div>
-      <span className="db sans-serif f5 b">
+      <span className="db sans-serif f4 b">
         {departure.transportNumber}
       </span>
-      <span className="db sans-serif f4">
+      <span className="db sans-serif f3">
         {departure.time.slice(0, 5)}
       </span>
     </div>

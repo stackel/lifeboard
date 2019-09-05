@@ -5,7 +5,7 @@ import GBLatestVideos from './GBLatestVideos';
 
 storiesOf('Components/Giant Bomb', module)
   .add('GB Latest Videos', () => (
-    <div className="pa4">
+    <div className="pa4 mw6">
       <GBLatestVideos />
     </div>
   ));
