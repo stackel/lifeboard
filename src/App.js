@@ -5,7 +5,6 @@ import Gmail from './components/dashboard/gmail/Gmail';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
 import Recipes from './components/dashboard/recipes/Recipes';
-
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
