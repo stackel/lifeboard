@@ -1,10 +1,10 @@
 import React from 'react';
 import GBLatestVideos from './components/dashboard/giant-bomb/GBLatestVideos';
 import GBCurrentLive from './components/dashboard/giant-bomb/GBCurrentLive';
-import Gmail from './components/dashboard/gmail/Gmail';
+// import Gmail from './components/dashboard/gmail/Gmail';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
-import Recipes from './components/dashboard/recipes/Recipes';
+// import Recipes from './components/dashboard/recipes/Recipes';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
@@ -49,13 +49,11 @@ function App() {
           <GBCurrentLive />
         </div>
         <div className="fl w-third pl2">
-          <Gmail />
+          <DeparturesWithFetch />
         </div>
       </div>
       <div className="cf">
-        <div className="fl w-third pr2">
-          <DeparturesWithFetch />
-        </div>
+        <div className="fl w-third pr2" />
         <div className="fl w-third pr2 pl2" />
         <div className="fl w-third pl2" />
       </div>

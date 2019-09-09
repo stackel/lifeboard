@@ -4,6 +4,8 @@ import moment from 'moment';
 
 import List from '../../base/list/List';
 
+const GENRE_ID_LIST = ['18'];
+
 export default function UpcomingMusic() {
   return (
     <Get
@@ -18,9 +20,10 @@ export default function UpcomingMusic() {
         }
         if (response !== null) {
           const albums = response.data.feed.results.filter(
-            result => result.genres[0].genreId === '18',
-          ).sort((a, b) => moment(a.releaseDate) - moment(b.releaseDate))
-            .filter(album => moment(album.releaseDate) >= moment());
+            album => album.genres.filter(
+              genre => GENRE_ID_LIST.includes(genre.genreId),
+            ).length,
+          );
 
           return (
             <>
@@ -29,8 +32,8 @@ export default function UpcomingMusic() {
                 items={
               albums.map(
                 album => ({
-                  title: `${album.artistName} ${album.name}`,
-                  subtitle: album.releaseDate,
+                  title: `${album.artistName} - ${album.name}`,
+                  subtitle: moment(album.releaseDate).fromNow(),
                   imageUrl: album.artworkUrl100,
                 }
                 ),

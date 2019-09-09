@@ -1,0 +1,13 @@
+GB Latest Videos
+  - Filter duplicates
+  - polling
+
+Philips hue
+  - Color presets
+
+Cocktail Hour
+  - Hook up Firebase
+  - Google auth
+  - Get try Soon (randomize and display thursday ev - sunday mor)
+
+Systembolaget

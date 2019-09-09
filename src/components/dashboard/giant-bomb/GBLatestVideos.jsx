@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Get } from 'react-axios';
 import jsonpAdapter from 'axios-jsonp';
 import axios from 'axios';
+import moment from 'moment';
 
 import { API_URL, API_KEY } from '../../../resources/config/giant-bomb';
 import List from '../../base/list/List';
@@ -43,7 +44,7 @@ export default function GBLatestVideos({ limit }) {
                   name, publish_date, image, site_detail_url,
                 }) => ({
                   title: name,
-                  subtitle: publish_date,
+                  subtitle: moment(publish_date).fromNow(),
                   url: site_detail_url,
                   imageUrl: image.medium_url,
                 }),

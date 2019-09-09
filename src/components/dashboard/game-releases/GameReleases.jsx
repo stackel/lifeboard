@@ -44,8 +44,19 @@ export default function GameReleases({ forceLoading }) {
           const games = response.data.results
             .filter(game => game.expected_release_month !== null
               && game.expected_release_day !== null
-              && game.expected_release_day > moment().day() + 1)
-            .sort((a, b) => a.expected_release_day - b.expected_release_day);
+              && game.expected_release_day !== null)
+            .map(game => ({
+              ...game,
+              date: moment(
+                [
+                  game.expected_release_year,
+                  game.expected_release_month - 1,
+                  game.expected_release_day,
+                ],
+              ),
+            }))
+            .filter(game => game.date > moment())
+            .sort((a, b) => a.date - b.date);
 
           return (
             <div>
@@ -55,14 +66,8 @@ export default function GameReleases({ forceLoading }) {
                   items={games.map(game => ({
                     title: game.name,
                     imageUrl: game.image.medium_url,
-                    url: game.api_detail_url,
-                    subtitle: moment(
-                      [
-                        game.expected_release_year,
-                        game.expected_release_month - 1,
-                        game.expected_release_day,
-                      ],
-                    ).fromNow(),
+                    url: game.site_detail_url,
+                    subtitle: game.date.fromNow(),
                   }))}
                 />
               }

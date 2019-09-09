@@ -1,25 +1,16 @@
 import React from 'react';
 import { Get } from 'react-axios';
-import jsonpAdapter from 'axios-jsonp';
-import axios from 'axios';
-
+import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
 import { API_URL, API_KEY } from '../../../resources/config/giant-bomb';
 import List from '../../base/list/List';
 
 export default function CurrentLive() {
-  const axiosInstance = axios.create({
-    adapter: jsonpAdapter,
-    callbackParamName: 'callback',
-  });
-
   return (
     <Get
-      instance={axiosInstance}
-      url={`${API_URL}video/current-live`}
-      adapter={jsonpAdapter}
+      url={`${CORS_ANYWHERE_URL}${API_URL}chats`}
       params={{
-        format: 'jsonp',
         api_key: API_KEY,
+        format: 'json',
       }}
     >
       {(error, response, isLoading) => {
@@ -27,21 +18,34 @@ export default function CurrentLive() {
           return null;
         }
         if (isLoading) {
-          return (<List loading limitTo={1} />);
+          return (<List label="Giant bomb live" loading limitTo={1} />);
         }
         if (response !== null) {
-          const { video } = response.data;
-          if (!video) {
+          const videos = response.data.results;
+
+          if (!videos) {
             return null;
           }
+
           return (
             <div>
-              <List items={[{
-                title: 'Giant Bomb is Live!',
-                subtitle: video.title,
-                imageUrl: `https://${video.image}`,
-                url: 'https://www.giantbomb.com/chat',
-              }]}
+              <List
+                label="Giant Bomb live"
+                items={videos.map(video => (
+                  video.channel_name === 'giantbomb8' && video.history
+                    ? {
+                      title: video.title,
+                      subtitle: video.history[0].name,
+                      imageUrl: video.history[0].image.medium_url,
+                      url: 'https://www.giantbomb.com/infinite/',
+                    }
+                    : {
+                      title: video.title,
+                      subtitle: video.deck,
+                      imageUrl: video.image.medium_url,
+                      url: video.site_detail_url,
+                    }
+                )).reverse()}
               />
             </div>
           );
