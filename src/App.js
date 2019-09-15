@@ -4,7 +4,7 @@ import GBCurrentLive from './components/dashboard/giant-bomb/GBCurrentLive';
 // import Gmail from './components/dashboard/gmail/Gmail';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
-// import Recipes from './components/dashboard/recipes/Recipes';
+import Recipes from './components/dashboard/recipes/Recipes';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
@@ -53,7 +53,9 @@ function App() {
         </div>
       </div>
       <div className="cf">
-        <div className="fl w-third pr2" />
+        <div className="fl w-third pr2">
+          <Recipes />
+        </div>
         <div className="fl w-third pr2 pl2" />
         <div className="fl w-third pl2" />
       </div>
