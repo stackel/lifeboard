@@ -11,3 +11,16 @@ Cocktail Hour
   - Get try Soon (randomize and display thursday ev - sunday mor)
 
 Systembolaget
+  CORS
+
+
+SUNSET
+https://api.sunrise-sunset.org/json?lat=59.305391&lng=18.145694
+
+
+Beer recipes:
+https://api.punkapi.com/v2/beers
+
+
+Stocks:
+https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=STO:IMMU&interval=5min&outputsize=full&apikey=GIUYQBXKZDY2VNT7
