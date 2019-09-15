@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
+
 
 import List from '../../base/list/List';
 
@@ -12,7 +14,7 @@ export default class Recipes extends Component {
       loading: false,
       /* allIngredients: ['pasta, walnuts', 'beet,potatoes', 'noodles,peanut',
         'halloumi,spinach', 'banana, mango'], */
-      ingredients: 'pasta',
+      ingredients: 'chicken',
     };
   }
 
@@ -23,10 +25,10 @@ export default class Recipes extends Component {
   fetchRecipes = () => {
     const { ingredients } = this.state;
     this.setState({ loading: true });
-    axios.get(`https://api.edamam.com/search?q=${ingredients}&app_id=c4df6f2d&app_key=b334a4010e95d8da2b2e8f9c0146ccc6&excluded=garlic,onion`)
+    axios.get(`${CORS_ANYWHERE_URL}http://www.recipepuppy.com/api/?i=${ingredients}&p=${Math.floor(Math.random() * 100)}`)
       .then((response) => {
         this.setState({
-          recipes: response.data.hits.map(recipe => recipe.recipe),
+          recipes: response.data.results,
           loading: false,
         });
       }, (error) => {
@@ -50,7 +52,7 @@ export default class Recipes extends Component {
       recipes, errorMessage, loading,
     } = this.state;
     if (loading) {
-      return (<List loading label="Recipes" />);
+      return (<List loading label="Recipes" limitTo={5} />);
     }
 
     if (errorMessage) {
@@ -66,11 +68,11 @@ export default class Recipes extends Component {
         <List
           label="Recipes"
           items={recipes.map(recipe => ({
-            title: recipe.label,
-            subtitle: recipe.source,
-            imageUrl: recipe.image,
-            url: recipe.url,
+            title: recipe.title,
+            subtitle: recipe.ingredients,
+            url: recipe.href,
           }))}
+          limitTo={5}
         />
       </div>
     );
