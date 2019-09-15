@@ -55,7 +55,8 @@ export default function GameReleases({ forceLoading }) {
                 ],
               ),
             }))
-            .filter(game => game.date > moment())
+            .filter(game => game.date > moment()
+            && game.date < moment().add(7, 'days'))
             .sort((a, b) => a.date - b.date);
 
           return (
