@@ -5,9 +5,9 @@ import {
   API_URL, API_KEY, MAX_JOURNEYS,
   FETCH_INTERVAL, STOPS,
 } from '../../../resources/config/departures';
-import Departures from './Departures';
+import List from '../../base/list/List';
 
-const defaultStop = STOPS[0];
+const stop = STOPS[0];
 
 export default class DeparturesWithFetch extends Component {
   constructor(props) {
@@ -35,7 +35,6 @@ export default class DeparturesWithFetch extends Component {
   }
 
   fetchDepartures = () => {
-    const { stop } = this.props;
     axios.get(API_URL, {
       params: {
         key: API_KEY,
@@ -55,10 +54,9 @@ export default class DeparturesWithFetch extends Component {
 
   render() {
     const { loading, departures } = this.state;
-    const { stop } = this.props;
 
     if (loading) {
-      return <span> loading</span>;
+      return <List label={`Avgångar ${stop.label}`} loading limitTo={1} />;
     }
     if (!departures || !departures.length) {
       return null;
@@ -66,17 +64,16 @@ export default class DeparturesWithFetch extends Component {
     return (
       <div>
         {
-          <Departures departures={departures} stop={stop} />
-        }
+          <List
+            label={`Avgångar ${stop.label}`}
+            items={departures.map(departure => ({
+              imageUrl: 'https://static1.squarespace.com/static/57178197a3360c8b8cb793d1/5720ba631bbee05e96bfa202/5720bc85e707eb45bda840fc/1564400299873/sl-logo.png?format=1500w',
+              title: departure.time.slice(0, 5),
+              subtitle: departure.transportNumber,
+            }))}
+          />
+       }
       </div>
     );
   }
 }
-
-DeparturesWithFetch.propTypes = {
-  stop: Departures.propTypes.stop,
-};
-
-DeparturesWithFetch.defaultProps = {
-  stop: defaultStop,
-};
