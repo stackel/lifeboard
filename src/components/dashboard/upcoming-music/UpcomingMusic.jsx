@@ -35,6 +35,7 @@ export default function UpcomingMusic() {
                   title: `${album.artistName} - ${album.name}`,
                   subtitle: moment(album.releaseDate).fromNow(),
                   imageUrl: album.artworkUrl100,
+                  url: `https://www.google.com/search?q=${album.artistName} ${album.name}`,
                 }
                 ),
               )}
