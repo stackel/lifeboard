@@ -49,13 +49,11 @@ function App() {
           <GBCurrentLive />
         </div>
         <div className="fl w-third pl2">
-          <DeparturesWithFetch />
+          <Recipes />
         </div>
       </div>
       <div className="cf">
-        <div className="fl w-third pr2">
-          <Recipes />
-        </div>
+        <div className="fl w-third pr2" />
         <div className="fl w-third pr2 pl2" />
         <div className="fl w-third pl2" />
       </div>

@@ -7,7 +7,7 @@ import Item from './item/Item';
 import Dialog from './dialog/Dialog';
 
 export default function List({
-  items, loading, limitTo, label,
+  items, loading, limitTo, label, noImages,
 }) {
   const [dialogOpen, setDialogOpen] = useState(false);
   function dialogOpenClicked() {
@@ -28,7 +28,7 @@ export default function List({
             <div className="mb4" key={i}>
               <Item
                 loading={loading}
-                showImage={i < 1}
+                showImage={i < 1 && !noImages}
               />
             </div>
           ))}
@@ -49,7 +49,7 @@ export default function List({
               <Item
                 key={item.title}
                 item={item}
-                showImage={i < 1}
+                showImage={i < 1 && !noImages}
               />
             </div>
           ))
@@ -81,6 +81,7 @@ List.propTypes = {
   loading: PropTypes.bool,
   limitTo: PropTypes.number,
   label: PropTypes.string,
+  noImages: PropTypes.bool,
 };
 
 List.defaultProps = {
@@ -88,4 +89,5 @@ List.defaultProps = {
   items: [],
   limitTo: 3,
   label: '',
+  noImages: false,
 };
