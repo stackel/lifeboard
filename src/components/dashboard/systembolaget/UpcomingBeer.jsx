@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Get } from 'react-axios';
 import axios from 'axios';
 import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
 
-export default function UpcomingBeer(props) {
+export default function UpcomingBeer() {
   const axiosInstance = axios.create({
     headers: { 'Ocp-Apim-Subscription-Key': 'ed6bfcdbf6074559bd67365384159e63' },
   });
@@ -38,6 +37,3 @@ export default function UpcomingBeer(props) {
     </Get>
   );
 }
-
-UpcomingBeer.propTypes = {
-};

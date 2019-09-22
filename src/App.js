@@ -4,12 +4,13 @@ import GBCurrentLive from './components/dashboard/giant-bomb/GBCurrentLive';
 // import Gmail from './components/dashboard/gmail/Gmail';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
-import Recipes from './components/dashboard/recipes/Recipes';
+// import Recipes from './components/dashboard/recipes/Recipes';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
-import DeparturesWithFetch from './components/dashboard/departures/DeparturesWithFetch';
+// import DeparturesWithFetch from './components/dashboard/departures/DeparturesWithFetch';
 import NewsWithFetch from './components/dashboard/news/NewsWithFetch';
+import GBUpcoming from './components/dashboard/giant-bomb/GBUpcoming';
 
 function App() {
   return (
@@ -25,31 +26,29 @@ function App() {
       </div>
 
       <div className="cf ">
-        <div className="fl w-third">
-          <div className="pr2">
-            <GameReleases />
-          </div>
+        <div className="fl w-third pr2">
+          <GBCurrentLive />
         </div>
         <div className="fl w-third pr2 pl2">
-          <UpcomingMusic />
+          <GameReleases />
         </div>
         <div className="fl w-third pl2">
-          <GBLatestVideos />
+          <GBUpcoming />
         </div>
-
       </div>
+
       <div className="cf">
         <div className="fl w-third pr2">
+          <UpcomingMusic />
+        </div>
+        <div className="fl w-third pr2 pl2">
+          <GBLatestVideos />
+        </div>
+        <div className="fl w-third pl2">
           <NewsWithFetch
             label="News"
             filter={{ type: 'sources', value: 'reuters' }}
           />
-        </div>
-        <div className="fl w-third pr2 pl2">
-          <GBCurrentLive />
-        </div>
-        <div className="fl w-third pl2">
-          <Recipes />
         </div>
       </div>
       <div className="cf">
