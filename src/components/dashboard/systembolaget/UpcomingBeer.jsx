@@ -1,7 +1,9 @@
 import React from 'react';
 import { Get } from 'react-axios';
 import axios from 'axios';
-import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
+import moment from 'moment';
+import List from '../../base/list/List';
+// import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
 
 export default function UpcomingBeer() {
   const axiosInstance = axios.create({
@@ -10,11 +12,11 @@ export default function UpcomingBeer() {
   return (
     <Get
       instance={axiosInstance}
-      url={`${CORS_ANYWHERE_URL}https://api-extern.systembolaget.se/product/v1/product/search`}
+      url="https://api-extern.systembolaget.se/product/v1/product/search"
       params={{
         SubCategory: 'Öl',
-        SellStartDateFrom: '2019-09-04',
-        SellStartDateTo: '2019-12-01',
+        SellStartDateFrom: '2019-09-22',
+        SellStartDateTo: '2019-10-22',
       }}
     >
       {(error, response, isLoading) => {
@@ -29,7 +31,27 @@ export default function UpcomingBeer() {
           );
         }
         if (response) {
-          return <pre>{JSON.stringify(response, null, 4)}</pre>;
+          const beers = response.data.Hits;
+          if (!beers) {
+            return null;
+          }
+
+          return (
+            <div>
+              <List
+                label="Giant Bomb upcoming"
+                items={beers.map(beer => (
+                  {
+                    title: `${beer.ProductNameBold} - ${beer.ProductNameThin}`,
+                    subtitle: moment().fromNow(),
+                    imageUrl: '',
+                    url: '',
+                  }
+                ))}
+              />
+              <pre>{JSON.stringify(beers, null, 4)}</pre>
+            </div>
+          );
         }
         return null;
       }}

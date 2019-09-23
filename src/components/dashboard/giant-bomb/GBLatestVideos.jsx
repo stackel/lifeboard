@@ -1,43 +1,36 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Get } from 'react-axios';
-import jsonpAdapter from 'axios-jsonp';
-import axios from 'axios';
 import moment from 'moment';
 
 import { API_URL, API_KEY } from '../../../resources/config/giant-bomb';
+import FetchWithInterval from '../../base/list/FetchWithInterval';
 import List from '../../base/list/List';
 
-export default function GBLatestVideos({ limit }) {
-  const axiosInstance = axios.create({
-    adapter: jsonpAdapter,
-    callbackParamName: 'json_callback',
-  });
+const LABEL = 'Lates Giant Bomb Videos';
 
+export default function GBLatestVideos() {
   return (
-    <Get
-      instance={axiosInstance}
+    <FetchWithInterval
       url={`${API_URL}videos`}
-      adapter={jsonpAdapter}
+      corsAnywhere
       params={{
-        limit,
         field_list: 'name,id,image,publish_date,site_detail_url',
         api_key: API_KEY,
-        format: 'jsonp',
+        format: 'json',
       }}
+      fetchInterval={1000 * 60 * 10}
     >
-      {(error, response, isLoading) => {
+      {(response, loading, error) => {
         if (error) {
           return null;
         }
-        if (isLoading) {
-          return (<List loading label="Latest GB Videos" />);
+        if (loading) {
+          return (<List loading label={LABEL} />);
         }
         if (response !== null) {
           const videos = response.data.results;
           return (
             <List
-              label="Latest GB Videos"
+              label={LABEL}
               items={videos.map(
                 ({
                   /* eslint-disable camelcase */
@@ -54,14 +47,6 @@ export default function GBLatestVideos({ limit }) {
         }
         return null;
       }}
-    </Get>
+    </FetchWithInterval>
   );
 }
-
-GBLatestVideos.propTypes = {
-  limit: PropTypes.number,
-};
-
-GBLatestVideos.defaultProps = {
-  limit: 10,
-};

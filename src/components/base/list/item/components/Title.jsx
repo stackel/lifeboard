@@ -29,12 +29,13 @@ export default function Title({ title, loading, link }) {
 }
 
 Title.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   loading: PropTypes.bool,
   link: PropTypes.string,
 };
 
 Title.defaultProps = {
+  title: '',
   loading: false,
   link: null,
 };

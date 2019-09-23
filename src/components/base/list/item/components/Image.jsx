@@ -20,13 +20,14 @@ export default function Image({
 }
 
 Image.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   alt: PropTypes.string.isRequired,
   loading: PropTypes.bool,
   show: PropTypes.bool,
 };
 
 Image.defaultProps = {
+  url: null,
   loading: false,
   show: true,
 };

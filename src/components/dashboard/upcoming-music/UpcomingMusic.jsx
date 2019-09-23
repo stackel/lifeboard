@@ -1,22 +1,25 @@
 import React from 'react';
-import { Get } from 'react-axios';
 import moment from 'moment';
 
+import FetchWithInterval from '../../base/list/FetchWithInterval';
 import List from '../../base/list/List';
 
 const GENRE_ID_LIST = ['18'];
+const LABEL = 'Album Releases';
 
 export default function UpcomingMusic() {
   return (
-    <Get
-      url="https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json"
+    <FetchWithInterval
+      url="https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json"
+      corsAnywhere
+      fetchInterval={1000 * 60 * 30}
     >
-      {(error, response, isLoading) => {
+      {(response, loading, error) => {
         if (error) {
           return null;
         }
-        if (isLoading) {
-          return (<List label="Album releases" loading />);
+        if (loading) {
+          return (<List label={LABEL} loading />);
         }
         if (response !== null) {
           const albums = response.data.feed.results.filter(
@@ -28,7 +31,7 @@ export default function UpcomingMusic() {
           return (
             <>
               <List
-                label="Album releases"
+                label={LABEL}
                 items={
               albums.map(
                 album => ({
@@ -46,6 +49,6 @@ export default function UpcomingMusic() {
         return null;
       }
     }
-    </Get>
+    </FetchWithInterval>
   );
 }

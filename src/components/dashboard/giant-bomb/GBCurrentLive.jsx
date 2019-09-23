@@ -1,24 +1,27 @@
 import React from 'react';
-import { Get } from 'react-axios';
-import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
+
 import { API_URL, API_KEY } from '../../../resources/config/giant-bomb';
+import FetchWithInterval from '../../base/list/FetchWithInterval';
 import List from '../../base/list/List';
+
+const LABEL = ' Giant Bomb Live';
 
 export default function CurrentLive() {
   return (
-    <Get
-      url={`${CORS_ANYWHERE_URL}${API_URL}chats`}
+    <FetchWithInterval
+      url={`${API_URL}chats`}
+      corsAnywhere
       params={{
         api_key: API_KEY,
         format: 'json',
       }}
     >
-      {(error, response, isLoading) => {
+      {(response, loading, error) => {
         if (error) {
           return null;
         }
-        if (isLoading) {
-          return (<List label="Giant bomb live" loading limitTo={1} />);
+        if (loading) {
+          return (<List label={LABEL} loading limitTo={1} />);
         }
         if (response !== null) {
           const videos = response.data.results;
@@ -30,7 +33,7 @@ export default function CurrentLive() {
           return (
             <div>
               <List
-                label="Giant Bomb live"
+                label={LABEL}
                 items={videos.map(video => (
                   video.channel_name === 'giantbomb8' && video.history
                     ? {
@@ -52,6 +55,6 @@ export default function CurrentLive() {
         }
         return null;
       }}
-    </Get>
+    </FetchWithInterval>
   );
 }

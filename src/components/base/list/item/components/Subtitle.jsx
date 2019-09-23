@@ -14,10 +14,11 @@ export default function Subtitle({ subtitle, loading }) {
 }
 
 Subtitle.propTypes = {
-  subtitle: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   loading: PropTypes.bool,
 };
 
 Subtitle.defaultProps = {
   loading: false,
+  subtitle: '',
 };

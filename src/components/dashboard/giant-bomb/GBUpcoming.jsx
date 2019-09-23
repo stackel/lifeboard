@@ -1,20 +1,21 @@
 import React from 'react';
-import { Get } from 'react-axios';
 import moment from 'moment';
-import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
+
+import FetchWithInterval from '../../base/list/FetchWithInterval';
 import List from '../../base/list/List';
+
+const LABEL = 'Giant Bomb Upcoming';
 
 export default function GBUpcoming() {
   return (
-    <Get
-      url={`${CORS_ANYWHERE_URL}https://www.giantbomb.com/upcoming_json`}
+    <FetchWithInterval
+      url="https://www.giantbomb.com/upcoming_json"
+      corsAnywhere
+      fetchInterval={1000 * 60 * 5}
     >
-      {(error, response, isLoading) => {
-        if (error) {
-          return null;
-        }
-        if (isLoading) {
-          return (<List label="Giant bomb upcoming" loading limitTo={1} />);
+      {(error, response, loading) => {
+        if (loading || error) {
+          return (<List label={LABEL} loading limitTo={1} />);
         }
         if (response !== null) {
           const upcomingVideos = response.data.upcoming;
@@ -41,6 +42,6 @@ export default function GBUpcoming() {
         }
         return null;
       }}
-    </Get>
+    </FetchWithInterval>
   );
 }
