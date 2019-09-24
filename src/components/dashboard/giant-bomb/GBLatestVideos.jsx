@@ -11,7 +11,6 @@ export default function GBLatestVideos() {
   return (
     <FetchWithInterval
       url={`${API_URL}videos`}
-      corsAnywhere
       params={{
         field_list: 'name,id,image,publish_date,site_detail_url',
         api_key: API_KEY,

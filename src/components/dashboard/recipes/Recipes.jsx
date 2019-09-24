@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
-
 
 import List from '../../base/list/List';
 
@@ -25,7 +23,7 @@ export default class Recipes extends Component {
   fetchRecipes = () => {
     const { ingredients } = this.state;
     this.setState({ loading: true });
-    axios.get(`${CORS_ANYWHERE_URL}http://www.recipepuppy.com/api/?i=${ingredients}&p=${Math.floor(Math.random() * 100)}`)
+    axios.get(`http://www.recipepuppy.com/api/?i=${ingredients}&p=${Math.floor(Math.random() * 100)}`)
       .then((response) => {
         this.setState({
           recipes: response.data.results,

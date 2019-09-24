@@ -5,6 +5,7 @@ import moment from 'moment';
 import List from '../../base/list/List';
 // import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
 
+const LABEL = 'Nya Öler';
 export default function UpcomingBeer() {
   const axiosInstance = axios.create({
     headers: { 'Ocp-Apim-Subscription-Key': 'ed6bfcdbf6074559bd67365384159e63' },
@@ -14,21 +15,24 @@ export default function UpcomingBeer() {
       instance={axiosInstance}
       url="https://api-extern.systembolaget.se/product/v1/product/search"
       params={{
+        SortBy: 'SellStartDate',
         SubCategory: 'Öl',
-        SellStartDateFrom: '2019-09-22',
-        SellStartDateTo: '2019-10-22',
+        SellStartDateFrom: moment().add(1, 'day').format('YYYY-MM-DD'),
+        SellStartDateTo: moment().add(30, 'day').format('YYYY-MM-DD'),
       }}
     >
       {(error, response, isLoading) => {
         if (isLoading) {
-          return <div> is loading </div>;
+          return (
+            <List
+              label={LABEL}
+              limitTo={1}
+              loading
+            />
+          );
         }
         if (error) {
-          return (
-            <pre>
-              {JSON.stringify(error, null, 4)}
-            </pre>
-          );
+          return null;
         }
         if (response) {
           const beers = response.data.Hits;
@@ -36,20 +40,28 @@ export default function UpcomingBeer() {
             return null;
           }
 
+          console.log(beers);
+
           return (
             <div>
               <List
-                label="Giant Bomb upcoming"
-                items={beers.map(beer => (
+                label={LABEL}
+                items={beers.filter(beer => beer.IsInStoreSearchAssortment.includes('0237')
+                || beer.IsInStoreSearchAssortment.includes('0220')
+                || beer.IsInStoreSearchAssortment.includes('0167')
+                || beer.IsInStoreSearchAssortment.includes('0202')).map(beer => (
                   {
-                    title: `${beer.ProductNameBold} - ${beer.ProductNameThin}`,
-                    subtitle: moment().fromNow(),
-                    imageUrl: '',
-                    url: '',
+                    title: `${beer.ProductNameBold} ${beer.ProductNameThin || ''}`,
+                    subtitle: moment(beer.SellStartDate).fromNow(),
+                    url: `https://www.systembolaget.se/dryck/ol/${beer.ProductNameBold.trim()
+                      .replace(/\s+/g, '-')
+                      .replace(/\u00e4/g, 'a')
+                      // Add å and ö
+                      .toLowerCase()}-${beer.ProductNumber}`,
+                    imageUrl: 'https://www.systembolaget.se/content/assets/images/products/product-placeholder.png',
                   }
                 ))}
               />
-              <pre>{JSON.stringify(beers, null, 4)}</pre>
             </div>
           );
         }

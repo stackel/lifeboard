@@ -10,7 +10,6 @@ export default function GameReleases() {
   return (
     <FetchWithInterval
       url={`${API_URL}games`}
-      corsAnywhere
       params={{
         api_key: API_KEY,
         format: 'json',

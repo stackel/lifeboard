@@ -1,6 +1,5 @@
 GB Latest Videos
   - Filter duplicates
-  - polling
 
 Philips hue
   - Color presets
@@ -9,10 +8,6 @@ Cocktail Hour
   - Hook up Firebase
   - Google auth
   - Get try Soon (randomize and display thursday ev - sunday mor)
-
-Systembolaget
-  CORS
-
 
 SUNSET
 https://api.sunrise-sunset.org/json?lat=59.305391&lng=18.145694

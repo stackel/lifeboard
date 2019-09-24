@@ -10,12 +10,17 @@ export default function GBUpcoming() {
   return (
     <FetchWithInterval
       url="https://www.giantbomb.com/upcoming_json"
-      corsAnywhere
       fetchInterval={1000 * 60 * 5}
     >
-      {(error, response, loading) => {
+      {(response, loading, error) => {
         if (loading || error) {
-          return (<List label={LABEL} loading limitTo={1} />);
+          return (
+            <List
+              label={LABEL}
+              loading
+              limitTo={1}
+            />
+          );
         }
         if (response !== null) {
           const upcomingVideos = response.data.upcoming;
@@ -27,7 +32,7 @@ export default function GBUpcoming() {
           return (
             <div>
               <List
-                label="Giant Bomb upcoming"
+                label={LABEL}
                 items={upcomingVideos.map(video => (
                   {
                     title: video.title,

@@ -11,7 +11,7 @@ export default function UpcomingMusic() {
   return (
     <FetchWithInterval
       url="https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json"
-      corsAnywhere
+      corsAnyxwhere
       fetchInterval={1000 * 60 * 30}
     >
       {(response, loading, error) => {

@@ -10,7 +10,6 @@ export default function CurrentLive() {
   return (
     <FetchWithInterval
       url={`${API_URL}chats`}
-      corsAnywhere
       params={{
         api_key: API_KEY,
         format: 'json',

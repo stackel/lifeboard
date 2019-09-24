@@ -5,7 +5,7 @@ import UpcomingBeer from './UpcomingBeer';
 
 storiesOf('Components/Systembolaget', module)
   .add('Upcoming Beer', () => (
-    <div className="pa4">
+    <div className="pa4 mw6">
       <UpcomingBeer />
     </div>
   ));
