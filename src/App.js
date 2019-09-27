@@ -12,6 +12,7 @@ import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
 import NewsWithFetch from './components/dashboard/news/NewsWithFetch';
 import GBUpcoming from './components/dashboard/giant-bomb/GBUpcoming';
 import UpcomingBeer from './components/dashboard/systembolaget/UpcomingBeer';
+import Stocks from './components/dashboard/stocks/Stocks';
 
 function App() {
   return (
@@ -53,6 +54,9 @@ function App() {
         </div>
         <div className="fl w-25 pl2 pr2">
           <UpcomingBeer />
+        </div>
+        <div className="fl w-25 pl2 pr2">
+          <Stocks symbol="STO:IMMU" />
         </div>
       </div>
       <div className="cf">
