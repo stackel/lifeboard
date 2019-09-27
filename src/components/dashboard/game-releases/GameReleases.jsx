@@ -47,7 +47,7 @@ export default function GameReleases() {
                 ],
               ),
             }))
-            .filter(game => game.date > moment()
+            .filter(game => game.date > moment().subtract(1, 'days')
             && game.date < moment().add(7, 'days'))
             .sort((a, b) => a.date - b.date);
 
@@ -60,7 +60,14 @@ export default function GameReleases() {
                     title: game.name,
                     imageUrl: game.image.medium_url,
                     url: game.site_detail_url,
-                    subtitle: game.date.fromNow(),
+                    subtitle: game.date.calendar(null, {
+                      lastDay: '[Yesterday]',
+                      sameDay: '[Today]',
+                      nextDay: '[Tomorrow]',
+                      lastWeek: '[last] dddd',
+                      nextWeek: 'dddd',
+                      sameElse: 'L',
+                    }),
                   }))}
                 />
               }

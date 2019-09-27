@@ -36,7 +36,16 @@ export default function GBUpcoming() {
                 items={upcomingVideos.map(video => (
                   {
                     title: video.title,
-                    subtitle: moment(video.date).fromNow(),
+                    subtitle: moment(video.date)
+                      .add(9, 'hours')
+                      .calendar(null, {
+                        lastDay: '[Yesterday at] HH:mm',
+                        sameDay: '[Today at] HH:mm',
+                        nextDay: '[Tomorrow at] HH:mm',
+                        lastWeek: '[last] dddd [at] HH:mm',
+                        nextWeek: 'dddd [at] HH:mm',
+                        sameElse: 'L',
+                      }),
                     imageUrl: `https://${video.image}`,
                     url: 'https://www.giantbomb.com',
                   }

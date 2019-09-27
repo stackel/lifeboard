@@ -17,7 +17,7 @@ export default function UpcomingBeer() {
       params={{
         SortBy: 'SellStartDate',
         SubCategory: 'Öl',
-        SellStartDateFrom: moment().add(1, 'day').format('YYYY-MM-DD'),
+        SellStartDateFrom: moment().subtract(5, 'day').format('YYYY-MM-DD'),
         SellStartDateTo: moment().add(30, 'day').format('YYYY-MM-DD'),
       }}
     >
@@ -39,9 +39,6 @@ export default function UpcomingBeer() {
           if (!beers) {
             return null;
           }
-
-          console.log(beers);
-
           return (
             <div>
               <List
@@ -53,10 +50,13 @@ export default function UpcomingBeer() {
                   {
                     title: `${beer.ProductNameBold} ${beer.ProductNameThin || ''}`,
                     subtitle: moment(beer.SellStartDate).fromNow(),
-                    url: `https://www.systembolaget.se/dryck/ol/${beer.ProductNameBold.trim()
+                    url: `https://www.systembolaget.se/dryck/ol/${beer.ProductNameBold
+                      .trim()
                       .replace(/\s+/g, '-')
+                      .replace(/\./g, '')
                       .replace(/\u00e4/g, 'a')
-                      // Add å and ö
+                      .replace(/\u00f6/g, 'o')
+                      .replace(/\\|\//g, '')
                       .toLowerCase()}-${beer.ProductNumber}`,
                     imageUrl: 'https://www.systembolaget.se/content/assets/images/products/product-placeholder.png',
                   }

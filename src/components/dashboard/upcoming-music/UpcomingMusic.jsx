@@ -36,7 +36,14 @@ export default function UpcomingMusic() {
               albums.map(
                 album => ({
                   title: `${album.artistName} - ${album.name}`,
-                  subtitle: moment(album.releaseDate).fromNow(),
+                  subtitle: moment(album.releaseDate).calendar(null, {
+                    lastDay: '[Yesterday]',
+                    sameDay: '[Today]',
+                    nextDay: '[Tomorrow]',
+                    lastWeek: '[last] dddd',
+                    nextWeek: 'dddd',
+                    sameElse: 'd MMMM',
+                  }),
                   imageUrl: album.artworkUrl100,
                   url: `https://www.google.com/search?q=${album.artistName} ${album.name}`,
                 }
