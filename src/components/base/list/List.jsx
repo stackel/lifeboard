@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import moment from 'moment';
 
 import Item from './item/Item';
 /* eslint-disable import/no-cycle */
@@ -38,8 +39,11 @@ export default function List({
 
   return (
     <div>
-      <h2 className="sans-serif f4 mb3">
+      <h2 className="sans-serif f4 mb2">
         {label}
+      </h2>
+      <h2 className="sans-serif f6 gray mb3">
+        {`Updated ${moment().format('HH:mm')}`}
       </h2>
       {
         items

@@ -14,7 +14,6 @@ export default function GameReleases() {
         api_key: API_KEY,
         format: 'json',
         filter: `expected_release_year:${moment().year()},expected_release_month:${moment().month() + 1}`,
-        sort: 'expected_release_month:asc',
       }}
       fetchInterval={1000 * 60 * 10}
     >
@@ -36,7 +35,7 @@ export default function GameReleases() {
           const games = response.data.results
             .filter(game => game.expected_release_month !== null
               && game.expected_release_day !== null
-              && game.expected_release_day !== null)
+              && game.expected_release_year !== null)
             .map(game => ({
               ...game,
               date: moment(
