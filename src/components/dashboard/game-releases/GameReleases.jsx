@@ -13,7 +13,9 @@ export default function GameReleases() {
       params={{
         api_key: API_KEY,
         format: 'json',
-        filter: `expected_release_year:${moment().year()},expected_release_month:${moment().month() + 1}`,
+        filter: `original_release_date:
+        ${moment().format('YYYY-MM-DD')}|
+        ${moment().add(1, 'month').format('YYYY-MM-DD')}`,
       }}
       fetchInterval={1000 * 60 * 10}
     >
@@ -32,6 +34,8 @@ export default function GameReleases() {
         }
 
         if (response !== null) {
+          console.log(response.data.results);
+
           const games = response.data.results
             .filter(game => game.expected_release_month !== null
               && game.expected_release_day !== null
@@ -46,8 +50,7 @@ export default function GameReleases() {
                 ],
               ),
             }))
-            .filter(game => game.date > moment().subtract(1, 'days')
-            && game.date < moment().add(7, 'days'))
+            .filter(game => game.date > moment().subtract(1, 'days'))
             .sort((a, b) => a.date - b.date);
 
           return (
