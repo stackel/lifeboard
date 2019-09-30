@@ -34,8 +34,6 @@ export default function GameReleases() {
         }
 
         if (response !== null) {
-          console.log(response.data.results);
-
           const games = response.data.results
             .filter(game => game.expected_release_month !== null
               && game.expected_release_day !== null

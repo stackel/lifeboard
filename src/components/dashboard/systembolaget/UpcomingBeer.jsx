@@ -1,33 +1,30 @@
 import React from 'react';
-import { Get } from 'react-axios';
-import axios from 'axios';
 import moment from 'moment';
 import List from '../../base/list/List';
-// import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
+
+import FetchWithInterval from '../../base/list/FetchWithInterval';
 
 const LABEL = 'Nya Öler';
 export default function UpcomingBeer() {
-  const axiosInstance = axios.create({
-    headers: { 'Ocp-Apim-Subscription-Key': 'ed6bfcdbf6074559bd67365384159e63' },
-  });
   return (
-    <Get
-      instance={axiosInstance}
+    <FetchWithInterval
+      headers={{ 'Ocp-Apim-Subscription-Key': 'ed6bfcdbf6074559bd67365384159e63' }}
       url="https://api-extern.systembolaget.se/product/v1/product/search"
       params={{
         SortBy: 'SellStartDate',
         SubCategory: 'Öl',
         SellStartDateFrom: moment().subtract(5, 'day').format('YYYY-MM-DD'),
-        SellStartDateTo: moment().add(30, 'day').format('YYYY-MM-DD'),
+        SellStartDateTo: moment().add(14, 'day').format('YYYY-MM-DD'),
       }}
     >
-      {(error, response, isLoading) => {
-        if (isLoading) {
+      {(response, loading, error) => {
+        if (loading) {
           return (
             <List
               label={LABEL}
               limitTo={1}
               loading
+              fetchInterval={1000 * 60 * 5}
             />
           );
         }
@@ -68,6 +65,6 @@ export default function UpcomingBeer() {
         return null;
       }}
 
-    </Get>
+    </FetchWithInterval>
   );
 }

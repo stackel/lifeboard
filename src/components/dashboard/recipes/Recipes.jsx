@@ -65,7 +65,7 @@ export default class Recipes extends Component {
       <div className="w-100">
         <List
           noImages
-          limitTo={5}
+          limitTo={3}
           label="Recipes"
           items={recipes.map(recipe => ({
             title: recipe.title,
