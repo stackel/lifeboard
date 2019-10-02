@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 export default function Title({ title, loading, link }) {
   if (loading) {
-    return <div className="bg-light-gray h1 w5 mv2" />;
+    return <div className="bg-dark-gray h1 w5 mv2" />;
   }
 
-  const textClasses = 'db sans-serif f4 mv2 black';
+  const textClasses = 'db sans-serif f4 mv2 near-white';
   if (link) {
     return (
       <a

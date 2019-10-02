@@ -1,5 +1,9 @@
 @import "tachyons";
 
+body {
+  background-color: #111111;
+}
+
 .of-c {
   object-fit: cover;
 }

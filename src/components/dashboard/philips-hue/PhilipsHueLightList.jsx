@@ -13,7 +13,7 @@ export default function PhilipsHueLightList({
   return (
     <div>
       <div className="cf">
-        <h2 className="sans-serif f4 mv2"> Light control </h2>
+        <h2 className="near-white sans-serif f4 mv2"> Light control </h2>
         <div className="w-80 fl">
           {
         lights.map(light => (
@@ -36,7 +36,7 @@ export default function PhilipsHueLightList({
             className={`${allLightsButtonClasses} h3 w3 v-mid br-100 pointer link grow dim`}
           />
           <div>
-            <span className="sans-serif f4 truncate">
+            <span className="near-white sans-serif f4 truncate">
               All lights
             </span>
           </div>

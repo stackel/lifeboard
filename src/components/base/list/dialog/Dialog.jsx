@@ -11,7 +11,7 @@ export default function ListDialog({ list, open, onClose }) {
       open={open}
       onClose={onClose}
     >
-      <div className="ph4 pv2">
+      <div className="ph4 pv2 bg-near-black">
         <List {...list} />
       </div>
     </Dialog>

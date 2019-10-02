@@ -8,11 +8,11 @@ export default function Image({
     return null;
   }
   if (loading) {
-    return <div className="h5 bg-near-white" />;
+    return <div className="h5 bg-dark-gray br2" />;
   }
   return (
     <img
-      className="h5 contain of-c w-100"
+      className="h5 contain of-c w-100 br2"
       src={url}
       alt={alt}
     />

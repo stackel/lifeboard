@@ -17,57 +17,59 @@ import Stocks from './components/dashboard/stocks/Stocks';
 
 function App() {
   return (
-    <div className="mw9 center ph0 pv4">
-      <div className="cf">
-        <div className="fl w-30 tc">
-          <Time />
-          <Weather />
+    <div className="bg-near-black">
+      <div className="mw9 center ph0 pv4">
+        <div className="cf mb4">
+          <div className="fl w-30 tc">
+            <Time />
+            <Weather />
+          </div>
+          <div className="fl w-70">
+            <PhilipsHue />
+          </div>
         </div>
-        <div className="fl w-70">
-          <PhilipsHue />
+
+        <div className="cf ">
+          <div className="fl w-20 pr2">
+            <GBCurrentLive />
+          </div>
+          <div className="fl w-20 pr2 pl2">
+            <GameReleases />
+          </div>
+          <div className="fl w-20 pl2 pr2">
+            <GBUpcoming />
+          </div>
+          <div className="fl w-20 pl2 pr2">
+            <UpcomingMusic />
+          </div>
+          <div className="fl w-20 pl2">
+            <NewsWithFetch
+              label="News"
+              filter={{ type: 'sources', value: 'reuters' }}
+            />
+          </div>
         </div>
+
+        <div className="cf">
+          <div className="fl w-20 pr2 pl2">
+            <GBLatestVideos />
+          </div>
+          <div className="fl w-20 pl2 pr2">
+            <Stocks symbol="STO:IMMU" />
+          </div>
+          <div className="fl w-20 pl2 pr2">
+            <UpcomingBeer />
+          </div>
+          <div className="fl w-20 pl2 pr2">
+            <Holidays />
+          </div>
+          <div className="fl w-20 pl2">
+            <Recipes />
+          </div>
+        </div>
+
+
       </div>
-
-      <div className="cf ">
-        <div className="fl w-20 pr2">
-          <GBCurrentLive />
-        </div>
-        <div className="fl w-20 pr2 pl2">
-          <GameReleases />
-        </div>
-        <div className="fl w-20 pl2 pr2">
-          <GBUpcoming />
-        </div>
-        <div className="fl w-20 pl2 pr2">
-          <UpcomingMusic />
-        </div>
-        <div className="fl w-20 pl2">
-          <NewsWithFetch
-            label="News"
-            filter={{ type: 'sources', value: 'reuters' }}
-          />
-        </div>
-      </div>
-
-      <div className="cf">
-        <div className="fl w-20 pr2 pl2">
-          <GBLatestVideos />
-        </div>
-        <div className="fl w-20 pl2 pr2">
-          <Stocks symbol="STO:IMMU" />
-        </div>
-        <div className="fl w-20 pl2 pr2">
-          <UpcomingBeer />
-        </div>
-        <div className="fl w-20 pl2 pr2">
-          <Holidays />
-        </div>
-        <div className="fl w-20 pl2">
-          <Recipes />
-        </div>
-      </div>
-
-
     </div>
   );
 }

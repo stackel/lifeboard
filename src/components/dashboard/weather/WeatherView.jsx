@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 export default function Weather({ weather }) {
   return (
     <div className="tc">
-      <span className="sans-serif f1 b db">
+      <span className="near-white sans-serif f1 b db">
         {Math.round(weather.temperature)}
         &deg;
       </span>
-      <span className="sans-serif f3 db">
+      <span className="near-white sans-serif f3 db">
         {weather.description}
       </span>
     </div>

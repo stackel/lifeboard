@@ -13,7 +13,7 @@ export default function UpcomingBeer() {
       params={{
         SortBy: 'SellStartDate',
         SubCategory: 'Öl',
-        SellStartDateFrom: moment().subtract(5, 'day').format('YYYY-MM-DD'),
+        SellStartDateFrom: moment().subtract(2, 'day').format('YYYY-MM-DD'),
         SellStartDateTo: moment().add(14, 'day').format('YYYY-MM-DD'),
       }}
     >
@@ -40,13 +40,22 @@ export default function UpcomingBeer() {
             <div>
               <List
                 label={LABEL}
-                items={beers.filter(beer => beer.IsInStoreSearchAssortment.includes('0237')
-                || beer.IsInStoreSearchAssortment.includes('0220')
+                items={beers.filter(beer => beer.IsInStoreSearchAssortment.includes('0237'),
+                /* || beer.IsInStoreSearchAssortment.includes('0220')
                 || beer.IsInStoreSearchAssortment.includes('0167')
-                || beer.IsInStoreSearchAssortment.includes('0202')).map(beer => (
+                || beer.IsInStoreSearchAssortment.includes('0202') */
+                /* eslint-disable function-paren-newline */
+                ).map(beer => (
                   {
                     title: `${beer.ProductNameBold} ${beer.ProductNameThin || ''}`,
-                    subtitle: moment(beer.SellStartDate).fromNow(),
+                    subtitle: moment(beer.SellStartDate).calendar(null, {
+                      lastDay: '[Yesterday]',
+                      sameDay: '[Today]',
+                      nextDay: '[Tomorrow]',
+                      lastWeek: '[last] dddd',
+                      nextWeek: 'dddd',
+                      sameElse: 'L',
+                    }),
                     url: `https://www.systembolaget.se/dryck/ol/${beer.ProductNameBold
                       .trim()
                       .replace(/\s+/g, '-')

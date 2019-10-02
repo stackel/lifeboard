@@ -4,9 +4,9 @@ import moment from 'moment';
 
 export default function Time({ time }) {
   return (
-    <span className="sans-serif f1 b">
+    <span className="near-white sans-serif f1 b">
       {time.format('HH:mm')}
-      <span className="f3 fw4 db">
+      <span className="near-white f3 fw4 db">
         {time.format('MMMM Do')}
       </span>
     </span>

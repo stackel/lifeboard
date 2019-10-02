@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function PhilipsHueLight({ light, onClick }) {
   const { on } = light.state;
-  const circleColor = on ? 'yellow' : 'light-gray';
+  const circleColor = on ? 'yellow' : 'moon-gray';
   return (
     <div className="w-100">
       <div>
@@ -17,7 +17,7 @@ export default function PhilipsHueLight({ light, onClick }) {
           />
         </div>
         <div className="tc">
-          <span className="sans-serif f5 fw5 mb1 mt0 truncate">
+          <span className="near-white sans-serif f5 fw5 mb1 mt0 truncate">
             {light.name}
           </span>
         </div>

@@ -22,7 +22,11 @@ export default function Stocks({ symbol }) {
           return null;
         }
         if (loading) {
-          return <p>loading</p>;
+          return (
+            <h2 className="near-white sans-serif f4 mb3">
+                      Stocks
+            </h2>
+          );
         }
         const data = response.data['Time Series (Daily)'];
         if (!data) {
@@ -47,25 +51,25 @@ export default function Stocks({ symbol }) {
 
         return (
           <div className="">
-            <h2 className="sans-serif f4 mb3">
+            <h2 className="near-white sans-serif f4 mb3">
             Stocks
             </h2>
-            <div className="sans-serif tc f3 mt5">
+            <div className="sans-serif light-silver tc f3 mt5">
               {symbol}
             </div>
-            <div className=" tc f1 sans-serif mv3 b">
+            <div className=" tc f1 near-white sans-serif mv3 b">
               {`${Math.round(latestClose * 100) / 100} kr`}
             </div>
             {
               latestClose > nextToLatestClose
                 ? (
-                  <div className="tc sans-serif f3 dark-green">
+                  <div className="tc sans-serif f3 green">
                     {`Up ${(((latestClose / nextToLatestClose) - 1) * 100).toFixed(1)}%`}
                     <span> &#8599; </span>
                   </div>
                 )
                 : (
-                  <div className="tc sans-serif f3 dark-red">
+                  <div className="tc sans-serif f3 red">
                     {`Down ${(((nextToLatestClose / latestClose) - 1) * 100).toFixed(1)}%`}
                     <span> &#8601; </span>
                   </div>
