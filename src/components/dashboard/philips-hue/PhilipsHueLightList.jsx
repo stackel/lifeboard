@@ -13,23 +13,9 @@ export default function PhilipsHueLightList({
   return (
     <div>
       <div className="cf">
-        <h2 className="near-white sans-serif f4 mv2"> Light control </h2>
-        <div className="w-80 fl">
-          {
-        lights.map(light => (
-          <div
-            key={light.id}
-            className="dib w-33 fl mb3"
-          >
-            <PhilipsHueLight
-              light={light}
-              onClick={onLightClicked}
-            />
-          </div>
-        ))
-      }
-        </div>
-        <div className="w-20 fl tc pt3">
+        <h2 className="near-white sans-serif f2 mt2 mb2"> Light Control </h2>
+        <div className="" />
+        <div className=" tc pt3 pb4">
           <button
             type="button"
             onClick={() => onAllLightsClicked(allLightsOn)}
@@ -41,6 +27,19 @@ export default function PhilipsHueLightList({
             </span>
           </div>
         </div>
+        {
+      lights.map(light => (
+        <div
+          key={light.id}
+          className="dib w-100 fl mb3"
+        >
+          <PhilipsHueLight
+            light={light}
+            onClick={onLightClicked}
+          />
+        </div>
+      ))
+    }
       </div>
 
     </div>

@@ -4,7 +4,8 @@ import GBCurrentLive from './components/dashboard/giant-bomb/GBCurrentLive';
 // import Gmail from './components/dashboard/gmail/Gmail';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
-import Recipes from './components/dashboard/recipes/Recipes';
+// import Recipes from './components/dashboard/recipes/Recipes';
+import Standings from './components/dashboard/allsvenskan/Standings';
 import Holidays from './components/dashboard/holidays/Holidays';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
@@ -17,18 +18,19 @@ import Stocks from './components/dashboard/stocks/Stocks';
 
 function App() {
   return (
-    <div className="bg-near-black">
-      <div className="mw9 center ph0 pv4">
-        <div className="cf mb4">
-          <div className="fl w-30 tc">
-            <Time />
-            <Weather />
-          </div>
-          <div className="fl w-70">
-            <PhilipsHue />
-          </div>
-        </div>
+    <div className="bg-near-black mt4">
 
+      <div className="cf fl w-20 pt5 pr2">
+        <div className="tc">
+          <Time />
+          <Weather />
+        </div>
+        <div className="pt5 tc">
+          <PhilipsHue />
+        </div>
+      </div>
+
+      <div className="fl w-80 pr4">
         <div className="cf ">
           <div className="fl w-20 pr2">
             <GBCurrentLive />
@@ -61,14 +63,12 @@ function App() {
             <UpcomingBeer />
           </div>
           <div className="fl w-20 pl2 pr2">
-            <Holidays />
+            <Standings />
           </div>
           <div className="fl w-20 pl2">
-            <Recipes />
+            <Holidays />
           </div>
         </div>
-
-
       </div>
     </div>
   );

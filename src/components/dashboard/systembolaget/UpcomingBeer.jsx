@@ -40,6 +40,8 @@ export default function UpcomingBeer() {
             <div>
               <List
                 label={LABEL}
+                noImages
+                limitTo={5}
                 items={beers.filter(beer => beer.IsInStoreSearchAssortment.includes('0237'),
                 /* || beer.IsInStoreSearchAssortment.includes('0220')
                 || beer.IsInStoreSearchAssortment.includes('0167')

@@ -36,7 +36,7 @@ export default function GBLatestVideos() {
                   name, publish_date, image, site_detail_url,
                 }) => ({
                   title: name,
-                  subtitle: moment(publish_date).fromNow(),
+                  subtitle: moment(publish_date).add(9, 'hours').fromNow(),
                   url: site_detail_url,
                   imageUrl: image.medium_url,
                 }),

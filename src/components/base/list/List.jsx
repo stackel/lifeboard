@@ -21,7 +21,7 @@ export default function List({
   if (loading) {
     return (
       <div>
-        <h2 className="near-white sans-serif f4 mb3">
+        <h2 className="near-white sans-serif f3 mb3">
           {label}
         </h2>
         {[...Array(limitTo).keys()]
@@ -39,7 +39,7 @@ export default function List({
 
   return (
     <div>
-      <h2 className="near-white sans-serif f4 mb2">
+      <h2 className="near-white sans-serif f3 mb2">
         {label}
       </h2>
       <h2 className="sans-serif f6 light-silver mb3">
@@ -73,6 +73,7 @@ export default function List({
         list={{
           items, loading, limitTo: 100, label,
         }}
+        noImages={noImages}
         open={dialogOpen}
         onClose={dialogCloseClicked}
       />

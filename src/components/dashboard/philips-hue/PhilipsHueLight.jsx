@@ -17,7 +17,7 @@ export default function PhilipsHueLight({ light, onClick }) {
           />
         </div>
         <div className="tc">
-          <span className="near-white sans-serif f5 fw5 mb1 mt0 truncate">
+          <span className="near-white sans-serif f4 fw5 mb1 mt0 truncate">
             {light.name}
           </span>
         </div>

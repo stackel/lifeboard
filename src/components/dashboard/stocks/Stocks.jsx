@@ -23,7 +23,7 @@ export default function Stocks({ symbol }) {
         }
         if (loading) {
           return (
-            <h2 className="near-white sans-serif f4 mb3">
+            <h2 className="near-white sans-serif f3 mb3">
                       Stocks
             </h2>
           );
@@ -51,7 +51,7 @@ export default function Stocks({ symbol }) {
 
         return (
           <div className="">
-            <h2 className="near-white sans-serif f4 mb3">
+            <h2 className="near-white sans-serif f3 mb3">
             Stocks
             </h2>
             <div className="sans-serif light-silver tc f3 mt5">
