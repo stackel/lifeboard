@@ -15,6 +15,7 @@ import NewsWithFetch from './components/dashboard/news/NewsWithFetch';
 import GBUpcoming from './components/dashboard/giant-bomb/GBUpcoming';
 import UpcomingBeer from './components/dashboard/systembolaget/UpcomingBeer';
 import Stocks from './components/dashboard/stocks/Stocks';
+import SunriseSunset from './components/dashboard/sunrise-sunset/SunriseSunset';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
       <div className="cf fl w-20 pt5 pr2">
         <div className="tc">
           <Time />
+          <div className="mv4">
+            <SunriseSunset lat={59.305377} lng={18.145041} />
+          </div>
           <Weather />
         </div>
         <div className="pt5 tc">
