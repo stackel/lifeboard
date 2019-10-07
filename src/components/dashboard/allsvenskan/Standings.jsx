@@ -25,10 +25,10 @@ export default function Standings() {
             <List
               label={LABEL}
               noImages
-              limitTo={5}
+              limitTo={7}
               items={data.result.item.map(item => ({
                 title: `${item.position}. ${item.team}`,
-                subtitle: `${item.points} poäng`,
+                subtitle: `${item.points} poäng - ${item.round} spelade`,
               }))}
             />
           );

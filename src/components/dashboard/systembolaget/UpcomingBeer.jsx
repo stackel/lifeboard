@@ -13,7 +13,7 @@ export default function UpcomingBeer() {
       params={{
         SortBy: 'SellStartDate',
         SubCategory: 'Öl',
-        SellStartDateFrom: moment().subtract(2, 'day').format('YYYY-MM-DD'),
+        SellStartDateFrom: moment().subtract(5, 'day').format('YYYY-MM-DD'),
         SellStartDateTo: moment().add(14, 'day').format('YYYY-MM-DD'),
       }}
     >
@@ -41,7 +41,7 @@ export default function UpcomingBeer() {
               <List
                 label={LABEL}
                 noImages
-                limitTo={5}
+                limitTo={6}
                 items={beers.filter(beer => beer.IsInStoreSearchAssortment.includes('0237'),
                 /* || beer.IsInStoreSearchAssortment.includes('0220')
                 || beer.IsInStoreSearchAssortment.includes('0167')

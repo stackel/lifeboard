@@ -34,7 +34,7 @@ export default function Holidays() {
             <List
               label={LABEL}
               noImages
-              limitTo={3}
+              limitTo={7}
               items={holidays.map(holiday => ({
                 title: holiday.localName,
                 subtitle: moment(holiday.date).calendar(),
