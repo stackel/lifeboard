@@ -4,15 +4,30 @@ import FetchWithInterval from '../../base/list/FetchWithInterval';
 import List from '../../base/list/List';
 
 const LABEL = 'Allsvenskans tabell';
+const URL = 'https://allsvenskan-api.herokuapp.com/as';
+const FETCH_INTERVAL = 1000 * 60 * 10;
+const N_ITEMS = 7;
+const TRANSFORM_ITEM = item => ({
+  title: `${item.position}. ${item.team}`,
+  subtitle: `${item.points} poäng - ${item.round} spelade`,
+});
+
 export default function Standings() {
   return (
     <FetchWithInterval
-      url="https://allsvenskan-api.herokuapp.com/as"
-      fetchInterval={1000 * 60 * 10}
+      url={URL}
+      fetchInterval={FETCH_INTERVAL}
     >
       {(response, loading, error) => {
         if (loading) {
-          return <p> loading </p>;
+          return (
+            <List
+              label={LABEL}
+              noImages
+              limitTo={N_ITEMS}
+              loading
+            />
+          );
         }
 
         if (error) {
@@ -25,15 +40,12 @@ export default function Standings() {
             <List
               label={LABEL}
               noImages
-              limitTo={7}
-              items={data.result.item.map(item => ({
-                title: `${item.position}. ${item.team}`,
-                subtitle: `${item.points} poäng - ${item.round} spelade`,
-              }))}
+              limitTo={N_ITEMS}
+              items={
+                data.result.item.map(item => TRANSFORM_ITEM(item))}
             />
           );
         }
-
 
         return null;
       }}

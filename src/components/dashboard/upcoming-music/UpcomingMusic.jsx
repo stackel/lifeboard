@@ -4,14 +4,16 @@ import moment from 'moment';
 import FetchWithInterval from '../../base/list/FetchWithInterval';
 import List from '../../base/list/List';
 
-const GENRE_ID_LIST = ['18'];
 const LABEL = 'Album Releases';
+const URL = 'https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json';
+const GENRE_ID_LIST = ['18'];
+const FETCH_INTERVAL = 1000 * 60 * 30;
 
 export default function UpcomingMusic() {
   return (
     <FetchWithInterval
-      url="https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json"
-      fetchInterval={1000 * 60 * 30}
+      url={URL}
+      fetchInterval={FETCH_INTERVAL}
     >
       {(response, loading, error) => {
         if (error) {

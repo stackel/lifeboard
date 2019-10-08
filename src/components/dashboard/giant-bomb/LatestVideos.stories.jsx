@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import GBCurrentLive from './GBCurrentLive';
+import LatestVideos from './LatestVideos';
 
 storiesOf('Components/Giant Bomb', module)
-  .add('GB Current Live', () => (
+  .add('Latest Videos', () => (
     <div className="pa4 mw6">
-      <GBCurrentLive />
+      <LatestVideos />
     </div>
   ));

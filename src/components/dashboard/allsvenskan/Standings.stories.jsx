@@ -5,5 +5,7 @@ import Standings from './Standings';
 
 storiesOf('Components/Allsvenskan', module)
   .add('Standings', () => (
-    <Standings />
+    <div className="pa4">
+      <Standings />
+    </div>
   ));

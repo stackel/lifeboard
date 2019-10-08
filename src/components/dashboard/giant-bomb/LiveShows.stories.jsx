@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import GBUpcoming from './GBUpcoming';
+import LiveShows from './LiveShows';
 
 storiesOf('Components/Giant Bomb', module)
-  .add('Upcoming', () => (
+  .add('Live Shows', () => (
     <div className="pa4 mw6">
-      <GBUpcoming />
+      <LiveShows />
     </div>
   ));

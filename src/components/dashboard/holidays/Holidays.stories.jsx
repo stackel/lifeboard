@@ -5,5 +5,7 @@ import Holidays from './Holidays';
 
 storiesOf('Components/Holidays', module)
   .add('Holidays', () => (
-    <Holidays />
+    <div className="mw6 pa4">
+      <Holidays />
+    </div>
   ));

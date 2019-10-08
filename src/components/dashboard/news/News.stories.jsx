@@ -1,14 +1,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import NewsWithFetch from './NewsWithFetch';
+import News from './News';
 
 storiesOf('Components/News', module)
-  .add('News With Fetch', () => (
+  .add('News', () => (
     <div className="mw6 pa4">
-      <NewsWithFetch
+      <News
         label="Nyheter Sverige"
-        filter={{ type: 'country', value: 'se' }}
+        filter={{ type: 'sources', value: 'reuters' }}
       />
     </div>
   ));

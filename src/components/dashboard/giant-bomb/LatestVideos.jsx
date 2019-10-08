@@ -1,11 +1,19 @@
 import React from 'react';
 import moment from 'moment';
 
-import { API_URL, API_KEY } from '../../../resources/config/giant-bomb';
+import { API_URL, API_KEY } from './config';
 import FetchWithInterval from '../../base/list/FetchWithInterval';
 import List from '../../base/list/List';
 
-const LABEL = 'Lates Giant Bomb Videos';
+const LABEL = 'Latest Giant Bomb Videos';
+const FETCH_INTERVAL = 1000 * 60 * 10;
+const TRANSFORM_ITEM = item => ({
+  title: item.name,
+  subtitle: moment(item.publish_date)
+    .add(9, 'hours').fromNow(),
+  url: item.site_detail_url,
+  imageUrl: item.image.medium_url,
+});
 
 export default function GBLatestVideos() {
   return (
@@ -16,31 +24,33 @@ export default function GBLatestVideos() {
         api_key: API_KEY,
         format: 'json',
       }}
-      fetchInterval={1000 * 60 * 10}
+      fetchInterval={FETCH_INTERVAL}
     >
       {(response, loading, error) => {
         if (error) {
           return null;
         }
+
         if (loading) {
-          return (<List loading label={LABEL} />);
+          return (
+            <List
+              loading
+              label={LABEL}
+            />
+          );
         }
+
         if (response !== null) {
           const videos = response.data.results;
+
+          if (!videos) {
+            return null;
+          }
+
           return (
             <List
               label={LABEL}
-              items={videos.map(
-                ({
-                  /* eslint-disable camelcase */
-                  name, publish_date, image, site_detail_url,
-                }) => ({
-                  title: name,
-                  subtitle: moment(publish_date).add(9, 'hours').fromNow(),
-                  url: site_detail_url,
-                  imageUrl: image.medium_url,
-                }),
-              )}
+              items={videos.map(video => TRANSFORM_ITEM(video))}
             />
           );
         }

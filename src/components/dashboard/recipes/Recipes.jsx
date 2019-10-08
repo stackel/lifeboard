@@ -1,79 +1,54 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import List from '../../base/list/List';
+import FetchWithInterval from '../../base/list/FetchWithInterval';
 
-export default class Recipes extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      recipes: [],
-      errorMessage: null,
-      loading: false,
-      /* allIngredients: ['pasta, walnuts', 'beet,potatoes', 'noodles,peanut',
-        'halloumi,spinach', 'banana, mango'], */
-      ingredients: 'chicken',
-    };
-  }
+const LABEL = 'Recipes';
+const URL = `http://www.recipepuppy.com/api/?p=
+${Math.floor(Math.random() * 100)}`;
+const FETCH_INTERVAL = 1000 * 60 * 30;
+const N_ITEMS = 7;
+const TRANSFORM_ITEM = item => ({
+  title: item.title,
+  subtitle: item.ingredients,
+  url: item.href,
+});
 
-  componentDidMount() {
-    this.fetchRecipes();
-  }
+export default function Recipes() {
+  return (
+    <FetchWithInterval
+      url={URL}
+      fetchInterval={FETCH_INTERVAL}
+    >
+      {(response, error, loading) => {
+        if (loading) {
+          return (
+            <List
+              label={LABEL}
+              loading
+            />
+          );
+        }
 
-  fetchRecipes = () => {
-    const { ingredients } = this.state;
-    this.setState({ loading: true });
-    axios.get(`http://www.recipepuppy.com/api/?i=${ingredients}&p=${Math.floor(Math.random() * 100)}`)
-      .then((response) => {
-        this.setState({
-          recipes: response.data.results,
-          loading: false,
-        });
-      }, (error) => {
-        this.setState({
-          errorMessage: error.message,
-          loading: false,
-        });
-      });
-  }
+        if (error) {
+          return null;
+        }
 
-  onIngredientClicked = (ingredient) => {
-    this.setState({
-      ingredients: ingredient,
-    }, () => {
-      this.fetchRecipes();
-    });
-  }
+        if (response) {
+          const recipes = response.data.results;
 
-  render() {
-    const {
-      recipes, errorMessage, loading,
-    } = this.state;
-    if (loading) {
-      return (<List loading label="Recipes" limitTo={5} />);
-    }
+          return (
+            <List
+              label={LABEL}
+              noImages
+              limitTo={N_ITEMS}
+              items={recipes.map(recipe => TRANSFORM_ITEM(recipe))}
+            />
+          );
+        }
 
-    if (errorMessage) {
-      return null;
-    }
-
-    if (!recipes || !recipes.length) {
-      return null;
-    }
-
-    return (
-      <div className="w-100">
-        <List
-          noImages
-          limitTo={3}
-          label="Recipes"
-          items={recipes.map(recipe => ({
-            title: recipe.title,
-            subtitle: recipe.ingredients,
-            url: recipe.href,
-          }))}
-        />
-      </div>
-    );
-  }
+        return null;
+      }}
+    </FetchWithInterval>
+  );
 }
