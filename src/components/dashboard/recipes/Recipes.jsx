@@ -1,17 +1,28 @@
 import React from 'react';
+import moment from 'moment';
+import xmlParser from 'fast-xml-parser';
 
 import List from '../../base/list/List';
 import FetchWithInterval from '../../base/list/FetchWithInterval';
 
+
+const getFirstImageSource = (s) => {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = s;
+  return tmp.querySelector('img').getAttribute('src');
+};
+
 const LABEL = 'Recipes';
-const URL = `http://www.recipepuppy.com/api/?p=
-${Math.floor(Math.random() * 100)}`;
-const FETCH_INTERVAL = 1000 * 60 * 30;
+const URL = 'https://www.budgetbytes.com/feed/';
+const FETCH_INTERVAL = 1000 * 60 * 60 * 2;
 const N_ITEMS = 5;
+const TRANSFORM_RESPONSE = response => xmlParser
+  .parse(response.data).rss.channel.item;
 const TRANSFORM_ITEM = item => ({
   title: item.title,
-  subtitle: item.ingredients,
-  url: item.href,
+  subtitle: moment(item.pubDate).calendar(),
+  url: item.link,
+  imageUrl: getFirstImageSource(item['content:encoded']),
 });
 
 export default function Recipes() {
@@ -35,12 +46,11 @@ export default function Recipes() {
         }
 
         if (response) {
-          const recipes = response.data.results;
+          const recipes = TRANSFORM_RESPONSE(response);
 
           return (
             <List
               label={LABEL}
-              noImages
               limitTo={N_ITEMS}
               items={recipes.map(recipe => TRANSFORM_ITEM(recipe))}
             />

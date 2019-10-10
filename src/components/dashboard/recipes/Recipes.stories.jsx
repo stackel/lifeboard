@@ -5,7 +5,7 @@ import Recipes from './Recipes';
 
 storiesOf('Components/Recipes', module)
   .add('Recipes', () => (
-    <div className="pa4">
+    <div className="pa4 mw6">
       <Recipes />
     </div>
   ));
