@@ -63,13 +63,14 @@ function App() {
             <Stocks symbol="STO:IMMU" />
           </div>
           <div className="fl w-20 pl2 pr2">
-          <UpcomingBeer />
+            <Recipes />
           </div>
           <div className="fl w-20 pl2 pr2">
             <Standings />
           </div>
           <div className="fl w-20 pl2">
-            <Recipes />
+            <UpcomingBeer />
+          </div>
         </div>
       </div>
     </div>
