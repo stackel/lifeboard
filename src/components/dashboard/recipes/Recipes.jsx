@@ -15,7 +15,7 @@ const getFirstImageSource = (s) => {
 const LABEL = 'Recipes';
 const URL = 'https://www.budgetbytes.com/feed/';
 const FETCH_INTERVAL = 1000 * 60 * 60 * 2;
-const N_ITEMS = 5;
+const N_ITEMS = 3;
 const TRANSFORM_RESPONSE = response => xmlParser
   .parse(response.data).rss.channel.item;
 const TRANSFORM_ITEM = item => ({
