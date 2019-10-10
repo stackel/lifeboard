@@ -45,13 +45,13 @@ function App() {
             <GBUpcoming />
           </div>
           <div className="fl w-20 pl2 pr2">
+            <UpcomingMusic />
+          </div>
+          <div className="fl w-20 pl2">
             <News
               label="News"
               filter={{ type: 'sources', value: 'reuters' }}
             />
-          </div>
-          <div className="fl w-20 pl2">
-            <UpcomingMusic />
           </div>
         </div>
 
@@ -63,13 +63,15 @@ function App() {
             <Stocks symbol="STO:IMMU" />
           </div>
           <div className="fl w-20 pl2 pr2">
-            <Recipes />
+            <UpcomingBeer />
+
           </div>
           <div className="fl w-20 pl2 pr2">
             <Standings />
           </div>
           <div className="fl w-20 pl2">
-            <UpcomingBeer />
+            <Recipes />
+
           </div>
         </div>
       </div>
