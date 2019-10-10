@@ -7,7 +7,7 @@ const LABEL = 'Recipes';
 const URL = `http://www.recipepuppy.com/api/?p=
 ${Math.floor(Math.random() * 100)}`;
 const FETCH_INTERVAL = 1000 * 60 * 30;
-const N_ITEMS = 7;
+const N_ITEMS = 5;
 const TRANSFORM_ITEM = item => ({
   title: item.title,
   subtitle: item.ingredients,

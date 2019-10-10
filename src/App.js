@@ -3,9 +3,9 @@ import GBLatestVideos from './components/dashboard/giant-bomb/LatestVideos';
 import GBCurrentLive from './components/dashboard/giant-bomb/LiveShows';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/giant-bomb/GameReleases';
-// import Recipes from './components/dashboard/recipes/Recipes';
+import Recipes from './components/dashboard/recipes/Recipes';
 import Standings from './components/dashboard/allsvenskan/Standings';
-import Holidays from './components/dashboard/holidays/Holidays';
+// import Holidays from './components/dashboard/holidays/Holidays';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
@@ -69,7 +69,7 @@ function App() {
             <Standings />
           </div>
           <div className="fl w-20 pl2">
-            <Holidays />
+            <Recipes />
           </div>
         </div>
       </div>
