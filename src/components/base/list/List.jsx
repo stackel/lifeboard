@@ -71,7 +71,7 @@ export default function List({
     }
       <Dialog
         list={{
-          items, loading, limitTo: 100, label,
+          items, loading, label,
         }}
         noImages={noImages}
         open={dialogOpen}

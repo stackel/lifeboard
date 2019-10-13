@@ -5,7 +5,7 @@ import Dialog from '@material-ui/core/Dialog';
 import List from '../List';
 
 export default function ListDialog({
-  list, open, onClose, noImages,
+  list, open, onClose, noImages, limitTo,
 }) {
   return (
     <Dialog
@@ -14,7 +14,11 @@ export default function ListDialog({
       onClose={onClose}
     >
       <div className="ph4 pv2 bg-near-black">
-        <List noImages={noImages} {...list} />
+        <List
+          limitTo={limitTo}
+          noImages={noImages}
+          {...list}
+        />
       </div>
     </Dialog>
   );
@@ -25,8 +29,10 @@ ListDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   noImages: PropTypes.bool,
+  limitTo: PropTypes.number,
 };
 
 ListDialog.defaultProps = {
   noImages: false,
+  limitTo: 20,
 };
