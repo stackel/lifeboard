@@ -1,13 +1,56 @@
-GB Latest Videos
-  - Filter duplicates
+Allsvenskan:
+  - Visa enbart Säsongsstart -> 1vecka efter säsongsslut
 
-Philips hue
-  - Color presets
+Bandy
+  - Visa enbart Säsongsstart -> 1vecka efter säsongsslut
+
+Game Releases
+  - Filtrera på xbox/switch & kanske genre
+
+GB Latest Videos
+  - filtrera på show
+  - kanske ta bort
+
+Live Shows:
+  filtrera infinite på shows
+
+GB upcoming
+  - filtrera på show
+  - göra om till - 1 dag + 7 dagar typ och ersätta latest videos?
+
+news:
+  -?
+
+podcasts
+  -?
+
+recipes
+  - bara visa några dagar efter nytt
+
+stocks
+  - bara visa om skiljer sig +- 5% från gårdagen
+
+systembolaget
+  - bara visa om release inom 7 dagar
+
+upcoming music
+  - 14 dagar framåt, visa bara om genre
 
 Cocktail Hour
   - Hook up Firebase
   - Google auth
   - Get try Soon (randomize and display thursday ev - sunday mor)
 
+påminnelser
+ - årsdag 5
+ - lön 25
+ - tidsrapportering sista vardagen månad
+
 Beer recipes:
-https://api.punkapi.com/v2/beers
+ https://api.punkapi.com/v2/beers
+
+ GB Latest Videos
+   - Filter duplicates
+
+ Philips hue
+   - Color presets
