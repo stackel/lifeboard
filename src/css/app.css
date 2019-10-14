@@ -7,3 +7,15 @@ body {
 .of-c {
   object-fit: cover;
 }
+
+.w-15 {
+  width: 15%;
+}
+
+.w-85 {
+  width: 85%;
+}
+
+.h-12-rem {
+  height: 10rem;
+}

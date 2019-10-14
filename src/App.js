@@ -5,22 +5,39 @@ import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/giant-bomb/GameReleases';
 import Recipes from './components/dashboard/recipes/Recipes';
 import Standings from './components/dashboard/allsvenskan/Standings';
-// import Holidays from './components/dashboard/holidays/Holidays';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
-// import DeparturesWithFetch from './components/dashboard/departures/DeparturesWithFetch';
 import News from './components/dashboard/news/News';
 import GBUpcoming from './components/dashboard/giant-bomb/UpcomingVideos';
 import UpcomingBeer from './components/dashboard/systembolaget/UpcomingBeer';
 import Stocks from './components/dashboard/stocks/Stocks';
 import SunriseSunset from './components/dashboard/sunrise-sunset/SunriseSunset';
 
+const components = [
+  <GBCurrentLive />,
+  <GameReleases />,
+  <GBUpcoming />,
+  <UpcomingMusic />,
+  <News
+    label="News"
+    filter={{ type: 'sources', value: 'reuters' }}
+  />,
+  <GBLatestVideos />,
+  <Stocks symbol="STO:IMMU" />,
+  <UpcomingBeer />,
+  <Standings />,
+  <Recipes />,
+];
+
+const componentWidth = 'w-20';
+const componentPadding = 'ph2';
+
 function App() {
   return (
-    <div className="bg-near-black mt4">
+    <div className="bg-near-black mh3">
 
-      <div className="cf fl w-20 pt5 pr2">
+      <div className="cf fl w-15 pt5">
         <div className="tc">
           <Time />
           <div className="mv4">
@@ -28,52 +45,19 @@ function App() {
           </div>
           <Weather />
         </div>
-        <div className="pt5 tc">
+        <div className="pt4 tc">
           <PhilipsHue />
         </div>
       </div>
 
-      <div className="fl w-80 pr4">
-        <div className="cf ">
-          <div className="fl w-20 pr2">
-            <GBCurrentLive />
+      <div className="fl w-85 cf">
+        {
+        components.map(component => (
+          <div className={`${componentWidth} ${componentPadding} fl`}>
+            {component}
           </div>
-          <div className="fl w-20 pr2 pl2">
-            <GameReleases />
-          </div>
-          <div className="fl w-20 pl2 pr2">
-            <GBUpcoming />
-          </div>
-          <div className="fl w-20 pl2 pr2">
-            <UpcomingMusic />
-          </div>
-          <div className="fl w-20 pl2">
-            <News
-              label="News"
-              filter={{ type: 'sources', value: 'reuters' }}
-            />
-          </div>
-        </div>
-
-        <div className="cf">
-          <div className="fl w-20 pr2 pl2">
-            <GBLatestVideos />
-          </div>
-          <div className="fl w-20 pl2 pr2">
-            <Stocks symbol="STO:IMMU" />
-          </div>
-          <div className="fl w-20 pl2 pr2">
-            <UpcomingBeer />
-
-          </div>
-          <div className="fl w-20 pl2 pr2">
-            <Standings />
-          </div>
-          <div className="fl w-20 pl2">
-            <Recipes />
-
-          </div>
-        </div>
+        ))
+      }
       </div>
     </div>
   );

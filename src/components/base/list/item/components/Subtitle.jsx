@@ -7,7 +7,7 @@ export default function Subtitle({ subtitle, loading }) {
     return <div className="bg-dark-gray h1 w4 mv2" />;
   }
   return (
-    <span className="db sans-serif f5 light-silver truncate">
+    <span className="db sans-serif f7 light-silver truncate">
       {subtitle}
     </span>
   );

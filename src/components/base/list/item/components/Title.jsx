@@ -7,7 +7,7 @@ export default function Title({ title, loading, link }) {
     return <div className="bg-dark-gray h1 w5 mv2" />;
   }
 
-  const textClasses = 'db sans-serif f4 mv2 near-white';
+  const textClasses = 'db sans-serif f6 b mv2 near-white';
   if (link) {
     return (
       <a

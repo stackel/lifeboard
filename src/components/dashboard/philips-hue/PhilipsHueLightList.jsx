@@ -13,16 +13,16 @@ export default function PhilipsHueLightList({
   return (
     <div>
       <div className="cf">
-        <h2 className="near-white sans-serif f2 mt2 mb2"> Light Control </h2>
+        <h2 className="near-white sans-serif f4 mt2 mb2"> Light Control </h2>
         <div className="" />
-        <div className=" tc pt3 pb4">
+        <div className="tc pt3 pb3">
           <button
             type="button"
             onClick={() => onAllLightsClicked(allLightsOn)}
-            className={`${allLightsButtonClasses} h3 w3 v-mid br-100 pointer link grow dim`}
+            className={`${allLightsButtonClasses} h2 w2 v-mid br-100 pointer link grow dim`}
           />
           <div>
-            <span className="near-white sans-serif f4 truncate">
+            <span className="db near-white sans-serif f6 fw5 pt2 truncate">
               All lights
             </span>
           </div>

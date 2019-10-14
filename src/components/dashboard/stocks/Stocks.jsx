@@ -51,29 +51,29 @@ export default function Stocks({ symbol }) {
 
         return (
           <div className="">
-            <h2 className="near-white sans-serif f3 mb3">
+            <h2 className="near-white sans-serif f5 mb2">
             Stocks
             </h2>
-            <h2 className="sans-serif f6 light-silver mb3">
+            <h2 className="sans-serif f7 light-silver fw5 mb3">
               {`Updated ${moment().format('HH:mm')}`}
             </h2>
-            <div className="sans-serif light-silver tc f3 mt5">
+            <div className="sans-serif light-silver tc f4 mt5">
               {symbol}
             </div>
-            <div className=" tc f1 near-white sans-serif mv3 b">
+            <div className=" tc f2 near-white sans-serif mv3 b">
               {latestClose.toFixed(2)}
             </div>
             {
               latestClose > nextToLatestClose
                 ? (
-                  <div className="tc sans-serif f3 green">
+                  <div className="tc sans-serif f4 green">
                     {`${Math.abs((((nextToLatestClose / latestClose) - 1) * 100)
                       .toFixed(1))}%`}
                     <span> &#8599; </span>
                   </div>
                 )
                 : (
-                  <div className="tc sans-serif f3 red">
+                  <div className="tc sans-serif f4 red">
                     {`${Math.abs((((nextToLatestClose / latestClose) - 1) * 100)
                       .toFixed(1))}%`}
                     <span> &#8601; </span>
