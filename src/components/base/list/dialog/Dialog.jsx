@@ -13,7 +13,7 @@ export default function ListDialog({
       open={open}
       onClose={onClose}
     >
-      <div className="ph4 pv2 bg-near-black">
+      <div className="ph4 pv2 bg-near-black min-w6">
         <List
           limitTo={limitTo}
           noImages={noImages}

@@ -19,3 +19,7 @@ body {
 .h-12-rem {
   height: 10rem;
 }
+
+.min-w6 {
+  min-width: 32rem;
+}
