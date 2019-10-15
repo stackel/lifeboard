@@ -14,7 +14,7 @@ export default function ListWithFetch({
       params={params}
       fetchInterval={fetchInterval}
     >
-      {(response, error, loading) => {
+      {(response, loading, error) => {
         if (loading) {
           return (
             <List

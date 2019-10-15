@@ -6,6 +6,10 @@ import Stocks from './Stocks';
 storiesOf('Components/Stocks', module)
   .add('Stocks', () => (
     <div className="mw5">
-      <Stocks symbol="STO:IMMU" />
+      <Stocks
+        symbol="STO:IMMU"
+        nStocks={815}
+        invested={10492}
+      />
     </div>
   ));

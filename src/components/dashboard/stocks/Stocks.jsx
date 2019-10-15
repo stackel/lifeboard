@@ -5,7 +5,7 @@ import moment from 'moment';
 import FetchWithInterval from '../../base/list/FetchWithInterval';
 
 const API_KEY = 'GIUYQBXKZDY2VNT7';
-export default function Stocks({ symbol }) {
+export default function Stocks({ symbol, nStocks, invested }) {
   return (
     <FetchWithInterval
       url="https://www.alphavantage.co/query"
@@ -57,11 +57,11 @@ export default function Stocks({ symbol }) {
             <h2 className="sans-serif f7 light-silver fw5 mb3">
               {`Updated ${moment().format('HH:mm')}`}
             </h2>
-            <div className="sans-serif light-silver tc f4 mt5">
+            <div className="sans-serif light-silver tc f4 mt4">
               {symbol}
             </div>
             <div className=" tc f2 near-white sans-serif mv3 b">
-              {latestClose.toFixed(2)}
+              {`${latestClose.toFixed(2)} kr`}
             </div>
             {
               latestClose > nextToLatestClose
@@ -80,6 +80,26 @@ export default function Stocks({ symbol }) {
                   </div>
                 )
             }
+            {
+              nStocks && (
+              <div className="tc mt3">
+                <span className="white sans-serif f4 fw3 lh-copy">
+                  {`${Math.round(nStocks * latestClose)} kr  `}
+                  {
+                    invested && (
+                      <span className="f5">
+                        (
+                        {`${((((nStocks * latestClose) / invested) - 1) * 100)
+                          .toFixed(1)}%`}
+)
+                      </span>
+                    )
+                  }
+                </span>
+              </div>
+              )
+            }
+
           </div>
         );
       }}
@@ -89,4 +109,11 @@ export default function Stocks({ symbol }) {
 
 Stocks.propTypes = {
   symbol: PropTypes.string.isRequired,
+  nStocks: PropTypes.number,
+  invested: PropTypes.number,
+};
+
+Stocks.defaultProps = {
+  nStocks: null,
+  invested: null,
 };

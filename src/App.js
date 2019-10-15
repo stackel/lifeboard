@@ -24,7 +24,11 @@ const components = [
     filter={{ type: 'sources', value: 'reuters' }}
   />,
   <GBLatestVideos />,
-  <Stocks symbol="STO:IMMU" />,
+  <Stocks
+    symbol="STO:IMMU"
+    nStocks={815}
+    invested={10492}
+  />,
   <UpcomingBeer />,
   <Standings />,
   <Recipes />,
