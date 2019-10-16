@@ -33,7 +33,6 @@ const components = [
   <UpcomingBeer />,
   <Standings />,
   <Recipes />,
-  <Podcasts />,
 ];
 
 const componentWidth = 'w-20';
@@ -59,7 +58,7 @@ function App() {
       <div className="fl w-85 cf">
         {
         components.map(component => (
-          <div className={`${componentWidth} ${componentPadding} fl`}>
+          <div className={`${componentWidth} ${componentPadding} fl min-h6 `}>
             {component}
           </div>
         ))
