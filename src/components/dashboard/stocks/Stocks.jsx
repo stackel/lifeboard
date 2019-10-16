@@ -81,23 +81,15 @@ export default function Stocks({ symbol, nStocks, invested }) {
                 )
             }
             {
-              nStocks && (
-              <div className="tc mt3">
-                <span className="white sans-serif f4 fw3 lh-copy">
-                  {`${Math.round(nStocks * latestClose)} kr  `}
-                  {
-                    invested && (
-                      <span className="f5">
-                        (
-                        {`${((((nStocks * latestClose) / invested) - 1) * 100)
-                          .toFixed(1)}%`}
-)
-                      </span>
+              (nStocks && invested) && (
+                <div className="tc mt3">
+                  <span className="white sans-serif f6 b lh-copy">
+                      (
+                    {`${((((nStocks * latestClose) / invested) - 1) * 100)
+                      .toFixed(1)}%`}
                     )
-                  }
-                </span>
-              </div>
-              )
+                  </span>
+                </div>)
             }
 
           </div>
@@ -113,7 +105,7 @@ Stocks.propTypes = {
   invested: PropTypes.number,
 };
 
-Stocks.defaultProps = {
+Stocks.defaultProps = {
   nStocks: null,
   invested: null,
 };

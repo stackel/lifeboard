@@ -13,6 +13,7 @@ import GBUpcoming from './components/dashboard/giant-bomb/UpcomingVideos';
 import UpcomingBeer from './components/dashboard/systembolaget/UpcomingBeer';
 import Stocks from './components/dashboard/stocks/Stocks';
 import SunriseSunset from './components/dashboard/sunrise-sunset/SunriseSunset';
+import Podcasts from './components/dashboard/podcasts/Podcasts';
 
 const components = [
   <GBCurrentLive />,
@@ -32,6 +33,7 @@ const components = [
   <UpcomingBeer />,
   <Standings />,
   <Recipes />,
+  <Podcasts />,
 ];
 
 const componentWidth = 'w-20';
