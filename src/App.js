@@ -1,8 +1,8 @@
 import React from 'react';
-import GBLatestVideos from './components/dashboard/giant-bomb/LatestVideos';
+import GBLatestVideos from './components/dashboard/giant-bomb/LatestVideos/LatestVideos';
 // import GBCurrentLive from './components/dashboard/giant-bomb/LiveShows/LiveShows';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
-import GameReleases from './components/dashboard/giant-bomb/GameReleases';
+import GameReleases from './components/dashboard/game-releases/GameReleases';
 import Recipes from './components/dashboard/recipes/Recipes';
 import Standings from './components/dashboard/allsvenskan/Standings';
 import Time from './components/dashboard/time/Time';

@@ -45,7 +45,7 @@ export default function ListWithFetch({
 
         if (response) {
           const items = transformResponse(response);
-          if (!items) {
+          if (!items || !items.length) {
             return null;
           }
           return (

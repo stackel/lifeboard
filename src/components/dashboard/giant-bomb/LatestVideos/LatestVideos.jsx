@@ -1,12 +1,14 @@
 import React from 'react';
 import moment from 'moment';
 
-import { API_URL, API_KEY } from './config';
-import ListWithFetch from '../../base/list/ListWithFetch';
+import { API_URL, API_KEY } from '../config';
+import ListWithFetch from '../../../base/list/ListWithFetch';
 
-export default function GBLatestVideos() {
+/* eslint-disable react/prop-types */
+export default function GBLatestVideos({ mocked }) {
   return (
     <ListWithFetch
+      mocked={mocked}
       label="Latest Giant Bomb Videos"
       url={`${API_URL}videos`}
       params={{

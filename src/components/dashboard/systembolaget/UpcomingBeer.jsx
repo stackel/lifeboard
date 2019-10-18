@@ -42,12 +42,8 @@ export default function UpcomingBeer() {
                 label={LABEL}
                 noImages
                 limitTo={6}
-                items={beers.filter(beer => beer.IsInStoreSearchAssortment.includes('0237'),
-                /* || beer.IsInStoreSearchAssortment.includes('0220')
-                || beer.IsInStoreSearchAssortment.includes('0167')
-                || beer.IsInStoreSearchAssortment.includes('0202') */
-                /* eslint-disable function-paren-newline */
-                ).map(beer => (
+                items={beers.filter(beer => beer.IsInStoreSearchAssortment
+                  .includes('0237')).map(beer => (
                   {
                     title: `${beer.ProductNameBold} ${beer.ProductNameThin || ''}`,
                     subtitle: moment(beer.SellStartDate).calendar(null, {

@@ -63,13 +63,15 @@ export default function List({
       {
         items.length > limitTo
         && (
-        <Button
-          size="small"
-          color="primary"
-          onClick={dialogOpenClicked}
-        >
+          <div className="tc">
+            <Button
+              size="small"
+              color="primary"
+              onClick={dialogOpenClicked}
+            >
           Show more...
-        </Button>
+            </Button>
+          </div>
         )
     }
       <Dialog

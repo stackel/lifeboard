@@ -12,7 +12,6 @@ export default function GBUpcoming({ mocked }) {
       url="https://www.giantbomb.com/upcoming_json"
       fetchInterval={1000 * 60 * 5}
       firstItemSubtitleOnImage
-      nItemsDisplay={5}
       transformResponse={response => (response.data.liveNow
         ? [response.data.liveNow, ...response.data.upcoming]
         : response.data.upcoming)}

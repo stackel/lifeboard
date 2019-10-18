@@ -89,7 +89,8 @@ export default function Stocks({ symbol, nStocks, invested }) {
                       .toFixed(1)}%`}
                     )
                   </span>
-                </div>)
+                </div>
+              )
             }
 
           </div>

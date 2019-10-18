@@ -3,11 +3,13 @@ import moment from 'moment';
 
 import ListWithFetch from '../../base/list/ListWithFetch';
 
-const GENRE_ID_LIST = ['18'];
+const GENRE_ID_LIST = ['18', '15'];
 
-export default function UpcomingMusic() {
+/* eslint-disable react/prop-types */
+export default function UpcomingMusic({ mocked }) {
   return (
     <ListWithFetch
+      mocked={mocked}
       label="Album Releases"
       url="https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json"
       fetchInterval={1000 * 60 * 30}
@@ -16,6 +18,7 @@ export default function UpcomingMusic() {
           genre => GENRE_ID_LIST.includes(genre.genreId),
         ).length,
       )}
+      firstItemSubtitleOnImage
       transformItem={album => ({
         title: `${album.artistName} - ${album.name}`,
         subtitle: moment(album.releaseDate).calendar(null, {

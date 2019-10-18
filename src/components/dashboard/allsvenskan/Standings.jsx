@@ -2,9 +2,11 @@ import React from 'react';
 
 import ListWithFetch from '../../base/list/ListWithFetch';
 
-export default function Standings() {
+/* eslint-disable react/prop-types */
+export default function Standings({ mocked }) {
   return (
     <ListWithFetch
+      mocked={mocked}
       label="Allsvenskans tabell"
       url="https://allsvenskan-api.herokuapp.com/as"
       fetchInterval={1000 * 60 * 10}

@@ -4,9 +4,10 @@ import moment from 'moment';
 
 import ListWithFetch from '../../base/list/ListWithFetch';
 
-export default function News({ filter, label }) {
+export default function News({ filter, label, mocked }) {
   return (
     <ListWithFetch
+      mocked={mocked}
       label={label}
       url="https://newsapi.org/v2/top-headlines"
       fetchInterval={1000 * 60 * 1}

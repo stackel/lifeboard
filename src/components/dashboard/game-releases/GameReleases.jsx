@@ -2,11 +2,13 @@ import React from 'react';
 import moment from 'moment';
 
 import ListWithFetch from '../../base/list/ListWithFetch';
-import { API_KEY, API_URL } from './config';
+import { API_KEY, API_URL } from '../giant-bomb/config';
 
-export default function GameReleases() {
+/* eslint-disable react/prop-types */
+export default function GameReleases({ mocked }) {
   return (
     <ListWithFetch
+      mocked={mocked}
       label="Game Releases"
       url={`${API_URL}games`}
       params={{
@@ -16,6 +18,7 @@ export default function GameReleases() {
         ${moment().format('YYYY-MM-DD')}|
         ${moment().add(1, 'month').format('YYYY-MM-DD')}`,
       }}
+      firstItemSubtitleOnImage
       fetchInterval={1000 * 60 * 10}
       transformResponse={response => response.data.results
         .filter(game => game.expected_release_month !== null
