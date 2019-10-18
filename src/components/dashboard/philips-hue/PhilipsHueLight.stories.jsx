@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import PhilipsHueLight from './PhilipsHueLight';
-import { philipsHueLightList } from '../../../resources/data/mocked/philips-hue';
+import { philipsHueLightList } from './mocked';
 
 const light = philipsHueLightList[0];
 

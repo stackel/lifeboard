@@ -2,8 +2,6 @@ import { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-import { CORS_ANYWHERE_URL } from '../../../resources/config/api';
-
 export default class FetchWithInterval extends Component {
   constructor(props) {
     super(props);
@@ -33,9 +31,9 @@ export default class FetchWithInterval extends Component {
 
   fetch = () => {
     const {
-      url, params, corsAnywhere, headers,
+      url, params, headers,
     } = this.props;
-    axios.get((corsAnywhere ? CORS_ANYWHERE_URL : '') + url, {
+    axios.get(url, {
       params, headers: headers || {},
     }).then((response) => {
       this.setState({
@@ -60,13 +58,11 @@ FetchWithInterval.propTypes = {
   url: PropTypes.string.isRequired,
   children: PropTypes.func.isRequired,
   params: PropTypes.objectOf(PropTypes.string),
-  corsAnywhere: PropTypes.bool,
   headers: PropTypes.objectOf(PropTypes.string),
 };
 
 FetchWithInterval.defaultProps = {
   fetchInterval: 60000,
   params: null,
-  corsAnywhere: false,
   headers: null,
 };

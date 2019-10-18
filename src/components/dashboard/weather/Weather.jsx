@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { API_URL, API_KEY, FETCH_INTERVAL }
-  from '../../../resources/config/weather';
+import { API_URL, API_KEY, FETCH_INTERVAL } from './config';
 import WeatherView from './WeatherView';
 
 export default class Weather extends Component {

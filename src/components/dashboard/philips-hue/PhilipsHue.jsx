@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { API_URL, FETCH_INTERVAL } from '../../../resources/config/philips-hue';
+import { API_URL, FETCH_INTERVAL } from './config';
 import PhilipsHueLightList from './PhilipsHueLightList';
 
 export default class PhilipsHue extends Component {

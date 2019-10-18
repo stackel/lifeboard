@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import WeatherView from './WeatherView';
-import { weather } from '../../../resources/data/mocked/weather';
+import { weather } from './mocked';
 
 storiesOf('Components/Weather', module)
   .add('Weather View', () => (
