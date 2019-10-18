@@ -19,6 +19,7 @@ storiesOf('Base/List/Item', module)
         }}
         showImage={boolean('Show Image', true)}
         loading={boolean('loading', false)}
+        subtitleOverImage={boolean('Subtitle Over Image', false)}
       />
     </div>
   ));
