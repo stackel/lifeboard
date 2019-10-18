@@ -16,23 +16,23 @@ import SunriseSunset from './components/dashboard/sunrise-sunset/SunriseSunset';
 import Podcasts from './components/dashboard/podcasts/Podcasts';
 
 const components = [
-  // <GBCurrentLive />,
-  <GameReleases />,
   <GBUpcoming />,
+  <GameReleases />,
   <UpcomingMusic />,
   <News
     label="News"
     filter={{ type: 'sources', value: 'reuters' }}
   />,
+  <UpcomingBeer />,
   <GBLatestVideos />,
   <Stocks
     symbol="STO:IMMU"
     nStocks={815}
     invested={10492}
   />,
-  <UpcomingBeer />,
-  <Standings />,
   <Recipes />,
+  <Standings />,
+  <Podcasts />,
 ];
 
 const componentWidth = 'w-20';

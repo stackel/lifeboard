@@ -14,14 +14,7 @@ export default function Podcasts() {
         { ignoreAttributes: false }).rss.channel.item}
       transformItem={item => ({
         title: item.title,
-        subtitle: moment(item.pubDate).calendar(null, {
-          lastDay: '[Yesterday]',
-          sameDay: '[Today]',
-          nextDay: '[Tomorrow]',
-          lastWeek: '[last] dddd',
-          nextWeek: 'dddd',
-          sameElse: 'L',
-        }),
+        subtitle: moment(item.pubDate).calendar(),
         url: item.link,
         imageUrl: item['itunes:image']['@_href'],
       })}

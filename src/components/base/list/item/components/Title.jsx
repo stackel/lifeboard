@@ -9,7 +9,7 @@ export default function Title({
     return <div className="bg-dark-gray h1 w5 mv2" />;
   }
 
-  const textClasses = `${large ? 'f5 b' : 'f6 fw5'} db sans-serif mv2 near-white`;
+  const textClasses = `${large ? 'f6 b' : 'f6 fw5'} db sans-serif mv2 near-white`;
   if (link) {
     return (
       <a
