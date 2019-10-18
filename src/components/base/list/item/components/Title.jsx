@@ -14,7 +14,7 @@ export default function Title({
     return (
       <a
         href={link}
-        className={`${textClasses} link`}
+        className={`${textClasses} link truncate-two-lines`}
         target="_blank"
         rel="noopener noreferrer"
       >
