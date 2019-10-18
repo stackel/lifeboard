@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import {
-  withKnobs, boolean,
+  withKnobs, boolean, text,
 } from '@storybook/addon-knobs';
 
 import Image from './Image';
@@ -15,6 +15,7 @@ storiesOf('Base/List/Item/Components', module)
         alt="Image alt"
         show={boolean('Show', true)}
         loading={boolean('loading', false)}
+        textOverlay={text('Text Overlay', null)}
       />
     </div>
   ));
