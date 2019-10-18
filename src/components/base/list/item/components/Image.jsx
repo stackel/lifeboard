@@ -24,7 +24,7 @@ export default function Image({
     return (
       <div className="relative">
         {img}
-        <span className="darken-bottom db w-100 absolute bottom-0 left-0 pa3 sans-serif white f3 b">
+        <span className="darken-bottom db w-100 absolute bottom-0 left-0 pv2 sans-serif white f3 b">
           {textOverlay}
         </span>
       </div>

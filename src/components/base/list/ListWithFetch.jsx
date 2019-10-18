@@ -6,8 +6,22 @@ import FetchWithInterval from './FetchWithInterval';
 
 export default function ListWithFetch({
   url, label, params, fetchInterval, nItemsDisplay,
-  noImages, nItemsTotal, transformResponse, transformItem,
+  noImages, nItemsTotal, transformResponse, transformItem, mocked,
+  firstItemSubtitleOnImage,
 }) {
+  if (mocked) {
+    return (
+      <List
+        label={label}
+        noImages={noImages}
+        limitTo={nItemsDisplay}
+        firstItemSubtitleOnImage={firstItemSubtitleOnImage}
+        items={transformResponse(mocked)
+          .map(mockedItem => transformItem(mockedItem))
+          .slice(0, nItemsTotal)}
+      />
+    );
+  }
   return (
     <FetchWithInterval
       url={url}
@@ -39,6 +53,7 @@ export default function ListWithFetch({
               label={label}
               noImages={noImages}
               limitTo={nItemsDisplay}
+              firstItemSubtitleOnImage={firstItemSubtitleOnImage}
               items={items
                 .map(item => transformItem(item))
                 .slice(0, nItemsTotal)}
@@ -62,6 +77,7 @@ ListWithFetch.propTypes = {
   noImages: PropTypes.bool,
   transformResponse: PropTypes.func,
   transformItem: PropTypes.func,
+  firstItemSubtitleOnImage: PropTypes.bool,
 };
 
 ListWithFetch.defaultProps = {
@@ -73,4 +89,5 @@ ListWithFetch.defaultProps = {
   noImages: false,
   transformResponse: response => response,
   transformItem: item => item,
+  firstItemSubtitleOnImage: false,
 };

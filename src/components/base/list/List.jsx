@@ -55,6 +55,7 @@ export default function List({
                 item={item}
                 showImage={i < 1 && !noImages}
                 subtitleOverImage={i < 1 && firstItemSubtitleOnImage}
+                largeTitle={i < 1}
               />
             </div>
           ))

@@ -1,0 +1,31 @@
+import React from 'react';
+import moment from 'moment';
+
+import ListWithFetch from '../../../base/list/ListWithFetch';
+
+/* eslint-disable react/prop-types */
+export default function GBUpcoming({ mocked }) {
+  return (
+    <ListWithFetch
+      mocked={mocked}
+      label="Giant Bomb Upcoming"
+      url="https://www.giantbomb.com/upcoming_json"
+      fetchInterval={1000 * 60 * 5}
+      firstItemSubtitleOnImage
+      nItemsDisplay={5}
+      transformResponse={response => (response.data.liveNow
+        ? [response.data.liveNow, ...response.data.upcoming]
+        : response.data.upcoming)}
+      transformItem={item => (
+        {
+          title: item.title,
+          subtitle: item.date ? moment(item.date)
+            .add(9, 'hours')
+            .calendar() : 'LIVE',
+          imageUrl: `https://${item.image}`,
+          url: 'https://www.giantbomb.com',
+        }
+      )}
+    />
+  );
+}

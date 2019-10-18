@@ -6,7 +6,7 @@ import Subtitle from './components/Subtitle';
 import Image from './components/Image';
 
 export default function Item({
-  item, showImage, loading, subtitleOverImage,
+  item, showImage, loading, subtitleOverImage, largeTitle,
 }) {
   return (
     <div>
@@ -17,10 +17,20 @@ export default function Item({
         show={showImage}
         loading={loading}
       />
-      <Title link={item.url} title={item.title} loading={loading} />
+      <Title
+        link={item.url}
+        title={item.title}
+        loading={loading}
+        large={largeTitle}
+      />
       {
         !subtitleOverImage
-        && <Subtitle subtitle={item.subtitle} loading={loading} />
+        && (
+        <Subtitle
+          subtitle={item.subtitle}
+          loading={loading}
+        />
+        )
       }
     </div>
   );
@@ -36,10 +46,12 @@ Item.propTypes = {
   showImage: PropTypes.bool.isRequired,
   loading: PropTypes.bool,
   subtitleOverImage: PropTypes.bool,
+  largeTitle: PropTypes.bool,
 };
 
 Item.defaultProps = {
   loading: false,
   item: {},
   subtitleOverImage: false,
+  largeTitle: false,
 };

@@ -14,6 +14,8 @@ storiesOf('Base/List/Item/Components', module)
         title={text('Text', 'Subtitle')}
         loading={boolean('Loading', false)}
         link={text('Link', null)}
+        large={boolean('Large', false)}
+
       />
     </div>
   ));

@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-export default function Title({ title, loading, link }) {
+export default function Title({
+  title, loading, link, large,
+}) {
   if (loading) {
     return <div className="bg-dark-gray h1 w5 mv2" />;
   }
 
-  const textClasses = 'db sans-serif f6 b mv2 near-white';
+  const textClasses = `${large ? 'f5 mb3 b' : 'f6 mb2 fw5'} db sans-serif mt2 near-white`;
   if (link) {
     return (
       <a
@@ -32,10 +34,12 @@ Title.propTypes = {
   title: PropTypes.string,
   loading: PropTypes.bool,
   link: PropTypes.string,
+  large: PropTypes.bool,
 };
 
 Title.defaultProps = {
   title: '',
   loading: false,
   link: null,
+  large: false,
 };

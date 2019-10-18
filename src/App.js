@@ -1,6 +1,6 @@
 import React from 'react';
 import GBLatestVideos from './components/dashboard/giant-bomb/LatestVideos';
-import GBCurrentLive from './components/dashboard/giant-bomb/LiveShows';
+// import GBCurrentLive from './components/dashboard/giant-bomb/LiveShows/LiveShows';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/giant-bomb/GameReleases';
 import Recipes from './components/dashboard/recipes/Recipes';
@@ -9,14 +9,14 @@ import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
 import News from './components/dashboard/news/News';
-import GBUpcoming from './components/dashboard/giant-bomb/UpcomingVideos';
+import GBUpcoming from './components/dashboard/giant-bomb/UpcomingVideos/UpcomingVideos';
 import UpcomingBeer from './components/dashboard/systembolaget/UpcomingBeer';
 import Stocks from './components/dashboard/stocks/Stocks';
 import SunriseSunset from './components/dashboard/sunrise-sunset/SunriseSunset';
 import Podcasts from './components/dashboard/podcasts/Podcasts';
 
 const components = [
-  <GBCurrentLive />,
+  // <GBCurrentLive />,
   <GameReleases />,
   <GBUpcoming />,
   <UpcomingMusic />,
