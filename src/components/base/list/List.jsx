@@ -8,7 +8,7 @@ import Item from './item/Item';
 import Dialog from './dialog/Dialog';
 
 export default function List({
-  items, loading, limitTo, label, noImages,
+  items, loading, limitTo, label, noImages, firstItemSubtitleOnImage,
 }) {
   const [dialogOpen, setDialogOpen] = useState(false);
   function dialogOpenClicked() {
@@ -54,6 +54,7 @@ export default function List({
                 key={item.title}
                 item={item}
                 showImage={i < 1 && !noImages}
+                subtitleOverImage={i < 1 && firstItemSubtitleOnImage}
               />
             </div>
           ))
@@ -88,6 +89,7 @@ List.propTypes = {
   limitTo: PropTypes.number,
   label: PropTypes.string,
   noImages: PropTypes.bool,
+  firstItemSubtitleOnImage: PropTypes.bool,
 };
 
 List.defaultProps = {
@@ -96,4 +98,5 @@ List.defaultProps = {
   limitTo: 3,
   label: '',
   noImages: false,
+  firstItemSubtitleOnImage: false,
 };

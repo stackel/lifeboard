@@ -19,6 +19,8 @@ storiesOf('Base/List', module)
           url: newsItem.url,
         }))}
         loading={boolean('loading', false)}
+        firstItemSubtitleOnImage={boolean('Set first item subtitle as image overlay', false)}
+
       />
     </div>
   ));
