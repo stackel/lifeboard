@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import PhilipsHueLightList from './PhilipsHueLightList';
-import { philipsHueLightList } from '../../../resources/data/mocked/philips-hue';
+import { philipsHueLightList } from './mocked';
 
 storiesOf('Components/Philips Hue', module)
   .add('Philips Hue Light List', () => (

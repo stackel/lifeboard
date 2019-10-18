@@ -4,8 +4,10 @@ import {
   withKnobs, boolean,
 } from '@storybook/addon-knobs';
 
-import { newsItems } from '../../../resources/data/mocked/news';
+import { response } from '../../dashboard/news/mocked';
 import List from './List';
+
+const newsItems = response.data.articles;
 
 storiesOf('Base/List', module)
   .addDecorator(withKnobs)

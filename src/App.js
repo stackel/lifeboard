@@ -1,6 +1,5 @@
 import React from 'react';
 import GBLatestVideos from './components/dashboard/giant-bomb/LatestVideos/LatestVideos';
-// import GBCurrentLive from './components/dashboard/giant-bomb/LiveShows/LiveShows';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
 import Recipes from './components/dashboard/recipes/Recipes';
@@ -14,6 +13,7 @@ import UpcomingBeer from './components/dashboard/systembolaget/UpcomingBeer';
 import Stocks from './components/dashboard/stocks/Stocks';
 import SunriseSunset from './components/dashboard/sunrise-sunset/SunriseSunset';
 import Podcasts from './components/dashboard/podcasts/Podcasts';
+import XboxNews from './components/dashboard/xbox-wire/News';
 
 const components = [
   <GBUpcoming />,
@@ -23,7 +23,7 @@ const components = [
     label="News"
     filter={{ type: 'sources', value: 'reuters' }}
   />,
-  <UpcomingBeer />,
+  <XboxNews />,
   <GBLatestVideos />,
   <Stocks
     symbol="STO:IMMU"
@@ -32,6 +32,7 @@ const components = [
   />,
   <Recipes />,
   <Standings />,
+  <UpcomingBeer />,
   <Podcasts />,
 ];
 
