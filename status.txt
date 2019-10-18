@@ -9,14 +9,6 @@ Game Releases
 
 GB Latest Videos
   - filtrera på show
-  - kanske ta bort
-
-Live Shows:
-  filtrera infinite på shows
-
-GB upcoming
-  - filtrera på show
-  - göra om till - 1 dag + 7 dagar typ och ersätta latest videos?
 
 news:
   -?
@@ -28,7 +20,7 @@ recipes
   - bara visa några dagar efter nytt
 
 stocks
-  - bara visa om skiljer sig +- 5% från gårdagen
+  - bara visa om skiljer sig +- 2% från gårdagen
 
 systembolaget
   - bara visa om release inom 7 dagar
@@ -48,9 +40,6 @@ påminnelser
 
 Beer recipes:
  https://api.punkapi.com/v2/beers
-
- GB Latest Videos
-   - Filter duplicates
 
  Philips hue
    - Color presets
