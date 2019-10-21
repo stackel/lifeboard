@@ -14,7 +14,11 @@ export default class FetchWithInterval extends Component {
   }
 
   componentDidMount() {
-    const { fetchInterval } = this.props;
+    const { fetchInterval, mocked } = this.props;
+    if (mocked) {
+      return;
+    }
+
     const intervalId = setInterval(() => {
       this.fetch();
     }, fetchInterval);
@@ -48,7 +52,10 @@ export default class FetchWithInterval extends Component {
 
   render() {
     const { loading, response, error } = this.state;
-    const { children } = this.props;
+    const { children, mocked } = this.props;
+    if (mocked) {
+      return children(mocked, false, null);
+    }
     return children(response, loading, error);
   }
 }

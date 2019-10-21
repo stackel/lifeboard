@@ -21,7 +21,7 @@ export default function List({
   if (loading) {
     return (
       <div>
-        <h2 className="near-white sans-serif f4 mb3">
+        <h2 className="near-white sans-serif f4 mb2">
           {label}
         </h2>
         {[...Array(limitTo).keys()]

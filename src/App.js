@@ -26,9 +26,16 @@ const components = [
   <XboxNews />,
   <GBLatestVideos />,
   <Stocks
-    symbol="STO:IMMU"
-    nStocks={815}
-    invested={10492}
+    stocks={[{
+      symbol: 'STO:IMMU',
+      acquiredAt: 12.87,
+    }, {
+      symbol: 'STO:SOLT',
+      acquiredAt: 20.50,
+    }, {
+      symbol: 'STO:EOLU-B',
+      acquiredAt: 123.00,
+    }]}
   />,
   <Recipes />,
   <Standings />,
