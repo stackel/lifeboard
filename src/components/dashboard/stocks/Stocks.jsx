@@ -25,8 +25,8 @@ export default function Stocks({ stocks, mocked }) {
             apikey: API_KEY,
             symbol: stock.symbol,
             function: 'TIME_SERIES_DAILY',
-            fetchInterval: '1000 * 60 * 5',
           }}
+          fetchInterval={1000 * 60 * 5}
         >
           {(response, loading, error) => {
             if (error || loading) {
