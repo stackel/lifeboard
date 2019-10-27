@@ -20,8 +20,12 @@ export default function GBUpcoming({ mocked }) {
           title: item.title,
           subtitle: item.date ? moment(item.date)
             .add(9, 'hours')
-            .calendar() : <><span className="live-pulse" />
-              <span className="ml2">Live</span></>,
+            .calendar() : (
+              <>
+                <span className="live-pulse" />
+                <span className="ml2">Live</span>
+              </>
+          ),
           imageUrl: `https://${item.image}`,
           url: 'https://www.giantbomb.com',
         }
