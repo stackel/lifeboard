@@ -7,11 +7,12 @@ import ListWithFetch from '../../base/list/ListWithFetch';
 export default function Podcasts() {
   return (
     <ListWithFetch
-      label="Podcasts"
+      label="New Podcasts"
       url="https://feed.rssunify.com/5da1b118c13c4/rss.xml"
       fetchInterval={1000 * 60 * 15}
       transformResponse={response => xmlParser.parse(response.data,
-        { ignoreAttributes: false }).rss.channel.item}
+        { ignoreAttributes: false }).rss.channel.item
+        .filter(item => moment(item.pubDate) > moment().subtract(2, 'day'))}
       transformItem={item => ({
         title: item.title,
         subtitle: moment(item.pubDate).calendar(),
