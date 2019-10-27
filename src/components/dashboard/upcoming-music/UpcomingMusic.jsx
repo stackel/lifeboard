@@ -3,7 +3,7 @@ import moment from 'moment';
 
 import ListWithFetch from '../../base/list/ListWithFetch';
 
-const GENRE_ID_LIST = ['18', '15'];
+const GENRE_ID_LIST = ['18'];
 
 /* eslint-disable react/prop-types */
 export default function UpcomingMusic({ mocked }) {

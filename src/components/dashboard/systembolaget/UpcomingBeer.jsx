@@ -33,7 +33,9 @@ export default function UpcomingBeer() {
         }
         if (response) {
           const beers = response.data.Hits;
-          if (!beers) {
+          const beersInStore = beers.filter(beer => beer.IsInStoreSearchAssortment
+            .includes('0237'));
+          if (!beersInStore || !beersInStore.length) {
             return null;
           }
           return (
@@ -42,8 +44,7 @@ export default function UpcomingBeer() {
                 label={LABEL}
                 noImages
                 limitTo={6}
-                items={beers.filter(beer => beer.IsInStoreSearchAssortment
-                  .includes('0237')).map(beer => (
+                items={beersInStore.map(beer => (
                   {
                     title: `${beer.ProductNameBold} ${beer.ProductNameThin || ''}`,
                     subtitle: moment(beer.SellStartDate).calendar(null, {
