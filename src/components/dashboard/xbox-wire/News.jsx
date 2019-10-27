@@ -7,7 +7,7 @@ import ListWithFetch from '../../base/list/ListWithFetch';
 export default function News() {
   return (
     <ListWithFetch
-      label="Xbox Game Pass"
+      label="New on Game Pass"
       url="https://news.xbox.com/en-us/feed/"
       fetchInterval={1000 * 60 * 15}
       transformResponse={response => xmlParser.parse(response.data,

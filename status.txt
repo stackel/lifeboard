@@ -4,9 +4,6 @@ Allsvenskan:
 Bandy
   - Visa enbart Säsongsstart -> 1vecka efter säsongsslut
 
-Game Releases
-  - Filtrera på xbox/switch & kanske genre
-
 GB Latest Videos
   - filtrera på show
 
@@ -24,9 +21,6 @@ stocks
 
 systembolaget
   - bara visa om release inom 7 dagar
-
-upcoming music
-  - 14 dagar framåt, visa bara om genre
 
 Cocktail Hour
   - Hook up Firebase

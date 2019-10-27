@@ -13,11 +13,12 @@ const getFirstImageSource = (s) => {
 export default function Recipes() {
   return (
     <ListWithFetch
-      label="Recipes"
+      label="New Recipes"
       url="https://www.budgetbytes.com/feed/"
       fetchInterval={1000 * 60 * 15}
       transformResponse={response => xmlParser
-        .parse(response.data).rss.channel.item}
+        .parse(response.data).rss.channel.item
+        .filter(item => moment(item.pubDate) > moment().subtract(5, 'day'))}
       transformItem={item => ({
         title: item.title,
         subtitle: moment(item.pubDate).calendar(),
