@@ -3,6 +3,7 @@ import GBLatestVideos from './components/dashboard/giant-bomb/LatestVideos/Lates
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
 import Recipes from './components/dashboard/recipes/Recipes';
+import RecipesBA from './components/dashboard/recipes/RecipesBA';
 import Standings from './components/dashboard/allsvenskan/Standings';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
@@ -38,6 +39,7 @@ const components = [
     }]}
   />,
   <Recipes />,
+  <RecipesBA />,
   <Standings />,
   <UpcomingBeer />,
   <Podcasts />,

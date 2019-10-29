@@ -13,14 +13,8 @@ news:
 podcasts
   -?
 
-recipes
-  - bara visa några dagar efter nytt
-
 stocks
   - bara visa om skiljer sig +- 2% från gårdagen
-
-systembolaget
-  - bara visa om release inom 7 dagar
 
 Cocktail Hour
   - Hook up Firebase
