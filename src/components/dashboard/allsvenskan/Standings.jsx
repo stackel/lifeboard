@@ -1,9 +1,15 @@
 import React from 'react';
+import moment from 'moment';
 
 import ListWithFetch from '../../base/list/ListWithFetch';
 
 /* eslint-disable react/prop-types */
 export default function Standings({ mocked }) {
+  const currentMonth = moment().month();
+  const isSeason = currentMonth >= 2 && currentMonth <= 10;
+  if (!isSeason) {
+    return null;
+  }
   return (
     <ListWithFetch
       mocked={mocked}
