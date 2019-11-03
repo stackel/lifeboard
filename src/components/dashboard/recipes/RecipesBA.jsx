@@ -18,7 +18,7 @@ export default function Recipes() {
       fetchInterval={1000 * 60 * 15}
       transformResponse={response => xmlParser
         .parse(response.data, { ignoreAttributes: false }).rss.channel.item
-        .filter(item => moment(item.pubDate) > moment().subtract(48, 'hour'))}
+        .filter(item => moment(item.pubDate) > moment().subtract(36, 'hour'))}
       transformItem={item => ({
         title: item.title,
         subtitle: moment(item.pubDate).calendar(),

@@ -12,7 +12,7 @@ export default function Podcasts() {
       fetchInterval={1000 * 60 * 15}
       transformResponse={response => xmlParser.parse(response.data,
         { ignoreAttributes: false }).rss.channel.item
-        .filter(item => moment(item.pubDate) > moment().subtract(2, 'day'))}
+        .filter(item => moment(item.pubDate) > moment().subtract(24, 'hours'))}
       transformItem={item => ({
         title: item.title,
         subtitle: moment(item.pubDate).calendar(),

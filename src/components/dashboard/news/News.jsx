@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import ListWithFetch from '../../base/list/ListWithFetch';
 
+/* eslint-disable react/prop-types */
 export default function News({ filter, label, mocked }) {
   return (
     <ListWithFetch
