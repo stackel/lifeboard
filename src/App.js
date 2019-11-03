@@ -5,6 +5,7 @@ import GameReleases from './components/dashboard/game-releases/GameReleases';
 import Recipes from './components/dashboard/recipes/Recipes';
 import RecipesBA from './components/dashboard/recipes/RecipesBA';
 import Standings from './components/dashboard/allsvenskan/Standings';
+import StandingsBandy from './components/dashboard/elitserien-bandy/Standings';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
 import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
@@ -41,6 +42,7 @@ const components = [
   <Recipes />,
   <RecipesBA />,
   <Standings />,
+  <StandingsBandy />,
   <UpcomingBeer />,
   <Podcasts />,
 ];
