@@ -1,6 +1,7 @@
 import React from 'react';
 import GBLatestVideos from './components/dashboard/giant-bomb/LatestVideos/LatestVideos';
 import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
+import NewMusic from './components/dashboard/upcoming-music/NewMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
 import Recipes from './components/dashboard/recipes/Recipes';
 import RecipesBA from './components/dashboard/recipes/RecipesBA';
@@ -21,6 +22,7 @@ const components = [
   <GBUpcoming />,
   <GameReleases />,
   <UpcomingMusic />,
+  <NewMusic />,
   <News
     label="News"
     filter={{ type: 'sources', value: 'reuters' }}
