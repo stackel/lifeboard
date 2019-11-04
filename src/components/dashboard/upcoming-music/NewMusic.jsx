@@ -17,7 +17,6 @@ export default function NewMusic() {
           genre => GENRE_ID_LIST.includes(genre.genreId),
         ).length,
       )}
-      firstItemSubtitleOnImage
       transformItem={album => ({
         title: `${album.artistName} - ${album.name}`,
         subtitle: moment(album.releaseDate).calendar(null, {
