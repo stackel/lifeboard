@@ -11,9 +11,8 @@ export default function UpcomingBeer() {
       headers={{ 'Ocp-Apim-Subscription-Key': 'ed6bfcdbf6074559bd67365384159e63' }}
       url="https://api-extern.systembolaget.se/product/v1/product/search"
       params={{
-        SortBy: 'SellStartDate',
         SubCategory: 'Öl',
-        SellStartDateFrom: moment().subtract(5, 'day').format('YYYY-MM-DD'),
+        SellStartDateFrom: moment().subtract(2, 'day').format('YYYY-MM-DD'),
         SellStartDateTo: moment().add(14, 'day').format('YYYY-MM-DD'),
       }}
     >

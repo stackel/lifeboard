@@ -11,7 +11,7 @@ export default function GameReleases({ mocked }) {
   return (
     <ListWithFetch
       mocked={mocked}
-      label="This Week in Games"
+      label="Game Releases"
       url={`${API_URL}games`}
       params={{
         api_key: API_KEY,
@@ -21,6 +21,7 @@ export default function GameReleases({ mocked }) {
         ${moment().add(7, 'day').format('YYYY-MM-DD')}`,
       }}
       firstItemSubtitleOnImage
+      nItemsTotal={12}
       fetchInterval={1000 * 60 * 10}
       transformResponse={response => response.data.results
         .filter(game => game.platforms && game.platforms
