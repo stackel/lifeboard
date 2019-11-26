@@ -35,7 +35,7 @@ export default class Weather extends Component {
     axios.get(`${API_URL}weather`, {
       params: {
         appid: API_KEY,
-        q: 'Nacka,se',
+        q: 'Nacka Kommun,se',
         units: 'metric',
       },
     }).then((response) => {

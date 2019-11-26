@@ -29,7 +29,7 @@ export default function NewMusic() {
           sameElse: 'd MMMM',
         }),
         imageUrl: album.artworkUrl100,
-        url: `https://www.google.com/search?q=${album.artistName} ${album.name}`,
+        url: album.url,
       }
       )}
     />

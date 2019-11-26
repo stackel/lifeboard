@@ -19,6 +19,13 @@ import Podcasts from './components/dashboard/podcasts/Podcasts';
 import XboxNews from './components/dashboard/xbox-wire/News';
 
 const components = [
+  <div className="tc pa4 mt4">
+    <Time />
+    <div className="mv4">
+      <SunriseSunset lat={59.305377} lng={18.145041} />
+    </div>
+    <Weather />
+  </div>,
   <GBUpcoming />,
   <GameReleases />,
   <UpcomingMusic />,
@@ -30,16 +37,7 @@ const components = [
   <XboxNews />,
   <GBLatestVideos />,
   <Stocks
-    stocks={[{
-      symbol: 'STO:IMMU',
-      acquiredAt: 12.87,
-    }, {
-      symbol: 'STO:SOLT',
-      acquiredAt: 20.50,
-    }, {
-      symbol: 'STO:EOLU-B',
-      acquiredAt: 123.00,
-    }]}
+    stocks="IMMU.ST,CLAS-B.ST,RATO-B.ST,TEL2-B.ST"
   />,
   <Recipes />,
   <RecipesBA />,
@@ -50,26 +48,12 @@ const components = [
 ];
 
 const componentWidth = 'w-20';
-const componentPadding = 'ph2';
+const componentPadding = 'ph3';
 
 function App() {
   return (
-    <div className="bg-near-black mh3">
-
-      <div className="cf fl w-15 pt5">
-        <div className="tc">
-          <Time />
-          <div className="mv4">
-            <SunriseSunset lat={59.305377} lng={18.145041} />
-          </div>
-          <Weather />
-        </div>
-        <div className="pt4 tc">
-          <PhilipsHue />
-        </div>
-      </div>
-
-      <div className="fl w-85 cf">
+    <div className="bg-near-black pv2 ph4">
+      <div className="fl w-100 cf">
         {
         components.map(component => (
           <div className={`${componentWidth} ${componentPadding} fl min-h6 `}>
