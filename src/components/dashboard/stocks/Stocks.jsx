@@ -5,53 +5,44 @@ import moment from 'moment';
 import FetchWithInterval from '../../base/list/FetchWithInterval';
 
 const LABEL = 'Stocks';
-const API_KEY = 'GIUYQBXKZDY2VNT7';
+const API_KEY = '5hXVnlMTbELftNldno6Qwkf7azoZckh4mQ3sunljDC4vR16hIjAGjN0Ks5LJ';
+const URL = 'https://api.worldtradingdata.com/api/v1/stock';
 
 export default function Stocks({ stocks, mocked }) {
   return (
-    stocks.map((stock, index) => (
-      <FetchWithInterval
-        mocked={mocked ? mocked[index] : null}
-        url="https://www.alphavantage.co/query"
-        params={{
-          outputsize: 'compact',
-          apikey: API_KEY,
-          symbol: stock.symbol,
-          function: 'TIME_SERIES_DAILY',
-        }}
-        fetchInterval={1000 * 60 * 5}
-      >
-        {(response, loading, error) => {
-          if (error || loading) {
-            return null;
+    <FetchWithInterval
+      mocked={mocked}
+      url={URL}
+      params={{
+        api_token: API_KEY,
+        symbol: stocks,
+      }}
+      fetchInterval={1000 * 60 * 5}
+    >
+      {(response, loading, error) => {
+        if (error || loading) {
+          return null;
+        }
+
+        if (!response || !response.data || !response.data.data) {
+          return null;
+        }
+        const { data } = response.data;
+
+        data.forEach((item, i) => {
+          if (item.symbol === 'IMMU.ST') {
+            data.splice(i, 1);
+            data.unshift(item);
           }
+        });
 
-          const data = response.data['Time Series (Daily)'];
-          if (!data) {
-            return null;
-          }
-
-          const dataWithDates = [];
-          Object.keys(data).forEach((key) => {
-            dataWithDates.push({ ...data[key], date: moment(key) });
-          });
-
-          const sortedDataWithDates = dataWithDates.sort((a, b) => a.date + b.date);
-
-          const latestValue = sortedDataWithDates[0];
-          const nextToLatestValue = sortedDataWithDates[1];
-          if (!latestValue || !nextToLatestValue) {
-            return null;
-          }
-
-          const latestClose = Math.round(latestValue['4. close'] * 100) / 100;
-          const nextToLatestClose = Math.round(nextToLatestValue['4. close'] * 100) / 100;
-          const latestCloseRounded = latestClose.toFixed(2);
-          const isValueIncreasedSinceYesterday = latestClose > nextToLatestClose;
-          const percentageDiffSinceYesterday = (((latestClose / nextToLatestClose) - 1) * 100)
-            .toFixed(1);
-          const percentageDiffSinceAcquired = (
-            ((latestClose / stock.acquiredAt) - 1) * 100).toFixed(1);
+        return data.map((stock, index) => {
+          const currentPrice = stock.price;
+          const stockCurrency = stock.currency;
+          const dayChange = stock.day_change;
+          const dayChangePercent = stock.change_pct;
+          /* const changeSinceAcquired = (
+            ((stock.price / stock.acquiredAt) - 1) * 100).toFixed(1); */
 
           if (index === 0) {
             return (
@@ -63,19 +54,19 @@ export default function Stocks({ stocks, mocked }) {
                   {`Updated ${moment().format('HH:mm')}`}
                 </h2>
                 <div className="tc mb4">
-                  <div className="sans-serif light-silver tc f4 mt4">
-                    {stock.symbol}
+                  <div className="sans-serif light-silver tc f4 mt4 pt3 pb2">
+                    {stock.name}
                   </div>
                   <div className="f2 near-white sans-serif mv2 b">
-                    {`${latestCloseRounded} kr`}
+                    {`${currentPrice} ${stockCurrency}`}
                   </div>
-                  <div className={`sans-serif f4 dib ${isValueIncreasedSinceYesterday ? 'green' : 'red'}`}>
-                    {`${percentageDiffSinceYesterday}%`}
+                  <div className={`sans-serif f4 dib ${dayChange > 0 ? 'green' : 'red'}`}>
+                    {`${dayChangePercent}%`}
                   </div>
-                  <span className="white sans-serif f7 lh-copy pl2 mt2">
-                    {`(${percentageDiffSinceAcquired}%)`}
-                  </span>
-                )
+                  {/* <span className=" white sans-serif f7 lh-copy pl2 mt2">
+                    {`(${changeSinceAcquired}%)`}
+                  </span> */}
+                  )
                 </div>
               </div>
             );
@@ -84,36 +75,31 @@ export default function Stocks({ stocks, mocked }) {
             <div className="f mv2">
               <div className="f5 mt2 mb1">
                 <span className="sans-serif light-silver">
-                  {stock.symbol}
+                  {stock.name}
                 </span>
                 <span className="near-white sans-serif b fr">
-                  {`${latestCloseRounded} kr`}
+                  {`${currentPrice} ${stockCurrency}`}
                 </span>
               </div>
               <div className="tr f6">
-                <span className={`mr2 sans-serif ${isValueIncreasedSinceYesterday ? 'green' : 'red'}`}>
-                  {`${percentageDiffSinceYesterday}%`}
+                <span className={`mr2 sans-serif ${dayChange > 0 ? 'green' : 'red'}`}>
+                  {`${dayChangePercent}%`}
                 </span>
-                <span className="white sans-serif f7">
-                  {`(${percentageDiffSinceAcquired}%)`}
-                </span>
+                {/* <span className="dn white sans-serif f7">
+                  {`(${changeSinceAcquired}%)`}
+                </span> */}
               </div>
-                )
+                  )
             </div>
           );
-        }}
-      </FetchWithInterval>
-    ))
+        });
+      }}
+    </FetchWithInterval>
   );
 }
 
 Stocks.propTypes = {
-  stocks: PropTypes.arrayOf(
-    PropTypes.shape({
-      symbol: PropTypes.string,
-      boughtAt: PropTypes.number,
-    }),
-  ),
+  stocks: PropTypes.string,
 };
 
 Stocks.defaultProps = {

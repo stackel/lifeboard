@@ -44,6 +44,10 @@ export default function ListWithFetch({
         }
 
         if (response) {
+          if (typeof response.data === 'string'
+          && response.data.includes('<!DOCTYPE HTML')) {
+            return null;
+          }
           const items = transformResponse(response);
           if (!items || !items.length) {
             return null;

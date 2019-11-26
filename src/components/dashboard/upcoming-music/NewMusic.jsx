@@ -15,7 +15,8 @@ export default function NewMusic() {
       transformResponse={response => response.data.feed.results.filter(
         album => album.genres.filter(
           genre => GENRE_ID_LIST.includes(genre.genreId),
-        ).length,
+        ).length
+        && moment(album.releaseDate) > moment().subtract('3', 'days'),
       )}
       firstItemSubtitleOnImage
       transformItem={album => ({

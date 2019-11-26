@@ -9,16 +9,7 @@ storiesOf('Components/Stocks', module)
     <div className="mw5 pa4">
       <Stocks
         mocked={mocked}
-        stocks={[{
-          symbol: 'STO:IMMU',
-          acquiredAt: 12.87,
-        }, {
-          symbol: 'STO:SOLT',
-          acquiredAt: 20.50,
-        }, {
-          symbol: 'STO:EOLU-B',
-          acquiredAt: 123.00,
-        }]}
+        stocks="IMMU.ST,CLAS-B.ST,RATO-B.ST,TEL2-B.ST"
       />
     </div>
   ));

@@ -13,7 +13,7 @@ export default function UpcomingBeer() {
       params={{
         SortBy: 'SellStartDate',
         SubCategory: 'Öl',
-        SellStartDateFrom: moment().subtract(5, 'day').format('YYYY-MM-DD'),
+        SellStartDateFrom: moment().subtract(3, 'day').format('YYYY-MM-DD'),
         SellStartDateTo: moment().add(14, 'day').format('YYYY-MM-DD'),
       }}
     >
