@@ -49,7 +49,7 @@ const components = [
       acquiredAt: 26.3,
     }, {
       symbol: 'TEL2-B.ST',
-      acquiredAt: 70.2,
+      acquiredAt: 123.45,
     }]}
   />,
   <Recipes />,
