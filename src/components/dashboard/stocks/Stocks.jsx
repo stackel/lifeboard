@@ -17,7 +17,7 @@ export default function Stocks({ stocks, mocked }) {
         api_token: API_KEY,
         symbol: stocks.map(stock => stock.symbol).join(','),
       }}
-      fetchInterval={1000 * 60 * 5}
+      fetchInterval={1000 * 60 * 3}
     >
       {(response, loading, error) => {
         if (error || loading) {
