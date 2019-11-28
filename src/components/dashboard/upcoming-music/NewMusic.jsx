@@ -16,9 +16,8 @@ export default function NewMusic() {
         album => album.genres.filter(
           genre => GENRE_ID_LIST.includes(genre.genreId),
         ).length
-        && moment(album.releaseDate) > moment().subtract('3', 'days'),
+        && moment(album.releaseDate) > moment().subtract(3, 'days'),
       )}
-      firstItemSubtitleOnImage
       transformItem={album => ({
         title: `${album.artistName} - ${album.name}`,
         subtitle: moment(album.releaseDate).calendar(null, {

@@ -16,6 +16,7 @@ export default function GBLatestVideos({ mocked }) {
         api_key: API_KEY,
         format: 'json',
       }}
+      nItemsTotal={10}
       fetchInterval={1000 * 60 * 10}
       transformResponse={response => response.data.results}
       transformItem={item => ({

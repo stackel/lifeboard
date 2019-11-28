@@ -1,9 +1,3 @@
-Allsvenskan:
-  - Visa enbart Säsongsstart -> 1vecka efter säsongsslut
-
-Bandy
-  - Visa enbart Säsongsstart -> 1vecka efter säsongsslut
-
 GB Latest Videos
   - filtrera på show
 
