@@ -77,7 +77,7 @@ export default function Stocks({ stocks, mocked }) {
           }
           return (
             <div className="f mv3">
-              <div className="f5 mt2 mb3">
+              <div className="f5 mt2 mb1">
                 <span className="sans-serif light-silver">
                   {stock.name}
                 </span>
