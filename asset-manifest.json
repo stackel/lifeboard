@@ -1,13 +1,13 @@
 {
   "main.css": "/lifeboard/static/css/main.ab495451.chunk.css",
-  "main.js": "/lifeboard/static/js/main.c9c99f68.chunk.js",
-  "main.js.map": "/lifeboard/static/js/main.c9c99f68.chunk.js.map",
+  "main.js": "/lifeboard/static/js/main.c7077570.chunk.js",
+  "main.js.map": "/lifeboard/static/js/main.c7077570.chunk.js.map",
   "runtime~main.js": "/lifeboard/static/js/runtime~main.16784c18.js",
   "runtime~main.js.map": "/lifeboard/static/js/runtime~main.16784c18.js.map",
   "static/js/2.bffe8724.chunk.js": "/lifeboard/static/js/2.bffe8724.chunk.js",
   "static/js/2.bffe8724.chunk.js.map": "/lifeboard/static/js/2.bffe8724.chunk.js.map",
   "index.html": "/lifeboard/index.html",
-  "precache-manifest.4778bbc517b37cc77ed53857e47a97eb.js": "/lifeboard/precache-manifest.4778bbc517b37cc77ed53857e47a97eb.js",
+  "precache-manifest.803999b4a3cb86a3eb93bebb914ff882.js": "/lifeboard/precache-manifest.803999b4a3cb86a3eb93bebb914ff882.js",
   "service-worker.js": "/lifeboard/service-worker.js",
   "static/css/main.ab495451.chunk.css.map": "/lifeboard/static/css/main.ab495451.chunk.css.map"
 }
