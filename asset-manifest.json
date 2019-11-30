@@ -1,13 +1,13 @@
 {
-  "main.css": "/lifeboard/static/css/main.ab495451.chunk.css",
-  "main.js": "/lifeboard/static/js/main.9eee5bd9.chunk.js",
-  "main.js.map": "/lifeboard/static/js/main.9eee5bd9.chunk.js.map",
+  "main.css": "/lifeboard/static/css/main.a50ee248.chunk.css",
+  "main.js": "/lifeboard/static/js/main.cbd07fe3.chunk.js",
+  "main.js.map": "/lifeboard/static/js/main.cbd07fe3.chunk.js.map",
   "runtime~main.js": "/lifeboard/static/js/runtime~main.16784c18.js",
   "runtime~main.js.map": "/lifeboard/static/js/runtime~main.16784c18.js.map",
   "static/js/2.bffe8724.chunk.js": "/lifeboard/static/js/2.bffe8724.chunk.js",
   "static/js/2.bffe8724.chunk.js.map": "/lifeboard/static/js/2.bffe8724.chunk.js.map",
   "index.html": "/lifeboard/index.html",
-  "precache-manifest.a0889e4b31a5c22ed08571c40ec3fa6c.js": "/lifeboard/precache-manifest.a0889e4b31a5c22ed08571c40ec3fa6c.js",
+  "precache-manifest.78b4a4251dde85bb6cb2751db80d9738.js": "/lifeboard/precache-manifest.78b4a4251dde85bb6cb2751db80d9738.js",
   "service-worker.js": "/lifeboard/service-worker.js",
-  "static/css/main.ab495451.chunk.css.map": "/lifeboard/static/css/main.ab495451.chunk.css.map"
+  "static/css/main.a50ee248.chunk.css.map": "/lifeboard/static/css/main.a50ee248.chunk.css.map"
 }
