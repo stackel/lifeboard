@@ -43,28 +43,31 @@ export default function UpcomingBeer() {
                 label={LABEL}
                 noImages
                 limitTo={6}
-                items={beersInStore.map(beer => (
-                  {
-                    title: `${beer.ProductNameBold} ${beer.ProductNameThin || ''}`,
-                    subtitle: moment(beer.SellStartDate).calendar(null, {
-                      lastDay: '[Yesterday]',
-                      sameDay: '[Today]',
-                      nextDay: '[Tomorrow]',
-                      lastWeek: '[last] dddd',
-                      nextWeek: 'dddd',
-                      sameElse: 'L',
-                    }),
-                    url: `https://www.systembolaget.se/dryck/ol/${beer.ProductNameBold
-                      .trim()
-                      .replace(/\s+/g, '-')
-                      .replace(/\./g, '')
-                      .replace(/\u00e4/g, 'a')
-                      .replace(/\u00f6/g, 'o')
-                      .replace(/\\|\//g, '')
-                      .toLowerCase()}-${beer.ProductNumber}`,
-                    imageUrl: 'https://www.systembolaget.se/content/assets/images/products/product-placeholder.png',
+                items={
+                  beersInStore.sort((a, b) => moment(a.SellStartDate) - moment(b.SellStartDate))
+                    .map(beer => (
+                      {
+                        title: `${beer.ProductNameBold} ${beer.ProductNameThin || ''}`,
+                        subtitle: moment(beer.SellStartDate).calendar(null, {
+                          lastDay: '[Yesterday]',
+                          sameDay: '[Today]',
+                          nextDay: '[Tomorrow]',
+                          lastWeek: '[last] dddd',
+                          nextWeek: 'dddd',
+                          sameElse: 'L',
+                        }),
+                        url: `https://www.systembolaget.se/dryck/ol/${beer.ProductNameBold
+                          .trim()
+                          .replace(/\s+/g, '-')
+                          .replace(/\./g, '')
+                          .replace(/\u00e4/g, 'a')
+                          .replace(/\u00f6/g, 'o')
+                          .replace(/\\|\//g, '')
+                          .toLowerCase()}-${beer.ProductNumber}`,
+                        imageUrl: 'https://www.systembolaget.se/content/assets/images/products/product-placeholder.png',
+                      }
+                    ))
                   }
-                ))}
               />
             </div>
           );
