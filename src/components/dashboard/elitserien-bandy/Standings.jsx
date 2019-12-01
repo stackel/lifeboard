@@ -15,7 +15,7 @@ export default function Standings() {
       label="Bandy Elitserien"
       url="https://secret-thicket-04067.herokuapp.com/es"
       fetchInterval={1000 * 60 * 10}
-      nItemsDisplay={7}
+      nItemsDisplay={6}
       noImages
       transformResponse={response => response.data.result.item}
       transformItem={item => ({

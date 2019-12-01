@@ -21,6 +21,7 @@ export default function GameReleases({ mocked }) {
         ${moment().add(7, 'day').format('YYYY-MM-DD')}`,
       }}
       firstItemSubtitleOnImage
+      nItemsDisplay={4}
       nItemsTotal={12}
       fetchInterval={1000 * 60 * 10}
       transformResponse={response => response.data.results
