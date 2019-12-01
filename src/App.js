@@ -36,7 +36,20 @@ const components = [
   <XboxNews />,
   <GBLatestVideos />,
   <Stocks
-    stocks="IMMU.ST,CLAS-B.ST,RATO-B.ST,TEL2-B.ST"
+    stocks={[{
+      symbol: 'IMMU.ST',
+      acquiredAt: 11.55,
+    },
+    {
+      symbol: 'CLAS-B.ST',
+      acquiredAt: 83.3,
+    }, {
+      symbol: 'RATO-B.ST',
+      acquiredAt: 26.3,
+    }, {
+      symbol: 'TEL2-B.ST',
+      acquiredAt: 123.45,
+    }]}
   />,
   <Recipes />,
   <RecipesBA />,

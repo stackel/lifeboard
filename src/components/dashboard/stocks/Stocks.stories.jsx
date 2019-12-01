@@ -2,14 +2,27 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Stocks from './Stocks';
-import mocked from './mocked';
+// import mocked from './mocked';
 
 storiesOf('Components/Stocks', module)
   .add('Stocks', () => (
-    <div className="mw5 pa4">
+    <div className="mw6">
       <Stocks
-        mocked={mocked}
-        stocks="IMMU.ST,CLAS-B.ST,RATO-B.ST,TEL2-B.ST"
+        // mocked={mocked}
+        stocks={[{
+          symbol: 'IMMU.ST',
+          acquiredAt: 11.5,
+        },
+        {
+          symbol: 'CLAS-B.ST',
+          acquiredAt: 83.3,
+        }, {
+          symbol: 'RATO-B.ST',
+          acquiredAt: 26.3,
+        }, {
+          symbol: 'TEL2-B.ST',
+          acquiredAt: 70.2,
+        }]}
       />
     </div>
   ));

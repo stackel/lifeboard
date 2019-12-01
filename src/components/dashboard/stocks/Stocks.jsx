@@ -15,9 +15,9 @@ export default function Stocks({ stocks, mocked }) {
       url={URL}
       params={{
         api_token: API_KEY,
-        symbol: stocks,
+        symbol: stocks.map(stock => stock.symbol).join(','),
       }}
-      fetchInterval={1000 * 60 * 5}
+      fetchInterval={1000 * 60 * 3}
     >
       {(response, loading, error) => {
         if (error || loading) {
@@ -41,8 +41,10 @@ export default function Stocks({ stocks, mocked }) {
           const stockCurrency = stock.currency;
           const dayChange = stock.day_change;
           const dayChangePercent = stock.change_pct;
-          /* const changeSinceAcquired = (
-            ((stock.price / stock.acquiredAt) - 1) * 100).toFixed(1); */
+
+          const { acquiredAt } = stocks.filter(s => stock.symbol === s.symbol)[0];
+          const changeSinceAcquired = (
+            ((stock.price / acquiredAt) - 1) * 100).toFixed(1);
 
           if (index === 0) {
             return (
@@ -63,16 +65,18 @@ export default function Stocks({ stocks, mocked }) {
                   <div className={`sans-serif f4 dib ${dayChange > 0 ? 'green' : 'red'}`}>
                     {`${dayChangePercent}%`}
                   </div>
-                  {/* <span className=" white sans-serif f7 lh-copy pl2 mt2">
-                    {`(${changeSinceAcquired}%)`}
-                  </span> */}
+                  {
+                    <span className=" white sans-serif f7 lh-copy pl2 mt2">
+                      {`(${changeSinceAcquired}%)`}
+                    </span>
+                  }
                   )
                 </div>
               </div>
             );
           }
           return (
-            <div className="f mv2">
+            <div className="f mv3">
               <div className="f5 mt2 mb1">
                 <span className="sans-serif light-silver">
                   {stock.name}
@@ -85,11 +89,12 @@ export default function Stocks({ stocks, mocked }) {
                 <span className={`mr2 sans-serif ${dayChange > 0 ? 'green' : 'red'}`}>
                   {`${dayChangePercent}%`}
                 </span>
-                {/* <span className="dn white sans-serif f7">
-                  {`(${changeSinceAcquired}%)`}
-                </span> */}
+                {
+                  <span className="white sans-serif f7">
+                    {`(${changeSinceAcquired}%)`}
+                  </span>
+                }
               </div>
-                  )
             </div>
           );
         });
