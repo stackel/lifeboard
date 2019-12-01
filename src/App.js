@@ -28,7 +28,6 @@ const components = [
   </div>,
   <GBUpcoming />,
   <GameReleases />,
-  <UpcomingMusic />,
   <NewMusic />,
   <News
     label="News"
