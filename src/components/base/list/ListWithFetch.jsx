@@ -45,7 +45,7 @@ export default function ListWithFetch({
 
         if (response) {
           if (typeof response.data === 'string'
-          && response.data.includes('<!DOCTYPE HTML')) {
+          && (response.data.includes('<!DOCTYPE HTML') || response.data.includes('One or more feeds were not valid RSS'))) {
             return null;
           }
           const items = transformResponse(response);
