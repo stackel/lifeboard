@@ -20,14 +20,7 @@ export default function NewMusic() {
       )}
       transformItem={album => ({
         title: `${album.artistName} - ${album.name}`,
-        subtitle: moment(album.releaseDate).calendar(null, {
-          lastDay: '[Yesterday]',
-          sameDay: '[Today]',
-          nextDay: '[Tomorrow]',
-          lastWeek: '[last] dddd',
-          nextWeek: 'dddd',
-          sameElse: 'd MMMM',
-        }),
+        subtitle: moment(album.releaseDate).calendar(),
         imageUrl: album.artworkUrl100,
         url: album.url,
       }

@@ -1,19 +1,10 @@
-GB Latest Videos
-  - filtrera på show
-
-news:
-  -?
-
-podcasts
-  -?
-
 stocks
-  - bara visa om skiljer sig +- 2% från gårdagen
+  - bara visa vardag
 
 Cocktail Hour
   - Hook up Firebase
   - Google auth
-  - Get try Soon (randomize and display thursday ev - sunday mor)
+  - Get try Swoon (randomize and display thursday ev - sunday mor)
 
 påminnelser
  - årsdag 5

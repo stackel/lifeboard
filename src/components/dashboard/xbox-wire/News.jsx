@@ -12,7 +12,8 @@ export default function News() {
       fetchInterval={1000 * 60 * 15}
       transformResponse={response => xmlParser.parse(response.data,
         { ignoreAttributes: false }).rss.channel.item
-        .filter(item => item.title.includes('Game Pass'))}
+        .filter(item => item.title.includes('Game Pass') && item.title.toLowerCase()
+          .includes('console'))}
       transformItem={item => ({
         title: item.title,
         subtitle: moment(item.pubDate).calendar(),
