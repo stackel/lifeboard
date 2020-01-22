@@ -18,27 +18,30 @@ export default function GameReleases({ mocked }) {
         format: 'json',
         filter: `original_release_date:
         ${moment().format('YYYY-MM-DD')}|
-        ${moment().add(7, 'day').format('YYYY-MM-DD')}`,
+        ${moment()
+          .add(7, 'day')
+          .format('YYYY-MM-DD')}`,
       }}
-      firstItemSubtitleOnImage
       nItemsDisplay={4}
       nItemsTotal={12}
       fetchInterval={1000 * 60 * 10}
       transformResponse={response => response.data.results
-        .filter(game => game.platforms && game.platforms
-          .filter(platform => PLATFORM_IDS.includes(platform.id)))
-        .filter(game => game.expected_release_month !== null
-                    && game.expected_release_day !== null
-                    && game.expected_release_year !== null)
+        .filter(
+          game => game.platforms
+              && game.platforms.filter(platform => PLATFORM_IDS.includes(platform.id)),
+        )
+        .filter(
+          game => game.expected_release_month !== null
+              && game.expected_release_day !== null
+              && game.expected_release_year !== null,
+        )
         .map(game => ({
           ...game,
-          date: moment(
-            [
-              game.expected_release_year,
-              game.expected_release_month - 1,
-              game.expected_release_day,
-            ],
-          ),
+          date: moment([
+            game.expected_release_year,
+            game.expected_release_month - 1,
+            game.expected_release_day,
+          ]),
         }))
         .filter(game => game.date > moment().subtract(1, 'days'))
         .sort((a, b) => a.date - b.date)
