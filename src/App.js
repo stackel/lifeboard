@@ -1,6 +1,5 @@
 import React from 'react';
 import GBLatestVideos from './components/dashboard/giant-bomb/LatestVideos/LatestVideos';
-import UpcomingMusic from './components/dashboard/upcoming-music/UpcomingMusic';
 import NewMusic from './components/dashboard/upcoming-music/NewMusic';
 import GameReleases from './components/dashboard/game-releases/GameReleases';
 import Recipes from './components/dashboard/recipes/Recipes';
@@ -9,7 +8,6 @@ import Standings from './components/dashboard/allsvenskan/Standings';
 import StandingsBandy from './components/dashboard/elitserien-bandy/Standings';
 import Time from './components/dashboard/time/Time';
 import Weather from './components/dashboard/weather/Weather';
-import PhilipsHue from './components/dashboard/philips-hue/PhilipsHue';
 import News from './components/dashboard/news/News';
 import GBUpcoming from './components/dashboard/giant-bomb/UpcomingVideos/UpcomingVideos';
 import UpcomingBeer from './components/dashboard/systembolaget/UpcomingBeer';
@@ -39,13 +37,6 @@ const components = [
     stocks={[{
       symbol: 'IMMU.ST',
       acquiredAt: 11.55,
-    },
-    {
-      symbol: 'CLAS-B.ST',
-      acquiredAt: 83.3,
-    }, {
-      symbol: 'RATO-B.ST',
-      acquiredAt: 26.3,
     }, {
       symbol: 'TEL2-B.ST',
       acquiredAt: 123.45,
