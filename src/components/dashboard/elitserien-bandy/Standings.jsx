@@ -6,7 +6,7 @@ import ListWithFetch from '../../base/list/ListWithFetch';
 /* eslint-disable react/prop-types */
 export default function Standings() {
   const currentMonth = moment().month();
-  const isSeason = currentMonth >= 9 || currentMonth <= 4;
+  const isSeason = currentMonth >= 9 || currentMonth <= 3;
   if (!isSeason) {
     return null;
   }
