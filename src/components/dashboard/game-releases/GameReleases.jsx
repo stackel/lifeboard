@@ -22,7 +22,7 @@ export default function GameReleases({ mocked }) {
           .add(7, 'day')
           .format('YYYY-MM-DD')}`,
       }}
-      nItemsDisplay={4}
+      nItemsDisplay={3}
       nItemsTotal={12}
       fetchInterval={1000 * 60 * 10}
       transformResponse={response => response.data.results
