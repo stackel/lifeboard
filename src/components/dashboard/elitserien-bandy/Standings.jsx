@@ -1,12 +1,11 @@
-import React from 'react';
-import moment from 'moment';
-
-import ListWithFetch from '../../base/list/ListWithFetch';
+import moment from "moment";
+import React from "react";
+import ListWithFetch from "../../base/list/ListWithFetch";
 
 /* eslint-disable react/prop-types */
 export default function Standings() {
   const currentMonth = moment().month();
-  const isSeason = currentMonth >= 9 || currentMonth <= 3;
+  const isSeason = currentMonth >= 9 || currentMonth <= 2;
   if (!isSeason) {
     return null;
   }
@@ -20,7 +19,7 @@ export default function Standings() {
       transformResponse={response => response.data.result.item}
       transformItem={item => ({
         title: `${item.position}. ${item.team}`,
-        subtitle: `${item.points} poäng - ${item.round} spelade`,
+        subtitle: `${item.points} poäng - ${item.round} spelade`
       })}
     />
   );
